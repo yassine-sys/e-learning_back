@@ -62,12 +62,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\AnswerRepository.cs" />
+    <Compile Include="Repositories\BusinessUnitRepository.cs" />
+    <Compile Include="Repositories\CertificateRepository.cs" />
     <Compile Include="Repositories\ChapterRepository.cs" />
     <Compile Include="Repositories\CourseRepository.cs" />
+    <Compile Include="Repositories\DepartmentRepository.cs" />
+    <Compile Include="Repositories\ExamRepository.cs" />
+    <Compile Include="Repositories\ExamResultRepository.cs" />
     <Compile Include="Repositories\FileProgressRepository.cs" />
     <Compile Include="Repositories\FileRepository.cs" />
+    <Compile Include="Repositories\OptionRepository.cs" />
     <Compile Include="Repositories\ParagraphProgressRepository.cs" />
     <Compile Include="Repositories\ParagraphRepository.cs" />
+    <Compile Include="Repositories\QuestionRepository.cs" />
+    <Compile Include="Repositories\QuizRepository.cs" />
+    <Compile Include="Repositories\QuizResultRepository.cs" />
     <Compile Include="Repositories\RatingRepository.cs" />
     <Compile Include="Repositories\SectionRepository.cs" />
     <Compile Include="Repositories\SubscriptionRepository.cs" />
