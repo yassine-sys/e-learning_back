@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace DataAccess.IRepositories
 {
-    public class ICourseRepository<TEntity> where TEntity : class
+    public interface ICourseRepository<Course> where Course : class
     {
+        IEnumerable<Course> GetCourses();
+        Course GetCourse(int CourseId);
+        void PostCourse(Course course);
+        void DeleteCourse(int CourseId);
     }
 }
