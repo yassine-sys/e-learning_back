@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace DataAccess.IRepositories
 {
-    public class ISectionRepository<TEntity> where TEntity : class
+    public interface ISectionRepository<Section> where Section : class
     {
+        IQueryable<Section> SectionbyChapterID(int ChapterID);
+        Section GetSection(int idSection);
     }
 }

@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace DataAccess.IRepositories
 {
-    public class IFileRepository<TEntity> where TEntity : class
+    public interface IFileRepository<File> where File : class
     {
+        IEnumerable<File> GetFiles;
+        File GetFile(int FileId);
+        File GetVideoFile(int FileId);
+        void Save();
     }
 }

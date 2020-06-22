@@ -72,7 +72,7 @@
     <Compile Include="IRepositories\IFileProgressRepository.cs" />
     <Compile Include="IRepositories\IFileRepository.cs" />
     <Compile Include="IRepositories\IOptionRepository.cs" />
-    <Compile Include="IRepositories\IParagraphProgress.cs" />
+    <Compile Include="IRepositories\IParagraphProgressRepository.cs" />
     <Compile Include="IRepositories\IParagraphRepository.cs" />
     <Compile Include="IRepositories\IQuestionRepository.cs" />
     <Compile Include="IRepositories\IQuizRepository.cs" />
