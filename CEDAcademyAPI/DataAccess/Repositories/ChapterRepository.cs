@@ -10,9 +10,9 @@ namespace DataAccess.Repositories
 {
     public class ChapterRepository<Chapter> : IChapterRepository<Chapter> where Chapter : class
     {
-        readonly ApplicationContext db;
+        readonly ApplicationDbContext db;
 
-        public ChapterRepository(ApplicationContext context)
+        public ChapterRepository(ApplicationDbContext context)
         {
             db = context;
         }

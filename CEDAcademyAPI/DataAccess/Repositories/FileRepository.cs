@@ -9,9 +9,9 @@ namespace DataAccess.Repositories
 {
     public class FileRepository<File> : IFileRepository<File> where File : class
     {
-        readonly ApplicationContext db;
+        readonly ApplicationDbContext db;
        
-        public FileRepository(ApplicationContext context)
+        public FileRepository(ApplicationDbContext context)
         {
             db = context;
         }

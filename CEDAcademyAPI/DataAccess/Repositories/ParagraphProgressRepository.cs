@@ -9,9 +9,9 @@ namespace DataAccess.Repositories
 {
     public class ParagraphProgressRepository<ParagraphProgress> : IParagraphProgressRepository<ParagraphProgress> where ParagraphProgress : class
     {
-        readonly ApplicationContext db;
+        readonly ApplicationDbContext db;
 
-        public ParagraphProgressRepository(ApplicationContext context)
+        public ParagraphProgressRepository(ApplicationDbContext context)
         {
             db = context;
         }
