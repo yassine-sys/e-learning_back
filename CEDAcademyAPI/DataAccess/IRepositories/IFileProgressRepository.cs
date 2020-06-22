@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace DataAccess.IRepositories
 {
-    public class IFileProgressRepository<TEntity> where TEntity : class
+    public interface IFileProgressRepository<FileProgress> where FileProgress : class
     {
+        void PostProgress(FileProgress progress, string id);
+        FileProgress ProgressByUserID(string userId);
+        void PutProgress(FileProgress p);
+        FileProgress GetProgress(string id);
     }
 }

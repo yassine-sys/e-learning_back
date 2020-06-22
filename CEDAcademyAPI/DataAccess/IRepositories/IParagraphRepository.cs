@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace DataAccess.IRepositories
 {
-    public interface IParagraphRepository<TEntity> where TEntity : class
+    public interface IParagraphRepository<Paragraph> where Paragraph : class
     {
+        IEnumerable<Paragraph> GetParagraphs();
+        IQueryable<Paragraph> ParagraphbySectionID(int SectionID);
+        Paragraph GetParagraph(int id);
+        void PostParagraph(Paragraph paragraph);
+        void DeleteParagraph(int ParagraphId);
     }
 }

@@ -61,7 +61,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IRepositories\IAnswerRepository.cs" />
     <Compile Include="IRepositories\IBusinessUnitRepository.cs" />
     <Compile Include="IRepositories\ICertificateRepository.cs" />
     <Compile Include="IRepositories\IChapterRepository.cs" />
@@ -73,7 +72,7 @@
     <Compile Include="IRepositories\IFileProgressRepository.cs" />
     <Compile Include="IRepositories\IFileRepository.cs" />
     <Compile Include="IRepositories\IOptionRepository.cs" />
-    <Compile Include="IRepositories\IParagraphProgress.cs" />
+    <Compile Include="IRepositories\IParagraphProgressRepository.cs" />
     <Compile Include="IRepositories\IParagraphRepository.cs" />
     <Compile Include="IRepositories\IQuestionRepository.cs" />
     <Compile Include="IRepositories\IQuizRepository.cs" />
@@ -82,7 +81,6 @@
     <Compile Include="IRepositories\ISectionRepository.cs" />
     <Compile Include="IRepositories\ISubscriptionRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\AnswerRepository.cs" />
     <Compile Include="Repositories\BusinessUnitRepository.cs" />
     <Compile Include="Repositories\CertificateRepository.cs" />
     <Compile Include="Repositories\ChapterRepository.cs" />
