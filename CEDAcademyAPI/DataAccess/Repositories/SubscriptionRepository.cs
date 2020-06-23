@@ -4,14 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Entities.Infrastructure;
 
 namespace DataAccess.Repositories
 {
     public class SubscriptionRepository<Subscription> : ISubscriptionRepository<Subscription> where Subscription : class
     {
-        readonly ApplicationContext db;
+        readonly ApplicationDbContext db;
 
-        public SubscriptionRepository(ApplicationContext context)
+        public SubscriptionRepository(ApplicationDbContext context)
         {
             db = context;
         }
