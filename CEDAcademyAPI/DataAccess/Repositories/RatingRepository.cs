@@ -10,9 +10,9 @@ namespace DataAccess.Repositories
 {
     public class RatingRepository<Rating> : IRatingRepository<Rating> where Rating : class
     {
-        readonly ApplicationContext db;
+        readonly ApplicationDbContext db;
 
-        public RatingRepository(ApplicationContext context)
+        public RatingRepository(ApplicationDbContext context)
         {
             db = context;
         }

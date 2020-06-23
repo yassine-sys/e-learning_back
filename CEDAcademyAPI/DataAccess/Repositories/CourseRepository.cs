@@ -10,9 +10,9 @@ namespace DataAccess.Repositories
 {
     public class CourseRepository<Course> : ICourseRepository<Course> where Course : class
     {
-        readonly ApplicationContext db;
+        readonly ApplicationDbContext db;
 
-        public CourseRepository(ApplicationContext context)
+        public CourseRepository(ApplicationDbContext context)
         {
             db = context;
         }

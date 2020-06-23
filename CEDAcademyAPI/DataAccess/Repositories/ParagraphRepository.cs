@@ -9,9 +9,9 @@ namespace DataAccess.Repositories
 {
    public class ParagraphRepository<Paragraph> : IParagraphRepository<Paragraph> where Paragraph : class
     {
-        readonly ApplicationContext db;
+        readonly ApplicationDbContext db;
 
-        public ParagraphRepository(ApplicationContext context)
+        public ParagraphRepository(ApplicationDbContext context)
         {
             db = context;
         }
