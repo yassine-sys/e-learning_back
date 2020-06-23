@@ -9,9 +9,9 @@ namespace DataAccess.Repositories
 {
     public class SectionRepository<Section> : ISectionRepository<Section> where Section : class
     {
-        readonly ApplicationContext db;
+        readonly ApplicationDbContext db;
 
-        public SectionRepository(ApplicationContext context)
+        public SectionRepository(ApplicationDbContext context)
         {
             db = context;
         }

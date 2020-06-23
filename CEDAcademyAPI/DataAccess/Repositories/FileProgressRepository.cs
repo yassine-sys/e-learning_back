@@ -10,9 +10,9 @@ namespace DataAccess.Repositories
 {
     public class FileProgressRepository<FileProgress> : IFileProgressRepository<FileProgress> where FileProgress : class
     {
-        readonly ApplicationContext db;
+        readonly ApplicationDbContext db;
 
-        public FileProgressRepository(ApplicationContext context)
+        public FileProgressRepository(ApplicationDbContext context)
         {
             db = context;
         }
