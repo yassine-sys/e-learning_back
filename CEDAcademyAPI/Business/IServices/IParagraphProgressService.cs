@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Business.IServices
 {
-    public class IParagraphProgressService
+    public interface IParagraphProgressService
     {
+        int CountParagraphs(int CourseID);
+        int paragraphProgressByCourseidUserid(int idC, string idU);
+
     }
 }

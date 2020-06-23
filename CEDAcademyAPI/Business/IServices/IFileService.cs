@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Business.IServices
 {
-    public class IFileService
+    public interface IFileService
     {
+        void UploadFilePDF();
+        byte[] GetPdfFile(int id);
+        void UploadFile();
     }
 }
