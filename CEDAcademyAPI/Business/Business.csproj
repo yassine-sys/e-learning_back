@@ -61,12 +61,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IServices\IAnswerService.cs" />
+    <Compile Include="IServices\IBusinessUnitService.cs" />
+    <Compile Include="IServices\ICertificateService.cs" />
     <Compile Include="IServices\IChapterService.cs" />
     <Compile Include="IServices\ICourseService.cs" />
+    <Compile Include="IServices\IDepartmentService.cs" />
+    <Compile Include="IServices\IExamResultService.cs" />
+    <Compile Include="IServices\IExamService.cs" />
     <Compile Include="IServices\IFileProgressService.cs" />
     <Compile Include="IServices\IFileService.cs" />
+    <Compile Include="IServices\IOptionService.cs" />
     <Compile Include="IServices\IParagraphProgressService.cs" />
     <Compile Include="IServices\IParagraphService.cs" />
+    <Compile Include="IServices\IQuestionService.cs" />
+    <Compile Include="IServices\IQuizResultService.cs" />
+    <Compile Include="IServices\IQuizService.cs" />
     <Compile Include="IServices\IRatingService.cs" />
     <Compile Include="IServices\ISectionService.cs" />
     <Compile Include="IServices\ISubscriptionService.cs" />
