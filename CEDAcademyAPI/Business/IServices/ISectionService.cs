@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Business.IServices
 {
-    public class ISectionService
+    public interface ISectionService
     {
     }
 }

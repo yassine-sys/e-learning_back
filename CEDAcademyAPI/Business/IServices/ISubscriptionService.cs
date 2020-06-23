@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Business.IServices
 {
-    public class ISubscriptionService
+    public interface ISubscriptionService
     {
+        IQueryable<Subscription> SubscriptionbyUserId(string UserId);
+        int CountUsersbyCourseID(string CourseID);
     }
 }

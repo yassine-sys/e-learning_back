@@ -9,5 +9,11 @@ namespace Business.Services
 {
     public class SectionService : ISectionService
     {
+        readonly ApplicationDbContext db;
+        public SectionService(ApplicationDbContext context)
+        {
+            db = context;
+        }
+
     }
 }

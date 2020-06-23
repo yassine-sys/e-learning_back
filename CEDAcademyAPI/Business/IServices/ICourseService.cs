@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Business.IServices
 {
-    public class ICourseService
+    public interface ICourseService
     {
+        int CourseNumber();
     }
 }
