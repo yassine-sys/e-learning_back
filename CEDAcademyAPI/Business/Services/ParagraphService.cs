@@ -9,5 +9,12 @@ namespace Business.Services
 {
     public class ParagraphService:IParagraphService
     {
+        readonly ApplicationDbContext db;
+
+        public ParagraphService(ApplicationDbContext context)
+        {
+            db = context;
+        }
+
     }
 }

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Business.IServices
 {
-    public class IChapterService
+    public interface IChapterService
     {
+        List<Chapter> ChapterDetailsByCourseID(int CourseID);
     }
 }
