@@ -1,13 +1,12 @@
-﻿using Business.IServices;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Business.Services
+namespace Business.IServices
 {
-    public class ChapterService:IChapterService
+    public class IRatingService
     {
     }
 }
