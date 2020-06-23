@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Business.IServices
 {
-    class IExamService
+    interface IExamService<Question> where Question : class
     {
+        IEnumerable<Question> GetQuestionByExamID(int ExamID);
     }
 }

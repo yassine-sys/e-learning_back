@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Business.IServices
 {
-    class ICertificateService
+    interface ICertificateService
     {
     }
 }

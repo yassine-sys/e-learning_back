@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Business.IServices
 {
-    class IQuizResultService
+    interface IQuizResultService<Quiz> where Quiz:class
     {
+        IEnumerable<Quiz> GetQuizResultsByQuizID(int QuizID);
+
     }
 }
