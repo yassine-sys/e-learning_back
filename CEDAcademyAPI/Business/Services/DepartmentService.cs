@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Business.Services
 {
-    class DepartmentService: IDepartmentService
+    public class DepartmentService : IDepartmentService
     {
     }
 }

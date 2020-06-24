@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Business.Services
 {
-    class CertificateService: ICertificateService
+    public class CertificateService : ICertificateService
     {
     }
 }

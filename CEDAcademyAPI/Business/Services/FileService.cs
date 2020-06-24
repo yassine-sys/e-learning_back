@@ -1,4 +1,5 @@
 ﻿using Business.IServices;
+using DataAccess.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,15 +9,15 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
-
+using Entities.Models;
 
 namespace Business.Services
 {
     public class FileService : IFileService
     {
-        readonly ApplicationDbContext db;
+        readonly CEDAcademyDbContext db;
 
-        public FileService(ApplicationDbContext context)
+        public FileService(CEDAcademyDbContext context)
         {
             db = context;
         }
@@ -29,8 +30,8 @@ namespace Business.Services
             fileName = fileName + DateTime.Now.ToString("yymmssfff") + Path.GetExtension(postedFile.FileName);
             var filePath = HttpContext.Current.Server.MapPath("~/PDF/" + fileName);
             postedFile.SaveAs(filePath);
-            
-                File file = new File()
+
+            Entities.Models.File file = new Entities.Models.File()
                 {
 
                     FileName = fileName,
@@ -42,7 +43,7 @@ namespace Business.Services
         }
         public byte[] GetPdfFile(int id)
         {
-            File file = db.Files.Find(id);
+            Entities.Models.File file = db.Files.Find(id);
             if (file == null)
             {
                 return null;
@@ -74,7 +75,7 @@ namespace Business.Services
 
 
             int idFile = 0;
-            file = new File()
+            Entities.Models.File file = new Entities.Models.File()
             {
 
              FileName = fileName,
@@ -85,7 +86,7 @@ namespace Business.Services
             };
                 db.Files.Add(file);
                 db.SaveChanges();
-                idFile = file.FileID;            
+                idFile = file.Id;            
         }
 
 

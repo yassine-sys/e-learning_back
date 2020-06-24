@@ -1,4 +1,5 @@
 ﻿using Business.IServices;
+using DataAccess.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,9 @@ namespace Business.Services
 {
     public class ParagraphService:IParagraphService
     {
-        readonly ApplicationDbContext db;
+        readonly CEDAcademyDbContext db;
 
-        public ParagraphService(ApplicationDbContext context)
+        public ParagraphService(CEDAcademyDbContext context)
         {
             db = context;
         }

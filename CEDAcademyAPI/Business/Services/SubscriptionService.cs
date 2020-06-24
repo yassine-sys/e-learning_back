@@ -1,4 +1,6 @@
 ﻿using Business.IServices;
+using DataAccess.Infrastructure;
+using Entities.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,14 +11,14 @@ namespace Business.Services
 {
    public class SubscriptionService : ISubscriptionService
     {
-        readonly ApplicationDbContext db;
-        public SubscriptionService(ApplicationDbContext context)
+        readonly CEDAcademyDbContext db;
+        public SubscriptionService(CEDAcademyDbContext context)
         {
             db = context;
         }
         public IQueryable<Subscription> SubscriptionbyUserId(string UserId)
         {
-            var query = db.Subscriptions.Where(x => x.userId == UserId);
+            var query = db.Subscriptions.Where(x => x.CreatedBy == UserId);
             var subscriptions = query.AsQueryable<Subscription>();
             return subscriptions;
         }
