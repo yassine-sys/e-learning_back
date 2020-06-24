@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DataAccess.Infrastructure;
+using Entities.Models;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,12 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.IRepositories
 {
-    interface IDepartmentRepository<Department> where Department:class
+    public interface IDepartmentRepository : IRepositoryBase<CEDAcademyDbContext, Department>
     {
-        IEnumerable<Department> GetDepartments();
-        Department GetDepartmentByID(int DepartmentID);
-        void InsertDepartment(Department department);
-        void DeleteDepartment(int DepartmentID);
-        void UpdateDepartment(Department department);
     }
 }

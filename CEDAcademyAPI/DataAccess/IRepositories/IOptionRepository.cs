@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DataAccess.Infrastructure;
+using Entities.Models;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,12 +9,8 @@ using System.Threading.Tasks;
 
 namespace DataAccess.IRepositories
 {
-    interface IOptionRepository<Option> where Option:class
+    public interface IOptionRepository : IRepositoryBase<CEDAcademyDbContext, Option>
     {
-        IEnumerable<Option> GetOptions();
-        Option GetOptionByID(int OpID);
-        void InsertOption(Option option);
-        void DeleteOption(int OpID);
-        void UpdateOption(Option option);
+        
     }
 }

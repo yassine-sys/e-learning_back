@@ -322,6 +322,10 @@
       <Project>{89f9cc68-30dd-4f1a-81f9-bf48e4f37e19}</Project>
       <Name>Business</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DataAccess\DataAccess.csproj">
+      <Project>{38cf9abf-1fa5-4bcd-b3f9-945af84e6498}</Project>
+      <Name>DataAccess</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Entities\Entities.csproj">
       <Project>{d2a26931-e031-4dfa-9f1f-45d87298ef6c}</Project>
       <Name>Entities</Name>

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Entities.Models
 {
-    class Exam
+    public class Exam : IEntityBase
     {
         public Exam()
         {
@@ -18,12 +18,17 @@ namespace Entities.Models
         }
 
         [Key]
-        public int ExamID { get; set; }
+        public int Id { get; set; }
         public string Title { get; set; }
         public int CourseID { get; set; }
         public Course Course { get; set; }
         public string userId { get; set; }
         //public ApplicationUser User { get; set; }
+        public string CreatedBy { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public string LastModifiedBy { get; set; }
+        public DateTime LastModifiedDate { get; set; }
+        public Boolean IsActif { get; set; }
         public ICollection<Certificate> Certificates { get; set; }
         public ICollection<Question> Questions { get; set; }
         public ICollection<ExamResult> ExamResults { get; set; }

@@ -67,7 +67,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Infrastructure\ApplicationDbContext.cs" />
     <Compile Include="Models\Answer.cs" />
     <Compile Include="Models\BusinessUnit.cs" />
     <Compile Include="Models\Certificate.cs" />
@@ -78,6 +77,7 @@
     <Compile Include="Models\ExamResult.cs" />
     <Compile Include="Models\File.cs" />
     <Compile Include="Models\FileProgress.cs" />
+    <Compile Include="Models\IEntityBase.cs" />
     <Compile Include="Models\Option.cs" />
     <Compile Include="Models\Paragraph.cs" />
     <Compile Include="Models\ParagraphProgress.cs" />
