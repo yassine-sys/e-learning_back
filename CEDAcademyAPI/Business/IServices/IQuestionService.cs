@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Business.IServices
 {
-    class IQuestionService
+    interface IQuestionService<Option> where Option:class
     {
+        IEnumerable<Option> GetOptionByQuestionID(int QuesID);
+
     }
 }

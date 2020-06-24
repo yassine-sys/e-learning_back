@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Business.IServices
 {
-    class IBusinessUnitService
+    interface IBusinessUnitService<Department> where Department : class 
     {
+       IEnumerable<Department> GetDepartmentByBusinessUnitId(int BusinessUnitId);
+
     }
 }
