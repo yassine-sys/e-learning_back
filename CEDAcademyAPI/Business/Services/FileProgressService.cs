@@ -1,4 +1,6 @@
 ﻿using Business.IServices;
+using DataAccess.Infrastructure;
+using Entities.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,16 +12,16 @@ namespace Business.Services
 {
     public class FileProgressService : IFileProgressService
     {
-        readonly ApplicationDbContext db;
+        readonly CEDAcademyDbContext db;
 
-        public FileProgressService(ApplicationDbContext context)
+        public FileProgressService(CEDAcademyDbContext context)
         {
             db = context;
         }
         public FileProgress GetCurrentTime(int idFile, string idUser)
         {
-            var query = from st in db.Progresses
-                        where st.FileId == idFile && st.UserId == idUser
+            var query = from st in db.FileProgresses
+                        where st.FileId == idFile && st.CreatedBy == idUser
                         select st.CurrentTime;
 
             if (query == null)
@@ -53,12 +55,12 @@ namespace Business.Services
 
         {
             var query = (from f in db.Files
-                         join pr in db.FileProgresses on f.FileID equals pr.FileId
+                         join pr in db.FileProgresses on f.Id equals pr.FileId
                        into Pro
                          from pr in Pro.DefaultIfEmpty()
                          group f by f into grouped
                          where (grouped.Key.FileName.EndsWith(".mp4"))
-                         let totalUsers = grouped.Key.FileProgress.Count()
+                         let totalUsers = grouped.Key.Progress.Count()
                          orderby (totalUsers) descending
                          select new
                          {
@@ -79,7 +81,7 @@ namespace Business.Services
         public IHttpActionResult GetPourcentageOfProgress(int idFile, string idUser)
         {
             var query = from st in db.FileProgresses
-                        where st.FileId == idFile && st.UserId == idUser
+                        where st.FileId == idFile && st.CreatedBy == idUser
                         select st.Pourcentage;
             if (query == null)
             {

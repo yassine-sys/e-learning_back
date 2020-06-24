@@ -1,6 +1,9 @@
-﻿using CEDAcademyAPI.Models;
+﻿using Business.IServices;
+using Business.Services;
+using CEDAcademyAPI.Models;
 using Ninject;
 using Ninject.Modules;
+using Ninject.Web.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -69,6 +72,24 @@ namespace NinjectWebCommon {
             {
                 //TODO: Bind to Concrete Types Here
                  Bind<IDepartmentService>().To<DepartmentService>().InRequestScope();
+                 Bind<IAnswerService>().To<AnswerService>().InRequestScope();
+                 Bind<IBusinessUnitService>().To<BusinessUnitService>().InRequestScope();
+                 Bind<ICertificateService>().To<CertificateService>().InRequestScope();
+                 Bind<IChapterService>().To<ChapterService>().InRequestScope();
+                 Bind<ICourseService>().To<CourseService>().InRequestScope();
+                 Bind<IExamService>().To<ExamService>().InRequestScope();
+                 Bind<IExamResultService>().To<ExamResultService>().InRequestScope();
+                 Bind<IFileProgressService>().To<FileProgressService>().InRequestScope();
+                 Bind<IFileService>().To<FileService>().InRequestScope();
+                 Bind<IOptionService>().To<OptionService>().InRequestScope();
+                 Bind<IParagraphProgressService>().To<ParagraphProgressService>().InRequestScope();
+                 Bind<IParagraphService>().To<ParagraphService>().InRequestScope();
+                 Bind<IQuestionService>().To<QuestionService>().InRequestScope();
+                 Bind<IQuizService>().To<QuizService>().InRequestScope();
+                 Bind<IQuizResultService>().To<IQuizResultService>().InRequestScope();
+                 Bind<IRatingService>().To<RatingService>().InRequestScope();
+                 Bind<ISectionService>().To<SectionService>().InRequestScope();
+                 Bind<ISubscriptionService>().To<SubscriptionService>().InRequestScope();
                  Bind<ApplicationDbContext>().To<ApplicationDbContext>().InRequestScope();
                 //Bind<Iclasse>.to<Classe>();
             }

@@ -1,4 +1,6 @@
 ﻿using Business.IServices;
+using DataAccess.Infrastructure;
+using Entities.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,21 +12,21 @@ namespace Business.Services
 {
     public class ParagraphProgressService : IParagraphProgressService
     {
-        readonly ApplicationDbContext db;
+        readonly CEDAcademyDbContext db;
 
-        public ParagraphProgressService(ApplicationDbContext context)
+        public ParagraphProgressService(CEDAcademyDbContext context)
         {
             db = context;
         }
         public int CountParagraphs(int CourseID)
         {
             var query = from c in db.Courses
-                        join ch in db.Chapters on c.CourseID equals ch.CourseID
-                        join s in db.Sections on ch.ChapterID equals s.ChapterID
-                        join p in db.Paragraphs on s.SectionID equals p.SectionID
+                        join ch in db.Chapters on c.Id equals ch.CourseID
+                        join s in db.Sections on ch.Id equals s.ChapterID
+                        join p in db.Paragraphs on s.Id equals p.SectionID
                         select new
                         {
-                            CourseID = c.CourseID,// or pc.ProdId
+                            CourseID = c.Id,// or pc.ProdId
                             paragraphName = p.title,
                             // CatId = c.CatId // other assignments
                         };

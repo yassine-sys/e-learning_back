@@ -1,4 +1,6 @@
 ﻿using Business.IServices;
+using DataAccess.Infrastructure;
+using Entities.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace Business.Services
 {
-    class QuestionService<Option> : IQuestionService<Option> where Option:class
+    public class QuestionService : IQuestionService
     {
-        private ApplicationContext context;
-        public QuestionService(ApplicationContext context)
+        private CEDAcademyDbContext context;
+        public QuestionService(CEDAcademyDbContext context)
         {
             this.context = context;
         }

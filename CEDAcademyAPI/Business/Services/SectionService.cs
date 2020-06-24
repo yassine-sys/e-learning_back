@@ -1,4 +1,5 @@
 ﻿using Business.IServices;
+using DataAccess.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,8 +10,8 @@ namespace Business.Services
 {
     public class SectionService : ISectionService
     {
-        readonly ApplicationDbContext db;
-        public SectionService(ApplicationDbContext context)
+        readonly CEDAcademyDbContext db;
+        public SectionService(CEDAcademyDbContext context)
         {
             db = context;
         }
