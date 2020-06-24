@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Entities.Models
 {
-    class Department
+    public class Department : IEntityBase
     {
         public Department()
         {
@@ -15,7 +15,7 @@ namespace Entities.Models
             Courses = new HashSet<Course>();
         }
         [Key]
-        public int DepartmentID { get; set; }
+        public int Id { get; set; }
 
         public string Name { get; set; }
         public string Description { get; set; }
@@ -23,8 +23,13 @@ namespace Entities.Models
         public int BusinessUnitId { get; set; }
 
         public BusinessUnit BusinessUnit { get; set; }
-
         public ICollection<Course> Courses { get; set; }
+        public string CreatedBy { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public string LastModifiedBy { get; set; }
+        public DateTime LastModifiedDate { get; set; }
+        public Boolean IsActif { get; set; }
+
 
         // public ICollection<ApplicationUser> ApplicationUsers { get; set; }
     }

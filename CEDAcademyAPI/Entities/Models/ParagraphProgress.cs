@@ -7,18 +7,22 @@ using System.Threading.Tasks;
 
 namespace Entities.Models
 {
-    class ParagraphProgress
+    public class ParagraphProgress: IEntityBase
     {
 
         [Key]
-        public int ProgressID { get; set; }
+        public int Id { get; set; }
         public int ParagraphID { get; set; }
         public int SectionID { get; set; }
         public int ChapterID { get; set; }
         public int CourseID { get; set; }
         public string userId { get; set; }
+        public string CreatedBy { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public string LastModifiedBy { get; set; }
+        public DateTime LastModifiedDate { get; set; }
+        public Boolean IsActif { get; set; }
 
-        public DateTime Date { get; set; }
 
     }
 }

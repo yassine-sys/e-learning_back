@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Entities.Models
 {
-    class Chapter
+    public class Chapter : IEntityBase
     {
         public Chapter()
         {
@@ -15,7 +15,7 @@ namespace Entities.Models
         }
 
         [Key]
-        public int ChapterID { get; set; }
+        public int Id { get; set; }
         public string title { get; set; }
         public string Description { get; set; }
 
@@ -23,5 +23,11 @@ namespace Entities.Models
         public Course Course { get; set; }
 
         public ICollection<Section> sections { get; set; }
+        public string CreatedBy { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public string LastModifiedBy { get; set; }
+        public DateTime LastModifiedDate { get; set; }
+        public Boolean IsActif { get; set; }
+
     }
 }

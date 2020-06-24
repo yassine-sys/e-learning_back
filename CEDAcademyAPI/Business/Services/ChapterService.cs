@@ -1,4 +1,6 @@
 ﻿using Business.IServices;
+using DataAccess.Infrastructure;
+using Entities.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +11,9 @@ namespace Business.Services
 {
     public class ChapterService:IChapterService
     {        
-        readonly ApplicationDbContext db;
+        readonly CEDAcademyDbContext db;
 
-        public ChapterService(ApplicationDbContext context)
+        public ChapterService(CEDAcademyDbContext context)
         {
             db = context;
         }
@@ -33,7 +35,7 @@ namespace Business.Services
                 item.sections = null;
                 item.title = obj.title;
                 item.Description = obj.Description;
-                item.ChapterID = obj.ChapterID;
+                item.Id = obj.Id;
                 item.CourseID = obj.CourseID;
                 listChapters.Add(item);
             }

@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Entities.Models
 {
-    class Answer
+    public class Answer : IEntityBase
     {
-        [Key]
-        public int AnsID { get; set; }
+        public int Id { get; set; }
+        public string CreatedBy { get; set; }
         public string IsAnswer { get; set; }
         public int ExamID { get; set; }
         public Exam Exam { get; set; }
@@ -18,5 +18,10 @@ namespace Entities.Models
         public Question Question { get; set; }
         //public string userId { get; set; }
         //public ApplicationUser User { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public string LastModifiedBy { get; set; }
+        public DateTime LastModifiedDate { get; set; }
+        public Boolean IsActif { get; set; }
+        
     }
 }

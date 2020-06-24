@@ -7,22 +7,25 @@ using System.Threading.Tasks;
 
 namespace Entities.Models
 {
-    class Paragraph
+   public class Paragraph : IEntityBase
     {
         public Paragraph()
         {
             files = new HashSet<File>();
         }
         [Key]
-        public int ParagraphID { get; set; }
+        public int Id { get; set; }
         public string title { get; set; }
         public string Description { get; set; }
-
-
         public int SectionID { get; set; }
         public string Video { get; set; }
         public string Pdf { get; set; }
         public Section Section { get; set; }
+        public string CreatedBy { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public string LastModifiedBy { get; set; }
+        public DateTime LastModifiedDate { get; set; }
+        public Boolean IsActif { get; set; }
         public ICollection<File> files { get; set; }
         //public Quiz Quiz { get; set; }
     }

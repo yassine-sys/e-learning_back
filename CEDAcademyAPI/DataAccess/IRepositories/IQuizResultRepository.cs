@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DataAccess.Infrastructure;
+using Entities.Models;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,12 +9,8 @@ using System.Threading.Tasks;
 
 namespace DataAccess.IRepositories
 {
-    interface IQuizResultRepository<QuizResult> where QuizResult:class
+    public interface IQuizResultRepository : IRepositoryBase<CEDAcademyDbContext, Quiz>
     {
-        IEnumerable<QuizResult> GetQuizResults();
-        QuizResult GetQuizResultByID(int ResID);
-        void InsertQuizResult(QuizResult quizResult);
-        void DeleteQuizResult(int ResID);
-        void UpdateQuizResult(QuizResult quizResult);
+       
     }
 }
