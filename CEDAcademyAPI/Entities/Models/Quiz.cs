@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Entities.Models
 {
-    class Quiz
+    public class Quiz : IEntityBase
     {
         public Quiz()
         {
@@ -16,10 +16,16 @@ namespace Entities.Models
         }
 
         [Key]
-        public int QuizID { get; set; }
+        public int Id { get; set; }
         public string Title { get; set; }
         public int CourseID { get; set; }
         public Course Course { get; set; }
+        public string CreatedBy { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public string LastModifiedBy { get; set; }
+        public DateTime LastModifiedDate { get; set; }
+        public Boolean IsActif { get; set; }
+
 
         // quiz creator
         //public string userId { get; set; }

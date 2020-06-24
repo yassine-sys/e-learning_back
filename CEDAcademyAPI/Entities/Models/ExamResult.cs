@@ -7,14 +7,20 @@ using System.Threading.Tasks;
 
 namespace Entities.Models
 {
-    class ExamResult
+    public class ExamResult : IEntityBase
     {
         [Key]
-        public int ResID { get; set; }
+        public int Id { get; set; }
         public int Score { get; set; }
         public string TimeSpent { get; set; }
         public int ExamID { get; set; }
         public Exam Exam { get; set; }
+        public string CreatedBy { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public string LastModifiedBy { get; set; }
+        public DateTime LastModifiedDate { get; set; }
+        public Boolean IsActif { get; set; }
+
         // public string userId { get; set; }
         // public ApplicationUser User { get; set; }
     }

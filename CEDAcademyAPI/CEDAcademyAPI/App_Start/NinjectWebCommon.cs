@@ -1,4 +1,5 @@
-﻿using Ninject;
+﻿using CEDAcademyAPI.Models;
+using Ninject;
 using Ninject.Modules;
 using System;
 using System.Collections.Generic;
@@ -67,7 +68,8 @@ namespace NinjectWebCommon {
             public override void Load()
             {
                 //TODO: Bind to Concrete Types Here
-                // Bind<DbContext>().to<DataContext>().InRequestScope();
+                 Bind<IDepartmentService>().To<DepartmentService>().InRequestScope();
+                 Bind<ApplicationDbContext>().To<ApplicationDbContext>().InRequestScope();
                 //Bind<Iclasse>.to<Classe>();
             }
         }

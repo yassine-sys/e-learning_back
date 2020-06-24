@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DataAccess.Infrastructure;
+using Entities.Models;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,12 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.IRepositories
 {
-    interface ICertificateRepository<Certificate> where Certificate:class
+    public  interface ICertificateRepository: IRepositoryBase<CEDAcademyDbContext, Certificate>
     {
-        IEnumerable<Certificate> GetCertificates();
-        Certificate GetCertificateByID(int CertifID);
-        void InsertCertificate(Certificate certificate);
-        void DeleteCertificate(int CertifID);
-        void UpdateCertificate(Certificate certificate);
     }
 }

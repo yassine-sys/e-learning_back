@@ -1,4 +1,5 @@
 ﻿using Business.IServices;
+using DataAccess.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Business.Services
 {
-    class CourseService : ICourseService
+    public class CourseService : ICourseService
     {
-        readonly ApplicationDbContext db;
+        readonly CEDAcademyDbContext db;
 
-        public CourseService(ApplicationDbContext context)
+        public CourseService(CEDAcademyDbContext context)
         {
             db = context;
         }

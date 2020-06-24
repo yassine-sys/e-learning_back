@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Entities.Models
 {
-    class Option
+    public class Option : IEntityBase
     {
         public Option()
         {
@@ -15,9 +15,16 @@ namespace Entities.Models
         }
 
         [Key]
-        public int OpID { get; set; }
+        public int Id { get; set; }
         public string OptionText { get; set; }
         public ICollection<Question> Questions { get; set; }
         public bool values { get; set; }
+        public string CreatedBy { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public string LastModifiedBy { get; set; }
+        public DateTime LastModifiedDate { get; set; }
+        public Boolean IsActif { get; set; }
+
+
     }
 }

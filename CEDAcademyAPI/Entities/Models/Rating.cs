@@ -7,16 +7,19 @@ using System.Threading.Tasks;
 
 namespace Entities.Models
 {
-    class Rating
+    public class Rating : IEntityBase
     {
         [Key]
-        public int RatingID { get; set; }
+        public int Id { get; set; }
         public int Score { get; set; }
-        public string CreateDate { get; set; }
         public int CourseID { get; set; }
         public Course Course { get; set; }
+        public string CreatedBy { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public string LastModifiedBy { get; set; }
+        public DateTime LastModifiedDate { get; set; }
+        public Boolean IsActif { get; set; }
 
-        public string UserID { get; set; }
 
         //  public ApplicationUser ApplicationUser { get; set; }
     }

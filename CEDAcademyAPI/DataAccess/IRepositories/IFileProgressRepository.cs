@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DataAccess.Infrastructure;
+using Entities.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,11 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.IRepositories
 {
-    public interface IFileProgressRepository<FileProgress> where FileProgress : class
+    public interface IFileProgressRepository : IRepositoryBase<CEDAcademyDbContext, FileProgress>
     {
-        void PostProgress(FileProgress progress, string id);
-        FileProgress ProgressByUserID(string userId);
-        void PutProgress(FileProgress p);
-        FileProgress GetProgress(string id);
     }
 }
