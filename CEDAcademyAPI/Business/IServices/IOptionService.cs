@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Business.IServices
 {
-    interface IOptionService
+    public interface IOptionService
     {
     }
 }

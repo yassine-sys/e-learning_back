@@ -1,4 +1,6 @@
 ﻿using Business.IServices;
+using DataAccess.Infrastructure;
+using Entities.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,15 +11,15 @@ namespace Business.Services
 {
     public class RatingService : IRatingService
     {
-        readonly ApplicationDbContext db;
-        public RatingService(ApplicationDbContext context)
+        readonly CEDAcademyDbContext db;
+        public RatingService(CEDAcademyDbContext context)
         {
             db = context;
         }
         public Rating GetCurrentRating(int idCourse, string idUser)
         {
             var query = from st in db.Ratings
-                        where st.CourseID == idCourse && st.UserID == idUser
+                        where st.CourseID == idCourse && st.CreatedBy == idUser
                         select st.Score;
 
             if (query == null)
@@ -32,7 +34,7 @@ namespace Business.Services
         public Rating RatingByUserID(int idCourse, string idUser)
         {
             var query = from st in db.Ratings
-                        where st.CourseID == idCourse && st.UserID == idUser
+                        where st.CourseID == idCourse && st.CreatedBy == idUser
                         select st;
 
             if (query == null)

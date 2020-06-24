@@ -1,4 +1,6 @@
 ﻿using Business.IServices;
+using DataAccess.Infrastructure;
+using Entities.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,16 +9,16 @@ using System.Threading.Tasks;
 
 namespace Business.Services
 {
-    class BusinessUnitService<Department> : IBusinessUnitService<Department> where Department:class
+    public class BusinessUnitService: IBusinessUnitService
     {
-        private ApplicationContext context;
-        public BusinessUnitService(ApplicationContext context)
+        private CEDAcademyDbContext context;
+        public BusinessUnitService(CEDAcademyDbContext context)
         {
             this.context = context;
         }
         public IEnumerable<Department> GetDepartmentByBusinessUnitId(int BusinessUnitId)
         {
-            return context.Departments.Where(x => x.BusinessUnit.Departments.Any(c => c.BusinessUnitId == BusinessUnitId));
+            return context.Departments.Where(x => x.BusinessUnit.Departments.Any(c => c.Id == BusinessUnitId));
         }
 
        

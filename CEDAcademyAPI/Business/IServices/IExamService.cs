@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entities.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Business.IServices
 {
-    interface IExamService<Question> where Question : class
+    public interface IExamService
     {
         IEnumerable<Question> GetQuestionByExamID(int ExamID);
     }

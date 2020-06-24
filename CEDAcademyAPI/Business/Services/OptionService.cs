@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Business.Services
 {
-    class OptionService: IOptionService
+    public class OptionService: IOptionService
     {
     }
 }
