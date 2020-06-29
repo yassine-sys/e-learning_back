@@ -1,5 +1,6 @@
 ﻿using Business.IServices;
 using DataAccess.Infrastructure;
+using DataAccess.IRepositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,11 +11,12 @@ namespace Business.Services
 {
     public class CourseService : ICourseService
     {
-        readonly CEDAcademyDbContext db;
 
-        public CourseService(CEDAcademyDbContext context)
+        private ICourseRepository repo;
+
+        public CourseService(ICourseRepository repo)
         {
-            db = context;
+            this.repo = repo;
         }
         public int CourseNumber()
 

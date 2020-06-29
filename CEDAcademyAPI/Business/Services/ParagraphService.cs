@@ -1,5 +1,6 @@
 ﻿using Business.IServices;
 using DataAccess.Infrastructure;
+using DataAccess.IRepositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,11 +11,11 @@ namespace Business.Services
 {
     public class ParagraphService:IParagraphService
     {
-        readonly CEDAcademyDbContext db;
+        private IParagraphRepository repo;
 
-        public ParagraphService(CEDAcademyDbContext context)
+        public ParagraphService(IParagraphRepository repo)
         {
-            db = context;
+            this.repo = repo;
         }
 
     }

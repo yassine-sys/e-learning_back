@@ -1,5 +1,6 @@
 ﻿using Business.IServices;
 using DataAccess.Infrastructure;
+using DataAccess.IRepositories;
 using Entities.Models;
 using System;
 using System.Collections.Generic;
@@ -7,18 +8,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Results;
 
 namespace Business.Services
 {
     public class FileProgressService : IFileProgressService
-    {
-        readonly CEDAcademyDbContext db;
 
-        public FileProgressService(CEDAcademyDbContext context)
+    {
+        private IFileProgressRepository repo;
+
+        public FileProgressService(IFileProgressRepository repo)
         {
-            db = context;
+            this.repo = repo;
         }
-        public FileProgress GetCurrentTime(int idFile, string idUser)
+        public IQueryable<float> GetCurrentTime(int idFile, string idUser)
         {
             var query = from st in db.FileProgresses
                         where st.FileId == idFile && st.CreatedBy == idUser
@@ -33,30 +36,29 @@ namespace Business.Services
                 return query;
             }
         }
-        public FileProgress FileTrack()
+        public IQueryable<FileProgress> FileTrack()
         {
-            var query = from st in db.FileProgresses
-                        select new
-                        {
-                            //st.ApplicationUser.Email,
-                            st.File.FileTitle,
-                            st.Pourcentage
-                        };
-            if (query == null)
-            {
-                return null;
-            }
-            else
-            {
-                return query;
-            }
+            return this.db.FileProgresses.AsQueryable();
         }
-        public IHttpActionResult VideoUserTrack()
 
+        [HttpGet]
+        public IHttpActionResult GetFilesViewsCount()
         {
+            //var filesProgresses = this.db.FileProgresses;
+
+            //var viewedFilesIds = filesProgresses
+            //    .Select(x => x.Id)
+            //    .Distinct()
+            //    .ToList();
+
+            //var viewedFiles = this.db.Files
+            //    .Where(x => x.FileName.EndsWith(".mp4")
+            //        && viewedFilesIds.Contains(x.Id))
+            //    .GroupBy(x => x.Id, x => x.);
+            
             var query = (from f in db.Files
                          join pr in db.FileProgresses on f.Id equals pr.FileId
-                       into Pro
+                         into Pro
                          from pr in Pro.DefaultIfEmpty()
                          group f by f into grouped
                          where (grouped.Key.FileName.EndsWith(".mp4"))
@@ -75,7 +77,7 @@ namespace Business.Services
             }
             else
             {
-                return query;
+                return Ok(query);
             }
         }
         public IHttpActionResult GetPourcentageOfProgress(int idFile, string idUser)
@@ -89,7 +91,7 @@ namespace Business.Services
             }
             else
             {
-                return query;
+                return Ok(query);
             }
         }
         public int ProgressNumber()

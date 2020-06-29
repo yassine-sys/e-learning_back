@@ -90,7 +90,8 @@ namespace NinjectWebCommon {
                  Bind<IRatingService>().To<RatingService>().InRequestScope();
                  Bind<ISectionService>().To<SectionService>().InRequestScope();
                  Bind<ISubscriptionService>().To<SubscriptionService>().InRequestScope();
-                 Bind<ApplicationDbContext>().To<ApplicationDbContext>().InRequestScope();
+                 Bind<CEDAcacademyDbContext>().To<CEDAcacademyDbContext>().InRequestScope();
+                
                 //Bind<Iclasse>.to<Classe>();
             }
         }

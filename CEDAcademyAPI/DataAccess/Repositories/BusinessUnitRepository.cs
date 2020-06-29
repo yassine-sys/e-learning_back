@@ -4,8 +4,12 @@ using Entities.Models;
 
 namespace DataAccess.Repositories
 {
-    public class BusinessUnitRepository : IRepositoryBase<CEDAcademyDbContext, BusinessUnit>, IBusinessUnitRepository
+    public class BusinessUnitRepository : RepositoryBase<CEDAcademyDbContext, BusinessUnit>, IBusinessUnitRepository
     {
+        public BusinessUnitRepository(CEDAcademyDbContext db)
+            : base(db)
+        {
+        }
 
     }
 }

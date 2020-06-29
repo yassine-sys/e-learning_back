@@ -1,5 +1,6 @@
 ﻿using Business.IServices;
 using DataAccess.Infrastructure;
+using DataAccess.IRepositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,11 @@ namespace Business.Services
 {
     public class SectionService : ISectionService
     {
-        readonly CEDAcademyDbContext db;
-        public SectionService(CEDAcademyDbContext context)
+        private ISectionRepository repo;
+
+        public SectionService(ISectionRepository repo)
         {
-            db = context;
+            this.repo = repo;
         }
 
     }

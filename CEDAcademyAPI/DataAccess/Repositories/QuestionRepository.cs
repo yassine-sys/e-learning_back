@@ -10,8 +10,12 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Repositories
 {
-   public class QuestionRepository : IRepositoryBase<CEDAcademyDbContext, Question>, IQuestionRepository
+   public class QuestionRepository : RepositoryBase<CEDAcademyDbContext, Question>, IQuestionRepository
     {
-       
+        public QuestionRepository(CEDAcademyDbContext db)
+            : base(db)
+        {
+        }
+
     }
 }

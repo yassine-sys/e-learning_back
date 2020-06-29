@@ -1,5 +1,6 @@
 ﻿using Business.IServices;
 using DataAccess.Infrastructure;
+using DataAccess.IRepositories;
 using Entities.Models;
 using System;
 using System.Collections.Generic;
@@ -12,11 +13,11 @@ namespace Business.Services
 {
     public class ParagraphProgressService : IParagraphProgressService
     {
-        readonly CEDAcademyDbContext db;
+        private IParagraphProgressRepository repo;
 
-        public ParagraphProgressService(CEDAcademyDbContext context)
+        public ParagraphProgressService(IParagraphProgressRepository repo)
         {
-            db = context;
+            this.repo = repo;
         }
         public int CountParagraphs(int CourseID)
         {

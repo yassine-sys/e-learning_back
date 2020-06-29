@@ -1,5 +1,6 @@
 ﻿using Business.IServices;
 using DataAccess.Infrastructure;
+using DataAccess.IRepositories;
 using Entities.Models;
 using System;
 using System.Collections.Generic;
@@ -11,10 +12,11 @@ namespace Business.Services
 {
     public class QuizService : IQuizService
     {
-        private CEDAcademyDbContext context;
-        public QuizService(CEDAcademyDbContext context)
+        private IQuizRepository repo;
+
+        public QuizService(IQuizRepository repo)
         {
-            this.context = context;
+            this.repo = repo;
         }
         public IEnumerable<Question> GetQuestionByQuizID(int QuizID)
         {
