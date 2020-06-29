@@ -1,4 +1,5 @@
 ﻿using Business.IServices;
+using DataAccess.IRepositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +10,12 @@ namespace Business.Services
 {
     public class OptionService: IOptionService
     {
+
+        private IOptionRepository repo;
+
+        public OptionService(IOptionRepository repo)
+        {
+            this.repo = repo;
+        }
     }
 }

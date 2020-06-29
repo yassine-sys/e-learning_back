@@ -9,7 +9,7 @@ namespace Business.IServices
 {
     public interface IBusinessUnitService
     {
-       IEnumerable<Department> GetDepartmentByBusinessUnitId(int BusinessUnitId);
+  //   IEnumerable<Department> GetDepartmentByBusinessUnitId(int BusinessUnitId);
 
     }
 }

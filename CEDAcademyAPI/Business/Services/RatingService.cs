@@ -1,5 +1,6 @@
 ﻿using Business.IServices;
 using DataAccess.Infrastructure;
+using DataAccess.IRepositories;
 using Entities.Models;
 using System;
 using System.Collections.Generic;
@@ -11,10 +12,11 @@ namespace Business.Services
 {
     public class RatingService : IRatingService
     {
-        readonly CEDAcademyDbContext db;
-        public RatingService(CEDAcademyDbContext context)
+        private IRatingRepository repo;
+
+        public RatingService(IRatingRepository repo)
         {
-            db = context;
+            this.repo = repo;
         }
         public Rating GetCurrentRating(int idCourse, string idUser)
         {

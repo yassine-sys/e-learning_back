@@ -18,16 +18,16 @@ namespace CEDAcademyAPI.Models
         }
     }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class CEDAcacademyDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext()
+        public CEDAcacademyDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
         
-        public static ApplicationDbContext Create()
+        public static CEDAcacademyDbContext Create()
         {
-            return new ApplicationDbContext();
+            return new CEDAcacademyDbContext();
         }
     }
 }

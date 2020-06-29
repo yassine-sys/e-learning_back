@@ -1,5 +1,6 @@
 ﻿using Business.IServices;
 using DataAccess.Infrastructure;
+using DataAccess.IRepositories;
 using Entities.Models;
 using System;
 using System.Collections.Generic;
@@ -11,16 +12,17 @@ namespace Business.Services
 {
     public class BusinessUnitService: IBusinessUnitService
     {
-        private CEDAcademyDbContext context;
-        public BusinessUnitService(CEDAcademyDbContext context)
+        private IBusinessUnitRepository repo;
+
+        public BusinessUnitService(IBusinessUnitRepository repo)
         {
-            this.context = context;
+            this.repo = repo;
         }
-        public IEnumerable<Department> GetDepartmentByBusinessUnitId(int BusinessUnitId)
+       /*ublic IEnumerable<Department> GetDepartmentByBusinessUnitId(int BusinessUnitId)
         {
             return context.Departments.Where(x => x.BusinessUnit.Departments.Any(c => c.Id == BusinessUnitId));
         }
-
+        */
        
     }
 }
