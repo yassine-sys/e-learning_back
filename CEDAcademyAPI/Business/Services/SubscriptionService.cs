@@ -1,5 +1,6 @@
 ﻿using Business.IServices;
 using DataAccess.Infrastructure;
+using DataAccess.IRepositories;
 using Entities.Models;
 using System;
 using System.Collections.Generic;
@@ -11,10 +12,11 @@ namespace Business.Services
 {
    public class SubscriptionService : ISubscriptionService
     {
-        readonly CEDAcademyDbContext db;
-        public SubscriptionService(CEDAcademyDbContext context)
+        private ISubscriptionRepository repo;
+
+        public SubscriptionService(ISubscriptionRepository repo)
         {
-            db = context;
+            this.repo = repo;
         }
         public IQueryable<Subscription> SubscriptionbyUserId(string UserId)
         {

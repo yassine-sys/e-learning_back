@@ -10,16 +10,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using Entities.Models;
+using DataAccess.IRepositories;
 
 namespace Business.Services
 {
     public class FileService : IFileService
     {
-        readonly CEDAcademyDbContext db;
+        private IFileRepository repo;
 
-        public FileService(CEDAcademyDbContext context)
+        public FileService(IFileRepository repo)
         {
-            db = context;
+            this.repo = repo;
         }
         public void UploadFilePDF()
         {

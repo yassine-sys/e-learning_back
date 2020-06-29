@@ -9,9 +9,12 @@ using Entities.Models;
 
 namespace DataAccess.Repositories
 {
-    public class ParagraphProgressRepository : IRepositoryBase<CEDAcademyDbContext, ParagraphProgress>, IParagraphProgressRepository
+    public class ParagraphProgressRepository : RepositoryBase<CEDAcademyDbContext, ParagraphProgress>, IParagraphProgressRepository
     {
-       
+        public ParagraphProgressRepository(CEDAcademyDbContext db)
+            : base(db)
+        {
+        }
 
     }
 }

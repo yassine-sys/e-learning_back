@@ -9,12 +9,12 @@ using Entities.Models;
 
 namespace DataAccess.Repositories
 {
-    public class SubscriptionRepository : IRepositoryBase<CEDAcademyDbContext, Subscription>, ISubscriptionRepository
+    public class SubscriptionRepository : RepositoryBase<CEDAcademyDbContext, Subscription>, ISubscriptionRepository
     {
-        
-
-
-
+        public SubscriptionRepository(CEDAcademyDbContext db)
+            : base(db)
+        {
+        }
 
     }
 }

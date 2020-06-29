@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using DataAccess.Infrastructure;
+﻿using System.Data.Entity;
 
 
 namespace DataAccess.IRepositories
 {
     public interface IRepositoryBase<TContext, TEntity>
-        where TContext : CEDAcademyDbContext
+        where TContext : DbContext
         where TEntity : class
     {
     }

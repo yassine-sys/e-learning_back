@@ -1,5 +1,6 @@
 ﻿using Business.IServices;
 using DataAccess.Infrastructure;
+using DataAccess.IRepositories;
 using Entities.Models;
 using System;
 using System.Collections.Generic;
@@ -10,16 +11,17 @@ using System.Threading.Tasks;
 namespace Business.Services
 {
     public class ChapterService:IChapterService
-    {        
-        readonly CEDAcademyDbContext db;
+    {
+        private IChapterRepository repo;
 
-        public ChapterService(CEDAcademyDbContext context)
+        public ChapterService(IChapterRepository repo)
         {
-            db = context;
+            this.repo = repo;
         }
         public List<Chapter> ChapterDetailsByCourseID(int CourseID)
 
         {
+
             var query = from C in db.Chapters
                         where C.CourseID == CourseID
                         select C;

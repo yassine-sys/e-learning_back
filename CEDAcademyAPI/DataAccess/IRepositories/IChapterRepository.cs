@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.IRepositories
 {
-    public interface IChapterRepository : IRepositoryBase<CEDAcademyDbContext, Chapter>
+    public interface IChapterRepository : : IRepositoryBase<CEDAcademyDbContext, Chapter>
     {
     }
 }

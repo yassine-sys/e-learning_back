@@ -10,9 +10,9 @@ namespace Business.IServices
 {
     public interface IFileProgressService
     {
-        FileProgress GetCurrentTime(int idFile, string idUser);
-        FileProgress FileTrack();
-        IHttpActionResult VideoUserTrack();
+        IQueryable<float> GetCurrentTime(int idFile, string idUser);
+        IQueryable<FileProgress> FileTrack();
+        IHttpActionResult GetFilesViewsCount();
         IHttpActionResult GetPourcentageOfProgress(int idFile, string idUser);
         int ProgressNumber();
     }

@@ -1,26 +1,23 @@
-﻿using DataAccess.Infrastructure;
-using DataAccess.IRepositories;
-using System;
+﻿using DataAccess.IRepositories;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccess.Repositories
 {
-    public class RepositoryBase<TContext, TEntity> : IRepositoryBase<TContext,TEntity> 
-        where TContext : CEDAcademyDbContext
+    public class RepositoryBase<TContext, TEntity> : IRepositoryBase<DbContext, TEntity>
+        where TContext : DbContext
         where TEntity : class
     {
-        readonly CEDAcademyDbContext db;
+        readonly TContext db;
         readonly DbSet<TEntity> dbSet;
-        public RepositoryBase(CEDAcademyDbContext db)
+
+        public RepositoryBase(TContext db)
         {
             this.db = db;
             this.dbSet = db.Set<TEntity>();
         }
+
         public TEntity GetById (int id)
         {
             return this.dbSet.Find(id);
@@ -49,7 +46,5 @@ namespace DataAccess.Repositories
                 db.SaveChanges();
             }
         }
-
-        
     }
 }

@@ -9,9 +9,11 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Repositories
 {
-    public class FileRepository : IRepositoryBase<CEDAcademyDbContext, File>, IFileRepository
+    public class FileRepository : RepositoryBase<CEDAcademyDbContext, File>, IFileRepository
     {
-       
-
+        public FileRepository(CEDAcademyDbContext db)
+            : base(db)
+        {
+        }
     }
 }

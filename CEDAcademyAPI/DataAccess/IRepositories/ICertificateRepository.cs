@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.IRepositories
 {
-    public  interface ICertificateRepository: IRepositoryBase<CEDAcademyDbContext, Certificate>
+    public  interface ICertificateRepository : IRepositoryBase<CEDAcademyDbContext, Certificate>
     {
     }
 }
