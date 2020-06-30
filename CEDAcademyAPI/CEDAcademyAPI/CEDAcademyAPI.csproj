@@ -223,6 +223,7 @@
     <Compile Include="Controllers\ExamResultController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\FileProgressController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OptionController.cs" />
     <Compile Include="Controllers\ParagraphController.cs" />
     <Compile Include="Controllers\ParagraphProgressController.cs" />
