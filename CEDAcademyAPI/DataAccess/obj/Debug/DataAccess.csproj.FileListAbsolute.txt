@@ -26,3 +26,28 @@ C:\Users\CED-TRAINER900\Desktop\Backend\CedAcadamy\CEDAcademyAPI\DataAccess\obj\
 C:\Users\CED-TRAINER900\Desktop\Backend\CedAcadamy\CEDAcademyAPI\DataAccess\obj\Debug\DataAccess.pdb
 C:\Users\CED-TRAINER900\Desktop\Backend\CedAcadamy\CEDAcademyAPI\DataAccess\obj\Debug\DataAccess.Migrations.init1.resources
 C:\Users\CED-TRAINER900\Desktop\Backend\CedAcadamy\CEDAcademyAPI\DataAccess\obj\Debug\DataAccess.csproj.GenerateResource.cache
+C:\Users\CED201\Desktop\Nouveau dossier (8)\CedAcadamy\CEDAcademyAPI\DataAccess\bin\Debug\DataAccess.dll.config
+C:\Users\CED201\Desktop\Nouveau dossier (8)\CedAcadamy\CEDAcademyAPI\DataAccess\bin\Debug\DataAccess.dll
+C:\Users\CED201\Desktop\Nouveau dossier (8)\CedAcadamy\CEDAcademyAPI\DataAccess\bin\Debug\DataAccess.pdb
+C:\Users\CED201\Desktop\Nouveau dossier (8)\CedAcadamy\CEDAcademyAPI\DataAccess\bin\Debug\Entities.dll
+C:\Users\CED201\Desktop\Nouveau dossier (8)\CedAcadamy\CEDAcademyAPI\DataAccess\bin\Debug\EntityFramework.dll
+C:\Users\CED201\Desktop\Nouveau dossier (8)\CedAcadamy\CEDAcademyAPI\DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\CED201\Desktop\Nouveau dossier (8)\CedAcadamy\CEDAcademyAPI\DataAccess\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\CED201\Desktop\Nouveau dossier (8)\CedAcadamy\CEDAcademyAPI\DataAccess\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\CED201\Desktop\Nouveau dossier (8)\CedAcadamy\CEDAcademyAPI\DataAccess\bin\Debug\Newtonsoft.Json.dll
+C:\Users\CED201\Desktop\Nouveau dossier (8)\CedAcadamy\CEDAcademyAPI\DataAccess\bin\Debug\System.Net.Http.Formatting.dll
+C:\Users\CED201\Desktop\Nouveau dossier (8)\CedAcadamy\CEDAcademyAPI\DataAccess\bin\Debug\System.Web.Http.dll
+C:\Users\CED201\Desktop\Nouveau dossier (8)\CedAcadamy\CEDAcademyAPI\DataAccess\bin\Debug\Entities.pdb
+C:\Users\CED201\Desktop\Nouveau dossier (8)\CedAcadamy\CEDAcademyAPI\DataAccess\bin\Debug\Entities.dll.config
+C:\Users\CED201\Desktop\Nouveau dossier (8)\CedAcadamy\CEDAcademyAPI\DataAccess\bin\Debug\EntityFramework.xml
+C:\Users\CED201\Desktop\Nouveau dossier (8)\CedAcadamy\CEDAcademyAPI\DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\CED201\Desktop\Nouveau dossier (8)\CedAcadamy\CEDAcademyAPI\DataAccess\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\CED201\Desktop\Nouveau dossier (8)\CedAcadamy\CEDAcademyAPI\DataAccess\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\CED201\Desktop\Nouveau dossier (8)\CedAcadamy\CEDAcademyAPI\DataAccess\bin\Debug\Newtonsoft.Json.xml
+C:\Users\CED201\Desktop\Nouveau dossier (8)\CedAcadamy\CEDAcademyAPI\DataAccess\bin\Debug\System.Net.Http.Formatting.xml
+C:\Users\CED201\Desktop\Nouveau dossier (8)\CedAcadamy\CEDAcademyAPI\DataAccess\bin\Debug\System.Web.Http.xml
+C:\Users\CED201\Desktop\Nouveau dossier (8)\CedAcadamy\CEDAcademyAPI\DataAccess\obj\Debug\DataAccess.Migrations.init1.resources
+C:\Users\CED201\Desktop\Nouveau dossier (8)\CedAcadamy\CEDAcademyAPI\DataAccess\obj\Debug\DataAccess.csproj.GenerateResource.cache
+C:\Users\CED201\Desktop\Nouveau dossier (8)\CedAcadamy\CEDAcademyAPI\DataAccess\obj\Debug\DataAccess.csproj.CopyComplete
+C:\Users\CED201\Desktop\Nouveau dossier (8)\CedAcadamy\CEDAcademyAPI\DataAccess\obj\Debug\DataAccess.dll
+C:\Users\CED201\Desktop\Nouveau dossier (8)\CedAcadamy\CEDAcademyAPI\DataAccess\obj\Debug\DataAccess.pdb
