@@ -60,3 +60,4 @@ C:\Users\CED-TRAINER900\Desktop\Backend\CedAcadamy\CEDAcademyAPI\Entities\bin\De
 C:\Users\CED-TRAINER900\Desktop\Backend\CedAcadamy\CEDAcademyAPI\Entities\obj\Debug\Entities.csproj.CopyComplete
 C:\Users\CED-TRAINER900\Desktop\Backend\CedAcadamy\CEDAcademyAPI\Entities\obj\Debug\Entities.dll
 C:\Users\CED-TRAINER900\Desktop\Backend\CedAcadamy\CEDAcademyAPI\Entities\obj\Debug\Entities.pdb
+C:\Users\CED-TRAINER900\Desktop\Backend\CedAcadamy\CEDAcademyAPI\Entities\obj\Debug\Entities.csprojAssemblyReference.cache
