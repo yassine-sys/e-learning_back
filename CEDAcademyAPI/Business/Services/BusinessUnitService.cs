@@ -14,16 +14,18 @@ namespace Business.Services
     public class BusinessUnitService : ServiceBase<BusinessUnit>, IBusinessUnitService
     {
         private IBusinessUnitRepository repo;
-
-        public BusinessUnitService(IBusinessUnitRepository repo) : base((RepositoryBase<BusinessUnit>)repo)
+        private IDepartmentRepository departmentRepository;
+        public BusinessUnitService(IBusinessUnitRepository repo, IDepartmentRepository departmentRepository) : base((RepositoryBase<BusinessUnit>)repo)
         {
             this.repo = repo;
+            this.departmentRepository = departmentRepository;
         }
-       /*ublic IEnumerable<Department> GetDepartmentByBusinessUnitId(int BusinessUnitId)
+
+        public IEnumerable<Department> GetDepartmentByBusinessUnitId(int BusinessUnitId)
         {
-            return context.Departments.Where(x => x.BusinessUnit.Departments.Any(c => c.Id == BusinessUnitId));
+            return departmentRepository.GetAll().Where(x => x.BusinessUnitId == BusinessUnitId);
         }
-        */
        
+
     }
 }
