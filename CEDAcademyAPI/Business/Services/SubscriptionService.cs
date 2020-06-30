@@ -38,25 +38,5 @@ namespace Business.Services
             var res = query.Count();
             return res;
         }
-        public IEnumerable<Subscription> GetSubscriptions()
-        {
-            throw new NotImplementedException();
-        }
-        public Subscription GetSubscriptionById(int id)
-        {
-            throw new NotImplementedException();
-        }
-        public void AddSubscription(Subscription s)
-        {
-
-        }
-        public void UpdateSubscription(Subscription s)
-        {
-
-        }
-        public void DeleteSubscription(Subscription s)
-        {
-
-        }
     }
 }

@@ -92,7 +92,7 @@ namespace CEDAcademyAPI.Controllers
         [Route("api/AddRating/{id}")]
         public HttpResponseMessage AddRating(Rating rating)
         {
-            service.AddRating(rating);
+            service.Add(rating);
             return Request.CreateResponse(HttpStatusCode.Created);
         }
 
@@ -100,7 +100,7 @@ namespace CEDAcademyAPI.Controllers
         [Route("api/PutRating")]
         public IHttpActionResult UpdateRating(Rating rating)
         {
-            service.UpdateRating(rating);
+            service.Update(rating);
             return StatusCode(HttpStatusCode.NoContent);
         }
     }

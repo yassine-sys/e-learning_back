@@ -88,14 +88,5 @@ namespace Business.Services
         {
             return repo.GetAll().Where(x => x.Id == FileId).Select(x => x.FileName);
         }
-        public IEnumerable<Entities.Models.File> GetAllFiles()
-        {
-            throw new NotImplementedException();
-        }
-        public Entities.Models.File GetFileById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
     }
 }
