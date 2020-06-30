@@ -18,15 +18,8 @@ namespace Business.Services
           
         }
 
-        public Department Get(int id)
-        {
-            throw new NotImplementedException();
-           
-        }
+       
 
-        public IEnumerable<ApplicationIdentity> GetUsers(int departmentId)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }
