@@ -13,8 +13,8 @@ namespace Business.Services
     public class OptionService : ServiceBase<Option>, IOptionService
     {
 
-        private IOptionRepository repo;
-        private IQuestionRepository QuestionRepository;
+        private readonly IOptionRepository repo;
+        private readonly IQuestionRepository QuestionRepository;
 
 
         public OptionService(IOptionRepository repo, IQuestionRepository questionRepository)
@@ -23,9 +23,10 @@ namespace Business.Services
             this.repo = repo;
             this.QuestionRepository = questionRepository;
         }
-        public IEnumerable<Question> GetOptionsByQuestionId(int QuesId)
+        public IEnumerable<Option> GetOptionsByQuestionId(int QuesId)
         {
-            return QuestionRepository.GetAll().Where(x => x.Options.Any(c => c.QuesId == QuesId));
+            //return QuestionRepository.GetAll().Where(x => x.Options.Any(c => c.QuesId == QuesId));
+            return repo.GetAll().Where(x => x.QuesId == QuesId);
         }
     }
 }
