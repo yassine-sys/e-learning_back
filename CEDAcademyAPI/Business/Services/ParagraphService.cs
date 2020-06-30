@@ -20,26 +20,6 @@ namespace Business.Services
         {
             this.repo = repo;
         }
-        public IEnumerable<Paragraph> GetParagraphs()
-        {
-            throw new NotImplementedException();
-        }
-        public Paragraph GetParagraphById(int id)
-        {
-            throw new NotImplementedException();
-        }
-        public void AddParagraph(Paragraph p)
-        {
-
-        }
-        public void UpdateParagraph(Paragraph p)
-        {
-
-        }
-        public void DeleteParagraph(Paragraph Paragraph)
-        {
-
-        }
         public IEnumerable<Paragraph> GetParagraphbySectionID(int SectionId)
         {
             return repo.GetAll().Where(x => x.SectionID == SectionId);

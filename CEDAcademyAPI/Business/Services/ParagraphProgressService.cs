@@ -36,31 +36,15 @@ namespace Business.Services
             var courseid = query.Where(x => x.CourseID == CourseID);
             return courseid.Count();
         }
-        public int paragraphProgressByCourseidUserid(int idC, string idU)
+        public IEnumerable<ParagraphProgress> GetParagraphProgressByCourseIdUserId(int CourseId, string UserId)
         {
-            return repo.GetAll().Where(x => x.CourseID == idC && x.userId==idU).Count();
+            return repo.GetAll().Where(x => x.CourseID == CourseId && x.userId== UserId);
          
         }
-        public IEnumerable<ParagraphProgress> GetParagraphProgresses()
+        public IEnumerable<ParagraphProgress> GetParagraphProgressBySectionId(int SectionId)
         {
-            throw new NotImplementedException();
-        }
-        public Chapter GetParagraphProgressById(int id)
-        {
-            throw new NotImplementedException();
-        }
-        public void AddParagraphProgress(ParagraphProgress pp)
-        {
+            return repo.GetAll().Where(x => x.SectionID == SectionId);
 
         }
-        public void UpdateChapter(ParagraphProgress pp)
-        {
-
-        }
-        public void DeleteChapter(ParagraphProgress pp)
-        {
-
-        }
-
     }
 }
