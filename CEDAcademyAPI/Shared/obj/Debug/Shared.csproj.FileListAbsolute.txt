@@ -7,3 +7,4 @@ C:\Users\CED-TRAINER900\Desktop\Backend\CedAcadamy\CEDAcademyAPI\Shared\bin\Debu
 C:\Users\CED-TRAINER900\Desktop\Backend\CedAcadamy\CEDAcademyAPI\Shared\bin\Debug\Shared.pdb
 C:\Users\CED-TRAINER900\Desktop\Backend\CedAcadamy\CEDAcademyAPI\Shared\obj\Debug\Shared.dll
 C:\Users\CED-TRAINER900\Desktop\Backend\CedAcadamy\CEDAcademyAPI\Shared\obj\Debug\Shared.pdb
+C:\Users\CED-TRAINER900\Desktop\Backend\CedAcadamy\CEDAcademyAPI\Shared\obj\Debug\Shared.csprojAssemblyReference.cache

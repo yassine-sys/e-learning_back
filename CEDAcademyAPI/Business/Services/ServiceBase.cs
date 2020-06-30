@@ -1,4 +1,5 @@
-﻿using DataAccess.Repositories;
+﻿using Business.IServices;
+using DataAccess.Repositories;
 using Entities.Models;
 using System;
 using System.Collections.Generic;
@@ -8,17 +9,7 @@ using System.Threading.Tasks;
 
 namespace Business.Services
 {
-    public interface IServiceBase<TEntity>
-        where TEntity : class, IEntityBase
-    {
-        TEntity GetById(int id);
-        IEnumerable<TEntity> GetAll();
-        void Add(TEntity t);
-        void Update(TEntity t);
-        void Delete(TEntity t);
-    }
-
-    public class ServiceBase<TEntity> : IServiceBase<TEntity>
+   public class ServiceBase<TEntity> : IServiceBase<TEntity>
         where TEntity : class, IEntityBase
     {
         protected readonly RepositoryBase<TEntity> repository;
