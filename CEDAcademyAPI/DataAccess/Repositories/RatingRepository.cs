@@ -10,7 +10,7 @@ using Entities.Models;
 
 namespace DataAccess.Repositories
 {
-    public class RatingRepository : RepositoryBase<CEDAcademyDbContext, Rating>, IRatingRepository
+    public class RatingRepository : RepositoryBase<Rating>, IRatingRepository
     {
         public RatingRepository(CEDAcademyDbContext db)
             : base(db)

@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Repositories
 {
-   public class ExamRepository : RepositoryBase<CEDAcademyDbContext, Exam>, IExamRepository
+   public class ExamRepository : RepositoryBase<Exam>, IExamRepository
     {
         public ExamRepository(CEDAcademyDbContext db)
             : base(db)

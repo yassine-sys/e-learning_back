@@ -105,6 +105,7 @@
     <Compile Include="Services\QuizService.cs" />
     <Compile Include="Services\RatingService.cs" />
     <Compile Include="Services\SectionService.cs" />
+    <Compile Include="Services\ServiceBase.cs" />
     <Compile Include="Services\SubscriptionService.cs" />
   </ItemGroup>
   <ItemGroup>

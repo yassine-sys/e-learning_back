@@ -1,6 +1,7 @@
 ﻿using Business.IServices;
 using DataAccess.Infrastructure;
 using DataAccess.IRepositories;
+using DataAccess.Repositories;
 using Entities.Models;
 using System;
 using System.Collections.Generic;
@@ -11,11 +12,12 @@ using System.Web.Http;
 
 namespace Business.Services
 {
-    public class ParagraphProgressService : IParagraphProgressService
+    public class ParagraphProgressService : ServiceBase<ParagraphProgress>, IParagraphProgressService
     {
         private IParagraphProgressRepository repo;
 
         public ParagraphProgressService(IParagraphProgressRepository repo)
+            : base((RepositoryBase<ParagraphProgress>)repo)
         {
             this.repo = repo;
         }
@@ -36,9 +38,28 @@ namespace Business.Services
         }
         public int paragraphProgressByCourseidUserid(int idC, string idU)
         {
-            var query = db.ParagraphProgresses.Where(x => x.CourseID == idC && x.userId == idU);
-            var paragraphProgresses = query.AsQueryable<ParagraphProgress>();
-            return paragraphProgresses.Count();
+            return repo.GetAll().Where(x => x.CourseID == idC && x.userId==idU).Count();
+         
+        }
+        public IEnumerable<ParagraphProgress> GetParagraphProgresses()
+        {
+            throw new NotImplementedException();
+        }
+        public Chapter GetParagraphProgressById(int id)
+        {
+            throw new NotImplementedException();
+        }
+        public void AddParagraphProgress(ParagraphProgress pp)
+        {
+
+        }
+        public void UpdateChapter(ParagraphProgress pp)
+        {
+
+        }
+        public void DeleteChapter(ParagraphProgress pp)
+        {
+
         }
 
     }

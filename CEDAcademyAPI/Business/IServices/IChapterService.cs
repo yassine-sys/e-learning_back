@@ -1,4 +1,5 @@
-﻿using Entities.Models;
+﻿using Business.Services;
+using Entities.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +8,10 @@ using System.Threading.Tasks;
 
 namespace Business.IServices
 {
-    public interface IChapterService
+    public interface IChapterService : IServiceBase<Chapter>
     {
-        List<Chapter> ChapterDetailsByCourseID(int CourseID);
+        IEnumerable<Chapter> GetChapterbyCourseId(int courseId);
+
+        IEnumerable<Chapter> GetChapterDetailsByCourseID(int CourseId);
     }
 }

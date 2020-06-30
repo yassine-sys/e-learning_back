@@ -1,33 +1,44 @@
 ﻿using Business.IServices;
-using DataAccess.Infrastructure;
 using DataAccess.IRepositories;
+using DataAccess.Repositories;
 using Entities.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business.Services
 {
-    public class ChapterService:IChapterService
+    public class ChapterService : ServiceBase<Chapter>, IChapterService
     {
-        private IChapterRepository repo;
+        private readonly IChapterRepository chapterRepository;
+        private readonly ICourseRepository courseRepository;
 
-        public ChapterService(IChapterRepository repo)
+        public ChapterService(IChapterRepository chapterRepository, ICourseRepository courseRepository)
+            : base((RepositoryBase<Chapter>)chapterRepository)
         {
-            this.repo = repo;
+            this.chapterRepository = chapterRepository;
+            this.courseRepository = courseRepository;
         }
-        public List<Chapter> ChapterDetailsByCourseID(int CourseID)
 
+        public IEnumerable<Chapter> GetChapterbyCourseId(int courseId)
+        {
+            var chapters = this.chapterRepository
+                .GetAll()
+                .Where(x => x.CourseID == courseId);
+
+            return chapters;
+        }
+
+        public IEnumerable<Chapter> GetChapterDetailsByCourseID(int CourseId)
         {
 
-            var query = from C in db.Chapters
-                        where C.CourseID == CourseID
-                        select C;
+            var query = this.chapterRepository
+                .GetAll()
+                .Where(x => x.CourseID == CourseId);
+
             var chapters = query.AsQueryable<Chapter>();
             List<Chapter> listChapters = new List<Chapter>();
-            Course course = db.Courses.Find(CourseID);
+            Course course = this.courseRepository.GetById(CourseId);
             // query : res list des chapters : C
             foreach (Chapter obj in chapters)
             {
@@ -41,8 +52,6 @@ namespace Business.Services
                 item.CourseID = obj.CourseID;
                 listChapters.Add(item);
             }
-
-
             return listChapters;
         }
     }

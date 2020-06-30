@@ -10,7 +10,7 @@ using Entities.Models;
 
 namespace DataAccess.Repositories
 {
-    public class FileProgressRepository : RepositoryBase<CEDAcademyDbContext,FileProgress>,IFileProgressRepository
+    public class FileProgressRepository : RepositoryBase<FileProgress>,IFileProgressRepository
     {
         public FileProgressRepository(CEDAcademyDbContext db)
             : base(db)

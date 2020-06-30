@@ -11,6 +11,6 @@ namespace DataAccess.IRepositories
 {
     public interface IExamRepository : IRepositoryBase<CEDAcademyDbContext, Exam>
     {
-    {
+    
     }
 }

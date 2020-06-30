@@ -9,7 +9,7 @@ using Entities.Models;
 
 namespace DataAccess.Repositories
 {
-    public class SectionRepository : RepositoryBase<CEDAcademyDbContext, Section>, ISectionRepository
+    public class SectionRepository : RepositoryBase<Section>, ISectionRepository
     {
         public SectionRepository(CEDAcademyDbContext db)
             : base(db)
