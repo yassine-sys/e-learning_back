@@ -14,15 +14,17 @@ namespace Business.Services
     public class QuizResultService : ServiceBase<QuizResult>, IQuizResultService
     {
         private IQuizResultRepository repo;
-
-        public QuizResultService(IQuizResultRepository repo)
+        private IQuizRepository quizRepository;
+        public QuizResultService(IQuizResultRepository repo, IQuizRepository quizRepository)
             : base((RepositoryBase<QuizResult>)repo)
         {
             this.repo = repo;
+            this.quizRepository = quizRepository;
         }
         public IEnumerable<Quiz> GetQuizResultsByQuizID(int QuizID)
         {
-            return context.Quizzes.Where(x => x.QuizResults.Quizs.Any(c => c.Id == QuizID));
+            // return context.Quizzes.Where(x => x.QuizResults.Any(c => c.Id == QuizID));
+            return quizRepository.GetAll().Where(x => x.QuizResults.Any(c => c.QuizID == QuizID));
 
         }
 

@@ -24,7 +24,6 @@ namespace Entities.Models
         public string LastModifiedBy { get; set; }
         public DateTime LastModifiedDate { get; set; }
         public Boolean IsActif { get; set; }
-
-
+        public int QuesId { get; set; }
     }
 }

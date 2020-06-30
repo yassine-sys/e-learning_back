@@ -10,7 +10,7 @@ namespace Business.IServices
 {
     public interface IQuizResultService : IServiceBase<QuizResult>
     {
-        IEnumerable<Quiz> GetQuizResultsByQuizID(int QuizID);
+        IEnumerable<QuizResult> GetQuizResultsByQuizID(int QuizID);
 
     }
 }

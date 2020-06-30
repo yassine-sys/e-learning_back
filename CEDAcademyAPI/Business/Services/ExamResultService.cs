@@ -14,20 +14,23 @@ namespace Business.Services
     public class ExamResultService : ServiceBase<ExamResult> , IExamResultService
     {
         private IExamResultRepository repo;
-
-        public ExamResultService(IExamResultRepository repo)
+        private IExamRepository examRepository;
+        //private IQuestionRepository questionRepository;
+        public ExamResultService(IExamResultRepository repo, IExamRepository examRepository)
              : base((RepositoryBase<ExamResult>)repo)
         {
             this.repo = repo;
+            this.examRepository = examRepository;
         }
         public IEnumerable<Exam> GetExamResultsByExamID(int ExamID)
         {
-            return context.Exams.Where(x => x.ExamResult.Exams.Any(c=>c.Id== ExamID));
+            return examRepository.GetAll().Where(x => x.ExamResults.Any(c => c.Id == ExamID));
         }
-        public IEnumerable<Exam> GetQuestionByExamID(int ExamID)
-        {
-            return context.Exams.Where(x => x.Question.Exams.Any(c => c.Id == ExamID));
-        }
+        //public IEnumerable<Question> GetQuestionByExamID(int ExamID)
+        //{
+        //    // return context.Exams.Where(x => x.Questions.Any(c => c.Id == ExamID));
+        //    return questionRepository.GetAll().Where(x => x.Exams.Any(c => c.Id == ExamID));
+        //}
 
     }
 }
