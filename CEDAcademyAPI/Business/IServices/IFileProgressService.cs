@@ -13,7 +13,7 @@ namespace Business.IServices
     {
         IEnumerable<float> GetCurrentTime(int idFile, string idUser);
         IEnumerable<FileProgress> GetFileProgresses();
-        IHttpActionResult GetFilesViewsCount();
+        void GetFilesViewsCount();
         IEnumerable<float> GetPourcentageOfProgress(int idFile, string idUser);
         int GetProgressNumber();
         IEnumerable<FileProgress> GetFileProgressByUserId(string UserId);
