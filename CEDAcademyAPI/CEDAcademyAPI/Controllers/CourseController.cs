@@ -21,34 +21,34 @@ namespace CEDAcademyAPI.Controllers
         [Route("api/Courses")]
         public IEnumerable<Course> GetCourses()
         {
-            return service.GetCourses();
+            return service.GetAll();
         }
         [HttpGet()]
         [Route("api/Course/{id}")]
         public IHttpActionResult GetCourseById(int CourseId)
         {
-            var course = service.GetCourseById(CourseId);
+            var course = service.GetById(CourseId);
             return Ok(course);
         }
         [HttpPost]
         [Route("api/Courses")]
         public IHttpActionResult AddCourse(Course c)
         {
-            service.AddCourse(c);
+            service.Add(c);
             return Ok(c);
         }
         [HttpPut]
         [Route("api/Courses")]
         public IHttpActionResult UpdateCourse(Course c)
         {
-            service.UpdateCourse(c);
+            service.Update(c);
             return Ok(c);
         }
         [HttpDelete]
         [Route("api/Courses")]
         public IHttpActionResult DeleteCourse(Course c)
         {
-            service.DeleteCourse(c);
+            service.Delete(c);
             return Ok(c);
         }
 

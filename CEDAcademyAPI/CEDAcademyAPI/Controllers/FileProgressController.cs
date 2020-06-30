@@ -21,7 +21,7 @@ namespace CEDAcademyAPI.Controllers
         [Route("api/Progress/{id}")]
         public HttpResponseMessage AddFileProgress(FileProgress FileProgress)
         {
-            service.AddFileProgress(FileProgress);
+            service.Add(FileProgress);
             return Request.CreateResponse(HttpStatusCode.Created);
         }
 
@@ -37,14 +37,14 @@ namespace CEDAcademyAPI.Controllers
         [Route("api/PutProgress")]
         public IHttpActionResult UpdateFileProgress(FileProgress fp)
         {
-            service.UpdateFileProgress(fp);
+            service.Update(fp);
             return StatusCode(HttpStatusCode.NoContent);
         }
         [HttpGet]
         [Route("api/GetProgress/{id}")]
         public FileProgress GetFileProgressById(int FileProgressId)
         {
-            return service.GetFileProgressById(FileProgressId);
+            return service.GetById(FileProgressId);
         }
         [HttpGet]
         [Route("api/FileTrack")]

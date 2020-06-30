@@ -17,6 +17,5 @@ namespace Business.IServices
         IEnumerable<float> GetPourcentageOfProgress(int idFile, string idUser);
         int GetProgressNumber();
         IEnumerable<FileProgress> GetFileProgressByUserId(string UserId);
-        FileProgress GetFileProgressById(int FileProgressId);
     }
 }

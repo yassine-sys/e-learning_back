@@ -21,33 +21,34 @@ namespace CEDAcademyAPI.Controllers
         [Route("api/Chapters")]
         public IEnumerable<Chapter> GetChapters()
         {
-            return this.service.GetChapters();
+            return this.service.GetAll();
         }
         [HttpGet]
         [Route("api/Chapters/{id}")]
         public Chapter GetChapterById(int ChapterId)
         {
-            return service.GetChapterById(ChapterId);
+            return service.GetById(ChapterId);
         }
         [HttpPost]
         [Route("api/Chapters")]
-        public IHttpActionResult AddChapter(Chapter c)
+        public HttpResponseMessage AddChapter(Chapter c)
         {
-            service.AddChapter(c);
-            return Ok(c);
+            service.Add(c);
+            return Request.CreateResponse(HttpStatusCode.Created);
+
         }
         [HttpPut]
         [Route("api/Chapters")]
         public IHttpActionResult UpdateChapter(Chapter c)
         {
-            service.UpdateChapter(c);
-            return Ok(c);
+            service.Update(c);
+            return StatusCode(HttpStatusCode.NoContent);
         }
         [HttpDelete]
         [Route("api/Chapters")]
         public IHttpActionResult DeleteChapter(Chapter c)
         {
-            service.DeleteChapter(c);
+            service.Delete(c);
             return Ok(c);
         }
         [HttpGet]

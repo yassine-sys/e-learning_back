@@ -21,20 +21,20 @@ namespace CEDAcademyAPI.Controllers
         [Route("api/Subscriptions")]
         public IEnumerable<Subscription> GetSubscriptions()
         {
-            return service.GetSubscriptions();
+            return service.GetAll();
         }
         [HttpGet]
         [Route("api/Subscription/{id}")]
         public IHttpActionResult GetSubscription(int IdSubscription)
         {
-            var subscription = service.GetSubscriptionById(IdSubscription);
+            var subscription = service.GetById(IdSubscription);
             return Ok(subscription);
         }
         [HttpPut]
         [Route("api/Subscription")]
         public IHttpActionResult UpdateSubscription(Subscription subscription)
         {
-            service.UpdateSubscription(subscription);
+            service.Update(subscription);
             return StatusCode(HttpStatusCode.NoContent);
         }
         [HttpGet]
@@ -69,14 +69,14 @@ namespace CEDAcademyAPI.Controllers
         [Route("api/Subscriptions")]
         public HttpResponseMessage AddSubscription(Subscription subscription)
         {
-            service.AddSubscription(subscription);
+            service.Add(subscription);
             return Request.CreateResponse(HttpStatusCode.Created);
         }
         [HttpDelete]
         [Route("api/Subscription")]
         public IHttpActionResult DeleteSubscription(Subscription subscription)
         {
-            service.DeleteSubscription(subscription);
+            service.Delete(subscription);
             return Ok(subscription);
         }
 

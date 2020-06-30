@@ -28,21 +28,21 @@ namespace CEDAcademyAPI.Controllers
         [Route("api/Section")]
         public HttpResponseMessage AddSection(Section section)
         {
-            service.AddSection(section);
+            service.Add(section);
             return Request.CreateResponse(HttpStatusCode.Created);
         }
         [HttpPut]
         [Route("api/Section")]
         public IHttpActionResult UpdateSection(Section section)
         {
-            service.UpdateSection(section);
+            service.Update(section);
             return StatusCode(HttpStatusCode.NoContent);
         }
         [HttpDelete]
         [Route("api/Section")]
         public IHttpActionResult DeleteSection(Section section)
         {
-            service.DeleteSection(section);
+            service.Delete(section);
             return Ok(section);
         }
 
