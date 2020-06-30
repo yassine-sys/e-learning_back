@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace DataAccess.Infrastructure
 {
    
-    public class CEDAcademyDbContext : IdentityDbContext<ApplicationUser>
+    public class CEDAcademyDbContext : IdentityDbContext<IdentityUser>
     {
         public CEDAcademyDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
@@ -47,7 +47,9 @@ namespace DataAccess.Infrastructure
         public System.Data.Entity.DbSet<Entities.Models.Question> Questions { get; set; }
         public System.Data.Entity.DbSet<Entities.Models.Quiz> Quizzes { get; set; }
         public System.Data.Entity.DbSet<Entities.Models.QuizResult> QuizResults { get; set; }
+        public System.Data.Entity.DbSet<Entities.Models.FileType> FileTypes { get; set; }
 
-    
-}
+
+
+    }
 }

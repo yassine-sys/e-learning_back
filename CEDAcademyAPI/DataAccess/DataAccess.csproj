@@ -87,6 +87,11 @@
     <Compile Include="IRepositories\IRatingRepository.cs" />
     <Compile Include="IRepositories\ISectionRepository.cs" />
     <Compile Include="IRepositories\ISubscriptionRepository.cs" />
+    <Compile Include="Migrations\202006301432528_init1.cs" />
+    <Compile Include="Migrations\202006301432528_init1.designer.cs">
+      <DependentUpon>202006301432528_init1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BusinessUnitRepository.cs" />
     <Compile Include="Repositories\CertificateRepository.cs" />
@@ -117,6 +122,11 @@
       <Project>{d2a26931-e031-4dfa-9f1f-45d87298ef6c}</Project>
       <Name>Entities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202006301432528_init1.resx">
+      <DependentUpon>202006301432528_init1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -54,9 +54,10 @@ namespace CEDAcademyAPI.Controllers
         }
         [HttpGet]
         [Route("api/UserPerVideo")]
-        public IHttpActionResult GetFilesViewsCount()
+        public void GetFilesViewsCount()
         {
-            return Ok(service.GetFilesViewsCount());
+            service.GetFilesViewsCount();
+            
         }
 
         [HttpGet]
