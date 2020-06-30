@@ -14,15 +14,18 @@ namespace Business.Services
     public class QuestionService : ServiceBase<Question>, IQuestionService
     {
         private IQuestionRepository repo;
-
-        public QuestionService(IQuestionRepository repo)
+        private IOptionRepository optionRepository;
+        public QuestionService(IQuestionRepository repo, IOptionRepository optionRepository)
             : base((RepositoryBase<Question>)repo)
         {
             this.repo = repo;
+            this.optionRepository = optionRepository;
         }
         public IEnumerable<Option> GetOptionByQuestionID(int QuesID)
         {
-            return context.Questions.Where(x => x.Option.Questions.Any(c => c.QuesID == QuesID));
+            //return context.Options.Where(x => x.Questions.Any(c => c.Id == QuesID));
+            return optionRepository.GetAll().Where(x => x.QuesId == QuesID);
+
         }
     }
 }
