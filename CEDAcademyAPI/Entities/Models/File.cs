@@ -27,6 +27,7 @@ namespace Entities.Models
         public DateTime LastModifiedDate { get; set; }
         public Boolean IsActif { get; set; }
         public Paragraph Paragraph { get; set; }
+        public FileType FileType { get; set; }
         public ICollection<FileProgress> Progress { get; set; }
     }
 }

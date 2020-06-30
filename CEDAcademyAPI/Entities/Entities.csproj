@@ -77,6 +77,8 @@
     <Compile Include="Models\ExamResult.cs" />
     <Compile Include="Models\File.cs" />
     <Compile Include="Models\FileProgress.cs" />
+    <Compile Include="Models\FileType.cs" />
+    <Compile Include="Models\FileTypeName.cs" />
     <Compile Include="Models\IEntityBase.cs" />
     <Compile Include="Models\Option.cs" />
     <Compile Include="Models\Paragraph.cs" />

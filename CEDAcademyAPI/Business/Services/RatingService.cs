@@ -1,6 +1,7 @@
 ﻿using Business.IServices;
 using DataAccess.Infrastructure;
 using DataAccess.IRepositories;
+using DataAccess.Repositories;
 using Entities.Models;
 using System;
 using System.Collections.Generic;
@@ -10,84 +11,59 @@ using System.Threading.Tasks;
 
 namespace Business.Services
 {
-    public class RatingService : IRatingService
+    public class RatingService : ServiceBase<Rating>, IRatingService
     {
         private IRatingRepository repo;
 
         public RatingService(IRatingRepository repo)
+            : base((RepositoryBase<Rating>)repo)
         {
             this.repo = repo;
         }
-        public Rating GetCurrentRating(int idCourse, string idUser)
+        public IEnumerable<int> GetCourseScoreByUserId(int CourseId, string IdUser)
         {
-            var query = from st in db.Ratings
-                        where st.CourseID == idCourse && st.CreatedBy == idUser
-                        select st.Score;
-
-            if (query == null)
-            {
-                return null;
-            }
-            else
-            {
-                return query;
-            }
+            return repo.GetAll().Where(x => x.CourseID == CourseId && x.CreatedBy == IdUser).Select(x => x.Score);
+           
         }
-        public Rating RatingByUserID(int idCourse, string idUser)
+        public IEnumerable<Rating> GetCourseRatingByUserId(int CourseId, string IdUser)
         {
-            var query = from st in db.Ratings
-                        where st.CourseID == idCourse && st.CreatedBy == idUser
-                        select st;
+            return repo.GetAll().Where(x => x.CourseID == CourseId && x.CreatedBy == IdUser);
 
-            if (query == null)
-            {
-                return null;
-            }
-            else
-            {
-                return query;
-            }
         }
-        public int RatingAvg(int idCourse)
+        public int GetCourseRatingAvg(int CourseId)
         {
-            var query = (from st in db.Ratings
-                         where st.CourseID == idCourse
-                         group st by 1 into g
-                         select new
-                         {
-                             S = (g.Sum(x => x.Score)) / (g.Count())
-                         }).ToList();
-            if (query.Count() == 0)
+            var query= repo.GetAll().Where(x => x.CourseID == CourseId);
+            var RatingAvg = query.Sum(x=>x.Score) / query.Count();
+            if (RatingAvg == 0)
             {
                 return 0;
             }
             else
             {
-                var x = Int32.Parse(query[0].ToString().Substring(6, 1));
-                return x;
+                return RatingAvg;
             }
         }
-        public List<Rating> RatingCourseOrder()
+        public List<String> GetCourseTitleByRatingOrder()
         {
-            var query = (from st in db.Ratings
-                         group st by st.Course.title into g
-                         orderby (g.Sum(x => x.Score) / g.Count()) descending
-                         select new
-                         {
-                           CourseTitle = g.Key
-                         }).Take(5).ToList();
+            var query = repo.GetAll();
+            int RatingAvg = query.Sum(x => x.Score) / query.Count();
+            var query1 = query.OrderByDescending(x => ).Select(x => x.Course.title).Take(5).ToList();
+           
             if (query == null)
             {
                 return null;
             }
             else
             {
-                return query;
+                return query1;
             }
         }
         public List<Rating> RatingSommeOrder()
         {
-            var query = (from st in db.Ratings
+            var query = repo.GetAll();
+            int RatingAvg = query.Sum(x => x.Score) / query.Count();
+            var query2 = query.OrderByDescending(x => x.Score.). Select(query.Sum(x => x.Score) / query.Count());
+            var query1= (from st in db.Ratings
                          group st by st.Course.title into g
                          orderby (g.Sum(x => x.Score) / g.Count()) descending
                          select new
@@ -104,6 +80,13 @@ namespace Business.Services
             }
         }
 
+        public void AddRating(Rating r)
+        {
 
+        }
+        public void UpdateRating(Rating r)
+        {
+
+        }
     }
 }

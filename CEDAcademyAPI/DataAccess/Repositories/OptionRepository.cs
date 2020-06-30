@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Repositories
 {
-   public class OptionRepository : RepositoryBase<CEDAcademyDbContext, Option>, IOptionRepository
+   public class OptionRepository : RepositoryBase<Option>, IOptionRepository
     {
         public OptionRepository(CEDAcademyDbContext db)
             : base(db)

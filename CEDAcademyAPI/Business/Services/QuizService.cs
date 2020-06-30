@@ -1,6 +1,7 @@
 ﻿using Business.IServices;
 using DataAccess.Infrastructure;
 using DataAccess.IRepositories;
+using DataAccess.Repositories;
 using Entities.Models;
 using System;
 using System.Collections.Generic;
@@ -10,11 +11,12 @@ using System.Threading.Tasks;
 
 namespace Business.Services
 {
-    public class QuizService : IQuizService
+    public class QuizService : ServiceBase<Quiz>, IQuizService
     {
         private IQuizRepository repo;
 
         public QuizService(IQuizRepository repo)
+            : base((RepositoryBase<Quiz>)repo)
         {
             this.repo = repo;
         }

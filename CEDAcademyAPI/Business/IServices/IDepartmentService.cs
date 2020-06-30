@@ -1,4 +1,5 @@
-﻿using Entities.Models;
+﻿using Business.Services;
+using Entities.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,10 +8,8 @@ using System.Threading.Tasks;
 
 namespace Business.IServices
 {
-    public interface IDepartmentService
+    public interface IDepartmentService : IServiceBase<Department>
     {
-        Department Get(int id);
-
-        IEnumerable<ApplicationIdentity> GetUsers(int departmentId);
+       
     }
 }

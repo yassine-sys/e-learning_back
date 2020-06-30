@@ -15,7 +15,7 @@ namespace DataAccess.Repositories
             : base(db)
         {
         }
-    {
+    
 
     }
 }

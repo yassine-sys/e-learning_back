@@ -1,6 +1,7 @@
 ﻿using Business.IServices;
 using DataAccess.Infrastructure;
 using DataAccess.IRepositories;
+using DataAccess.Repositories;
 using Entities.Models;
 using System;
 using System.Collections.Generic;
@@ -10,11 +11,12 @@ using System.Threading.Tasks;
 
 namespace Business.Services
 {
-    public class ExamService : IExamService
+    public class ExamService : ServiceBase<Exam>, IExamService
     {
         private IExamRepository repo;
 
         public ExamService(IExamRepository repo)
+        : base((RepositoryBase<Exam>)repo)
         {
             this.repo = repo;
         }

@@ -1,27 +1,24 @@
 ﻿using Business.IServices;
-using DataAccess.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web;
-using Entities.Models;
 using DataAccess.IRepositories;
+using DataAccess.Repositories;
 
 namespace Business.Services
 {
-    public class FileService : IFileService
+    public class FileService : ServiceBase<Entities.Models.File>, IFileService
     {
-        private IFileRepository repo;
+        readonly IFileRepository repo;
 
         public FileService(IFileRepository repo)
+            : base((RepositoryBase<Entities.Models.File>)repo)
         {
-            this.repo = repo;
+            this.repo = repo;            
         }
+      
         public void UploadFilePDF()
         {
             string fileName = null;
@@ -38,13 +35,12 @@ namespace Business.Services
                     FileName = fileName,
 
                 };
-                db.Files.Add(file);
-                db.SaveChanges();
-                      
+            this.repo.Add(file);
+              
         }
         public byte[] GetPdfFile(int id)
         {
-            Entities.Models.File file = db.Files.Find(id);
+            Entities.Models.File file = repo.GetById(id);
             if (file == null)
             {
                 return null;
@@ -75,7 +71,7 @@ namespace Business.Services
             postedFile.SaveAs(filePath);
 
 
-            int idFile = 0;
+            //int idFile = 0;
             Entities.Models.File file = new Entities.Models.File()
             {
 
@@ -85,12 +81,21 @@ namespace Business.Services
              FileDuration = httpRequest["FileDuration"]
 
             };
-                db.Files.Add(file);
-                db.SaveChanges();
-                idFile = file.Id;            
+            repo.Add(file);           
         }
-
-
+       
+        public IEnumerable<string> GetVideoFileName(int FileId) 
+        {
+            return repo.GetAll().Where(x => x.Id == FileId).Select(x => x.FileName);
+        }
+        public IEnumerable<Entities.Models.File> GetAllFiles()
+        {
+            throw new NotImplementedException();
+        }
+        public Entities.Models.File GetFileById(int id)
+        {
+            throw new NotImplementedException();
+        }
 
     }
 }
