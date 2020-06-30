@@ -41,13 +41,13 @@ namespace CEDAcademyAPI.Controllers
         [Route("api/Files")]
         public IEnumerable<File> GetFiles()
         {
-            return this.service.GetAllFiles();
+            return this.service.GetAll();
         }
         [HttpGet]
         [Route("api/Files/{id}")]
         public File GetFileById(int id)
         {
-            return this.service.GetFileById(id);
+            return this.service.GetById(id);
         }
     }
 }

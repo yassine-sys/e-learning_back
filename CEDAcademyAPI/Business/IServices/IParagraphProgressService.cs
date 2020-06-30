@@ -11,8 +11,8 @@ namespace Business.IServices
     public interface IParagraphProgressService : IServiceBase<ParagraphProgress>
     {
         int CountParagraphs(int CourseID);
-        int paragraphProgressByCourseidUserid(int idC, string idU);
-        IEnumerable<ParagraphProgress> GetParagraphProgresses();
-        Chapter GetParagraphProgressById(int id);
+        IEnumerable<ParagraphProgress> GetParagraphProgressByCourseIdUserId(int CourseId, string UserId);
+        IEnumerable<ParagraphProgress> GetParagraphProgressBySectionId(int SectionId);
+
     }
 }

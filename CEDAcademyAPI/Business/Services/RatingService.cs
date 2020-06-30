@@ -80,13 +80,5 @@ namespace Business.Services
             }
         }
 
-        public void AddRating(Rating r)
-        {
-
-        }
-        public void UpdateRating(Rating r)
-        {
-
-        }
     }
 }

@@ -89,21 +89,9 @@ namespace Business.Services
         {
             return repo.GetAll().Count();
         }
-        public void AddFileProgress(FileProgress fp)
-        {
-
-        }
-        public void UpdateFileProgress(FileProgress fp)
-        {
-
-        }
         public IEnumerable<FileProgress> GetFileProgressByUserId(string UserId)
         {
             return repo.GetAll().Where(x => x.CreatedBy == UserId);
-        }
-        public FileProgress GetFileProgressById(int FileProgressId)
-        {
-            throw new NotImplementedException();
         }
     }
 }
