@@ -1,15 +1,9 @@
 ﻿using Business.IServices;
-using DataAccess.Infrastructure;
 using DataAccess.IRepositories;
 using DataAccess.Repositories;
 using Entities.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Http;
-using System.Web.Http.Results;
 
 namespace Business.Services
 {
@@ -32,7 +26,6 @@ namespace Business.Services
             return repo.GetAll().AsQueryable();
         }
 
-        [HttpGet]
         public void GetFilesViewsCount()
         {
             //var filesProgresses = this.db.FileProgresses;

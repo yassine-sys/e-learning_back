@@ -25,6 +25,7 @@ namespace CEDAcademyAPI.Controllers
             this.service.UploadFile();
             return Request.CreateResponse(HttpStatusCode.Created);
         }
+
         [HttpGet]
         [Route("api/PdfFile/{id}")]
         public byte[] GetPdfFile(int id)
