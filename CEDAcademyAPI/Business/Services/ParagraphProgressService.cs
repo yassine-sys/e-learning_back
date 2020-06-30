@@ -23,7 +23,7 @@ namespace Business.Services
         }
         public int CountParagraphs(int CourseID)
         {
-            var query = from c in db.Courses
+           /* var query = from c in db.Courses
                         join ch in db.Chapters on c.Id equals ch.CourseID
                         join s in db.Sections on ch.Id equals s.ChapterID
                         join p in db.Paragraphs on s.Id equals p.SectionID
@@ -34,7 +34,7 @@ namespace Business.Services
                             // CatId = c.CatId // other assignments
                         };
             var courseid = query.Where(x => x.CourseID == CourseID);
-            return courseid.Count();
+            return courseid.Count();*/ return 0;
         }
         public IEnumerable<ParagraphProgress> GetParagraphProgressByCourseIdUserId(int CourseId, string UserId)
         {
