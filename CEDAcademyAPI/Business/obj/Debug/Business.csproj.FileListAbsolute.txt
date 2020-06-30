@@ -9,9 +9,6 @@ C:\Users\CED-TRAINER900\Desktop\Backend\CedAcadamy\CEDAcademyAPI\Business\bin\De
 C:\Users\CED-TRAINER900\Desktop\Backend\CedAcadamy\CEDAcademyAPI\Business\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\CED-TRAINER900\Desktop\Backend\CedAcadamy\CEDAcademyAPI\Business\bin\Debug\Microsoft.AspNet.Identity.Core.dll
 C:\Users\CED-TRAINER900\Desktop\Backend\CedAcadamy\CEDAcademyAPI\Business\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
-C:\Users\CED-TRAINER900\Desktop\Backend\CedAcadamy\CEDAcademyAPI\Business\bin\Debug\Newtonsoft.Json.dll
-C:\Users\CED-TRAINER900\Desktop\Backend\CedAcadamy\CEDAcademyAPI\Business\bin\Debug\System.Net.Http.Formatting.dll
-C:\Users\CED-TRAINER900\Desktop\Backend\CedAcadamy\CEDAcademyAPI\Business\bin\Debug\System.Web.Http.dll
 C:\Users\CED-TRAINER900\Desktop\Backend\CedAcadamy\CEDAcademyAPI\Business\bin\Debug\DataAccess.pdb
 C:\Users\CED-TRAINER900\Desktop\Backend\CedAcadamy\CEDAcademyAPI\Business\bin\Debug\DataAccess.dll.config
 C:\Users\CED-TRAINER900\Desktop\Backend\CedAcadamy\CEDAcademyAPI\Business\bin\Debug\Entities.pdb
@@ -20,9 +17,6 @@ C:\Users\CED-TRAINER900\Desktop\Backend\CedAcadamy\CEDAcademyAPI\Business\bin\De
 C:\Users\CED-TRAINER900\Desktop\Backend\CedAcadamy\CEDAcademyAPI\Business\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\CED-TRAINER900\Desktop\Backend\CedAcadamy\CEDAcademyAPI\Business\bin\Debug\Microsoft.AspNet.Identity.Core.xml
 C:\Users\CED-TRAINER900\Desktop\Backend\CedAcadamy\CEDAcademyAPI\Business\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
-C:\Users\CED-TRAINER900\Desktop\Backend\CedAcadamy\CEDAcademyAPI\Business\bin\Debug\Newtonsoft.Json.xml
-C:\Users\CED-TRAINER900\Desktop\Backend\CedAcadamy\CEDAcademyAPI\Business\bin\Debug\System.Net.Http.Formatting.xml
-C:\Users\CED-TRAINER900\Desktop\Backend\CedAcadamy\CEDAcademyAPI\Business\bin\Debug\System.Web.Http.xml
 C:\Users\CED-TRAINER900\Desktop\Backend\CedAcadamy\CEDAcademyAPI\Business\obj\Debug\Business.csprojAssemblyReference.cache
 C:\Users\CED-TRAINER900\Desktop\Backend\CedAcadamy\CEDAcademyAPI\Business\obj\Debug\Business.csproj.CopyComplete
 C:\Users\CED-TRAINER900\Desktop\Backend\CedAcadamy\CEDAcademyAPI\Business\obj\Debug\Business.dll
