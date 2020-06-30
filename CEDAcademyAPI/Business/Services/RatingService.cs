@@ -44,10 +44,10 @@ namespace Business.Services
             }
         }
         public List<String> GetCourseTitleByRatingOrder()
-        {
+        {/*
             var query = repo.GetAll();
             int RatingAvg = query.Sum(x => x.Score) / query.Count();
-            var query1 = query.OrderByDescending(x => ).Select(x => x.Course.title).Take(5).ToList();
+            var query1 = query.OrderByDescending( ).Select(x => x.Course.title).Take(5).ToList();
            
             if (query == null)
             {
@@ -56,28 +56,31 @@ namespace Business.Services
             else
             {
                 return query1;
-            }
+            }*/
+            return null;
         }
         public List<Rating> RatingSommeOrder()
         {
-            var query = repo.GetAll();
-            int RatingAvg = query.Sum(x => x.Score) / query.Count();
-            var query2 = query.OrderByDescending(x => x.Score.). Select(query.Sum(x => x.Score) / query.Count());
-            var query1= (from st in db.Ratings
-                         group st by st.Course.title into g
-                         orderby (g.Sum(x => x.Score) / g.Count()) descending
-                         select new
-                         {
-                           CourseSomme = (g.Sum(x => x.Score) / g.Count())
-                         }).Take(5).ToList();
-            if (query == null)
-            {
-                return null;
-            }
-            else
-            {
-                return query;
-            }
+            /* var query = repo.GetAll();
+             int RatingAvg = query.Sum(x => x.Score) / query.Count();
+             var query2 = query.OrderByDescending(x => x.Score.). Select(query.Sum(x => x.Score) / query.Count());
+             var query1= (from st in db.Ratings
+                          group st by st.Course.title into g
+                          orderby (g.Sum(x => x.Score) / g.Count()) descending
+                          select new
+                          {
+                            CourseSomme = (g.Sum(x => x.Score) / g.Count())
+                          }).Take(5).ToList();
+             if (query == null)
+             {
+                 return null;
+             }
+             else
+             {
+                 return query;
+             }*/
+            return null;
+
         }
 
     }

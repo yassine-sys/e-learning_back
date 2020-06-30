@@ -33,7 +33,7 @@ namespace Business.Services
         }
 
         [HttpGet]
-        public IHttpActionResult GetFilesViewsCount()
+        public void GetFilesViewsCount()
         {
             //var filesProgresses = this.db.FileProgresses;
 
@@ -56,7 +56,7 @@ namespace Business.Services
                 });
 
 
-            var query = (from f in db.Files
+          /*  var query = (from f in db.Files
                          join pr in db.FileProgresses on f.Id equals pr.FileId
                          into Pro
                          from pr in Pro.DefaultIfEmpty()
@@ -68,17 +68,8 @@ namespace Business.Services
                          {
                              FileName = grouped.Key.FileTitle,
                              NumberOfUsers = totalUsers,
-                         }).ToList();
+                         }).ToList();*/
 
-
-            if (query == null)
-            {
-                return null;
-            }
-            else
-            {
-                return Ok(query);
-            }
            
         }
         public IEnumerable<float> GetPourcentageOfProgress(int idFile, string idUser)
