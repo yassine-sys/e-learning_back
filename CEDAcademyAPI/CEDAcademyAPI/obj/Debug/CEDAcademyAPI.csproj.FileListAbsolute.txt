@@ -1,1 +1,2 @@
 C:\Users\CED-TRAINER900\Desktop\CedAcadamy\CEDAcademyAPI\CEDAcademyAPI\obj\Debug\CEDAcademyAPI.csprojAssemblyReference.cache
+C:\Users\CED201\Desktop\Nouveau dossier (8)\CedAcadamy\CEDAcademyAPI\CEDAcademyAPI\obj\Debug\CEDAcademyAPI.csprojAssemblyReference.cache

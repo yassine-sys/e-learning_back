@@ -1,4 +1,5 @@
 ﻿using Business.IServices;
+using Entities.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +17,44 @@ namespace CEDAcademyAPI.Controllers
         {
             this.service = service;
         }
+        [HttpGet]
+        [Route("api/get_business_unit")]
+        public IEnumerable<BusinessUnit> GetBusinessUnits()
+        {
+            return service.GetAll();
+        }
+        [HttpGet]
+        [Route("api/get_business_unit/{id}")]
+        public BusinessUnit GetBusinessUnitById(int id)
+        {
+            return service.GetById(id);
+        }
+        [HttpPost]
+        [Route("api/add_business_unit")]
+        public void add(BusinessUnit b)
+        {
+            service.Add(b);
+        }
+        [HttpPut]
+        [Route("api/update_business_unit")]
+
+        public void update(BusinessUnit b)
+        {
+            service.Update(b);
+        }
+        [HttpDelete]
+        [Route("api/delete_business_unit")]
+        public void delete(BusinessUnit b)
+        {
+            service.Delete(b);
+        }
+        [HttpGet]
+        [Route("api/get_department_by_business_unit/{id}")]
+        public IEnumerable<Department> GetDepartmentByBusinessUnitId(int BusinessUnitId)
+        {
+            return service.GetDepartmentByBusinessUnitId(BusinessUnitId);
+        }
+
+
     }
 }

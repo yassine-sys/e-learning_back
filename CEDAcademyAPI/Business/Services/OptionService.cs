@@ -14,11 +14,18 @@ namespace Business.Services
     {
 
         private IOptionRepository repo;
+        private IQuestionRepository QuestionRepository;
 
-        public OptionService(IOptionRepository repo)
+
+        public OptionService(IOptionRepository repo, IQuestionRepository questionRepository)
             : base((RepositoryBase<Option>)repo)
         {
             this.repo = repo;
+            this.QuestionRepository = questionRepository;
+        }
+        public IEnumerable<Question> GetOptionsByQuestionId(int QuesId)
+        {
+            return QuestionRepository.GetAll().Where(x => x.Options.Any(c => c.QuesId == QuesId));
         }
     }
 }
