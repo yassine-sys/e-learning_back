@@ -1,2 +1,1 @@
 C:\Users\CED-TRAINER900\Desktop\CedAcadamy\CEDAcademyAPI\Business\obj\Debug\Business.csprojAssemblyReference.cache
-C:\Users\CED201\Desktop\Nouveau dossier (8)\CedAcadamy\CEDAcademyAPI\Business\obj\Debug\Business.csprojAssemblyReference.cache
