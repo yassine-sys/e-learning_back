@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.IRepositories
 {
-    public interface IQuizResultRepository : IRepositoryBase<CEDAcademyDbContext, Quiz>
+    public interface IQuizResultRepository : IRepositoryBase<CEDAcademyDbContext, QuizResult>
     {
        
     }
