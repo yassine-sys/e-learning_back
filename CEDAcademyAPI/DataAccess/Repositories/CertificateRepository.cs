@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Repositories
 {
-    public class CertificateRepository : RepositoryBase<CEDAcademyDbContext, Certificate>, ICertificateRepository
+    public class CertificateRepository : RepositoryBase<Certificate>, ICertificateRepository
     {
         public CertificateRepository(CEDAcademyDbContext db)
             : base(db)

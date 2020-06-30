@@ -1,4 +1,5 @@
-﻿using Entities.Models;
+﻿using Business.Services;
+using Entities.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,13 +8,12 @@ using System.Threading.Tasks;
 
 namespace Business.IServices
 {
-    public interface IRatingService
+    public interface IRatingService : IServiceBase<Rating>
     {
-        Rating GetCurrentRating(int idCourse, string idUser);
-        Rating RatingByUserID(int idCourse, string idUser);
-        int RatingAvg(int idCourse);
-        List<Rating> RatingCourseOrder();
+        IEnumerable<int> GetCourseScoreByUserId(int CourseId, string IdUser);
+        IEnumerable<Rating> GetCourseRatingByUserId(int CourseId, string IdUser);
+        int GetCourseRatingAvg(int CourseId);
+        List<String> GetCourseTitleByRatingOrder();
         List<Rating> RatingSommeOrder();
-
     }
 }

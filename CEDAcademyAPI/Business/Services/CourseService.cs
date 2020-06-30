@@ -1,6 +1,7 @@
 ﻿using Business.IServices;
 using DataAccess.Infrastructure;
 using DataAccess.IRepositories;
+using Entities.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,35 +13,35 @@ namespace Business.Services
     public class CourseService : ICourseService
     {
 
-        private ICourseRepository repo;
+        private ICourseRepository CourseRepository;
 
-        public CourseService(ICourseRepository repo)
+        public CourseService(ICourseRepository CourseRepository)
         {
-            this.repo = repo;
+            this.CourseRepository = CourseRepository;
         }
-        public int CourseNumber()
-
+        public IEnumerable<Course> GetCourses()
         {
-            var query = (from st in db.Courses
-                         group st by 1 into g
-                         select new
-                         {
-                             S = g.Count()
-                         }).ToList();
-
-
-            if (query.Count() == 0)
-            {
-                return 0;
-            }
-            else
-            {
-                var x = Int32.Parse(query[0].ToString().Substring(6, 1));
-
-
-                return x;
-            }
+            throw new NotImplementedException();
+        }
+        public Course GetCourseById(int idCourse)
+        {
+            throw new NotImplementedException();
+        }
+        public void AddCourse(Course c)
+        {
 
         }
+        public void UpdateCourse(Course c)
+        {
+
+        }
+        public void DeleteCourse(Course c)
+        {
+
+        }
+        public int GetCourseNumber()
+        {
+            return CourseRepository.GetAll().Count();
+        }                
     }
 }

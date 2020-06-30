@@ -1,6 +1,7 @@
 ﻿using Business.IServices;
 using DataAccess.Infrastructure;
 using DataAccess.IRepositories;
+using DataAccess.Repositories;
 using Entities.Models;
 using System;
 using System.Collections.Generic;
@@ -12,33 +13,23 @@ using System.Web.Http.Results;
 
 namespace Business.Services
 {
-    public class FileProgressService : IFileProgressService
+    public class FileProgressService : ServiceBase<FileProgress>, IFileProgressService
 
     {
         private IFileProgressRepository repo;
 
         public FileProgressService(IFileProgressRepository repo)
+            : base((RepositoryBase<FileProgress>)repo)
         {
             this.repo = repo;
         }
-        public IQueryable<float> GetCurrentTime(int idFile, string idUser)
+        public IEnumerable<float> GetCurrentTime(int idFile, string idUser)
         {
-            var query = from st in db.FileProgresses
-                        where st.FileId == idFile && st.CreatedBy == idUser
-                        select st.CurrentTime;
-
-            if (query == null)
-            {
-                return null;
-            }
-            else
-            {
-                return query;
-            }
+            return repo.GetAll().Where(x => x.FileId == idFile && x.CreatedBy == idUser).Select(x=>x.CurrentTime);          
         }
-        public IQueryable<FileProgress> FileTrack()
+        public IEnumerable<FileProgress> GetFileProgresses()
         {
-            return this.db.FileProgresses.AsQueryable();
+            return repo.GetAll().AsQueryable();
         }
 
         [HttpGet]
@@ -55,7 +46,16 @@ namespace Business.Services
             //    .Where(x => x.FileName.EndsWith(".mp4")
             //        && viewedFilesIds.Contains(x.Id))
             //    .GroupBy(x => x.Id, x => x.);
-            
+
+            repo.GetAll()
+                .Where(x => x.File.FileType.TypeName == FileTypeName.mp4)
+                .GroupBy(x=>x.File.FileName)
+                .Select(x => new {
+                    
+
+                });
+
+
             var query = (from f in db.Files
                          join pr in db.FileProgresses on f.Id equals pr.FileId
                          into Pro
@@ -79,39 +79,31 @@ namespace Business.Services
             {
                 return Ok(query);
             }
+           
         }
-        public IHttpActionResult GetPourcentageOfProgress(int idFile, string idUser)
+        public IEnumerable<float> GetPourcentageOfProgress(int idFile, string idUser)
         {
-            var query = from st in db.FileProgresses
-                        where st.FileId == idFile && st.CreatedBy == idUser
-                        select st.Pourcentage;
-            if (query == null)
-            {
-                return null;
-            }
-            else
-            {
-                return Ok(query);
-            }
+            return repo.GetAll().Where(x => x.FileId == idFile && x.CreatedBy == idUser).Select(x => x.Pourcentage);
         }
-        public int ProgressNumber()
+        public int GetProgressNumber()
         {
-            var query = (from st in db.FileProgresses
-                         group st by 1 into g
-                         select new
-                         {
-                           S = g.Count()
-                         }).ToList();
-            if (query.Count() == 0)
-            {
-                return 0;
-            }
-            else
-            {
-                var x = Int32.Parse(query[0].ToString().Substring(6, 1));
-                return x;
-            }
+            return repo.GetAll().Count();
+        }
+        public void AddFileProgress(FileProgress fp)
+        {
 
+        }
+        public void UpdateFileProgress(FileProgress fp)
+        {
+
+        }
+        public IEnumerable<FileProgress> GetFileProgressByUserId(string UserId)
+        {
+            return repo.GetAll().Where(x => x.CreatedBy == UserId);
+        }
+        public FileProgress GetFileProgressById(int FileProgressId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

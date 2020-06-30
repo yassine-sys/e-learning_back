@@ -5,14 +5,14 @@ using System.Linq;
 
 namespace DataAccess.Repositories
 {
-    public class RepositoryBase<TContext, TEntity> : IRepositoryBase<DbContext, TEntity>
-        where TContext : DbContext
+    public class RepositoryBase<TEntity> : IRepositoryBase<DbContext, TEntity>
+       // where TContext : DbContext
         where TEntity : class
     {
-        readonly TContext db;
+        readonly DbContext db;
         readonly DbSet<TEntity> dbSet;
 
-        public RepositoryBase(TContext db)
+        public RepositoryBase(DbContext db)
         {
             this.db = db;
             this.dbSet = db.Set<TEntity>();

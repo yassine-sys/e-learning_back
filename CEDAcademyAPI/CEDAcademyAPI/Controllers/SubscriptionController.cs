@@ -1,4 +1,5 @@
 ﻿using Business.IServices;
+using Entities.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +17,68 @@ namespace CEDAcademyAPI.Controllers
         {
             this.service = service;
         }
+        [HttpGet]
+        [Route("api/Subscriptions")]
+        public IEnumerable<Subscription> GetSubscriptions()
+        {
+            return service.GetSubscriptions();
+        }
+        [HttpGet]
+        [Route("api/Subscription/{id}")]
+        public IHttpActionResult GetSubscription(int IdSubscription)
+        {
+            var subscription = service.GetSubscriptionById(IdSubscription);
+            return Ok(subscription);
+        }
+        [HttpPut]
+        [Route("api/Subscription")]
+        public IHttpActionResult UpdateSubscription(Subscription subscription)
+        {
+            service.UpdateSubscription(subscription);
+            return StatusCode(HttpStatusCode.NoContent);
+        }
+        [HttpGet]
+        [Route("api/Subscriptions/{CourseId}/{UserId}")]
+        public IHttpActionResult SubscriptionByCourseIdUserId(string CourseId, string UserId)
+        {
+            var subscription = service.GetSubscriptionbyCourseIdUserId(CourseId,UserId);
+            return Ok(subscription);
+        }
+        [HttpGet]
+        [Route("api/Subscriptions/User/{id}")]
+        public IHttpActionResult SubscriptionbyUserId(string UserId)
+        {
+            var subscription = service.GetSubscriptionbyUserId(UserId);
+            return Ok(subscription);
+        }
+        [HttpGet]
+        [Route("api/Subscriptions/Course/{id}")]
+        public IHttpActionResult SubscriptionbyCourseID(string CourseId)
+        {
+            var subscription = service.GetSubscriptionbyCourseId(CourseId);
+            return Ok(subscription);
+        }
+        [HttpGet]
+        [Route("api/CourseSubscriptions/Count/{id}")]
+        public IHttpActionResult CountUsersbyCourseID(string UserId)
+        {
+            var NbreUser = service.CountUsersbyCourseID(UserId);
+            return Ok(NbreUser);
+        }
+        [HttpPost]
+        [Route("api/Subscriptions")]
+        public HttpResponseMessage AddSubscription(Subscription subscription)
+        {
+            service.AddSubscription(subscription);
+            return Request.CreateResponse(HttpStatusCode.Created);
+        }
+        [HttpDelete]
+        [Route("api/Subscription")]
+        public IHttpActionResult DeleteSubscription(Subscription subscription)
+        {
+            service.DeleteSubscription(subscription);
+            return Ok(subscription);
+        }
+
     }
 }

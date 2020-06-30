@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Repositories
 {
-   public class QuizResultRepository : RepositoryBase<CEDAcademyDbContext, QuizResult>, IQuizResultRepository
+   public class QuizResultRepository : RepositoryBase<QuizResult>, IQuizResultRepository
     {
         public QuizResultRepository(CEDAcademyDbContext db)
             : base(db)

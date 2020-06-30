@@ -1,6 +1,7 @@
 ﻿using Business.IServices;
 using DataAccess.Infrastructure;
 using DataAccess.IRepositories;
+using DataAccess.Repositories;
 using Entities.Models;
 using System;
 using System.Collections.Generic;
@@ -10,11 +11,11 @@ using System.Threading.Tasks;
 
 namespace Business.Services
 {
-    public class BusinessUnitService: IBusinessUnitService
+    public class BusinessUnitService : ServiceBase<BusinessUnit>, IBusinessUnitService
     {
         private IBusinessUnitRepository repo;
 
-        public BusinessUnitService(IBusinessUnitRepository repo)
+        public BusinessUnitService(IBusinessUnitRepository repo) : base((RepositoryBase<BusinessUnit>)repo)
         {
             this.repo = repo;
         }

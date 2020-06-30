@@ -1,4 +1,5 @@
 ﻿using Business.IServices;
+using Entities.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +17,34 @@ namespace CEDAcademyAPI.Controllers
         {
             this.service = service;
         }
+        [HttpGet]
+        [Route("api/Section/Chapter/{id}")]
+        public IHttpActionResult SectionbyChapterID(int ChapterId)
+        {
+            var section = service.GetSectionbyChapterId(ChapterId);
+            return Ok(section);
+        }
+        [HttpPost]
+        [Route("api/Section")]
+        public HttpResponseMessage AddSection(Section section)
+        {
+            service.AddSection(section);
+            return Request.CreateResponse(HttpStatusCode.Created);
+        }
+        [HttpPut]
+        [Route("api/Section")]
+        public IHttpActionResult UpdateSection(Section section)
+        {
+            service.UpdateSection(section);
+            return StatusCode(HttpStatusCode.NoContent);
+        }
+        [HttpDelete]
+        [Route("api/Section")]
+        public IHttpActionResult DeleteSection(Section section)
+        {
+            service.DeleteSection(section);
+            return Ok(section);
+        }
+
     }
 }

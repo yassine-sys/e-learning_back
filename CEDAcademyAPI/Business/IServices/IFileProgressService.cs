@@ -1,4 +1,5 @@
-﻿using Entities.Models;
+﻿using Business.Services;
+using Entities.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,12 +9,14 @@ using System.Web.Http;
 
 namespace Business.IServices
 {
-    public interface IFileProgressService
+    public interface IFileProgressService : IServiceBase<FileProgress>
     {
-        IQueryable<float> GetCurrentTime(int idFile, string idUser);
-        IQueryable<FileProgress> FileTrack();
+        IEnumerable<float> GetCurrentTime(int idFile, string idUser);
+        IEnumerable<FileProgress> GetFileProgresses();
         IHttpActionResult GetFilesViewsCount();
-        IHttpActionResult GetPourcentageOfProgress(int idFile, string idUser);
-        int ProgressNumber();
+        IEnumerable<float> GetPourcentageOfProgress(int idFile, string idUser);
+        int GetProgressNumber();
+        IEnumerable<FileProgress> GetFileProgressByUserId(string UserId);
+        FileProgress GetFileProgressById(int FileProgressId);
     }
 }
