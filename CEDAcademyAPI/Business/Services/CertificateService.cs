@@ -12,7 +12,7 @@ namespace Business.Services
 {
     public class CertificateService : ServiceBase<Certificate>, ICertificateService
     {
-        private ICertificateRepository repo;
+        private readonly ICertificateRepository repo;
 
         public CertificateService(ICertificateRepository repo)
          : base((RepositoryBase<Certificate>)repo)

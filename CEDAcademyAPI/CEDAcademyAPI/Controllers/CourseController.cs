@@ -1,4 +1,5 @@
 ﻿using Business.IServices;
+using Business.Services;
 using Entities.Models;
 using System;
 using System.Collections.Generic;
@@ -11,8 +12,7 @@ namespace CEDAcademyAPI.Controllers
 {
     public class CourseController : ApiController
     {
-        private ICourseService service;
-
+        private readonly ICourseService service;
         public CourseController(ICourseService service)
         {
             this.service = service;

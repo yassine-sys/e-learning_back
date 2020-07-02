@@ -13,7 +13,7 @@ namespace Business.Services
 {
     public class SectionService : ServiceBase<Section>, ISectionService
     {
-        private ISectionRepository repo;
+        private readonly ISectionRepository repo;
 
         public SectionService(ISectionRepository repo)
             : base((RepositoryBase<Section>)repo)

@@ -10,7 +10,7 @@ namespace Business.Services
     public class FileProgressService : ServiceBase<FileProgress>, IFileProgressService
 
     {
-        private IFileProgressRepository repo;
+        private readonly IFileProgressRepository repo;
 
         public FileProgressService(IFileProgressRepository repo)
             : base((RepositoryBase<FileProgress>)repo)

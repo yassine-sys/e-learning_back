@@ -11,7 +11,7 @@ namespace Business.Services
 {
     public class FileService : ServiceBase<Entities.Models.File>, IFileService
     {
-        readonly IFileRepository repo;
+        private readonly IFileRepository repo;
 
         public FileService(IFileRepository repo)
             : base((RepositoryBase<Entities.Models.File>)repo)

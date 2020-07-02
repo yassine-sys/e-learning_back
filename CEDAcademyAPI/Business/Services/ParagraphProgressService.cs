@@ -9,7 +9,7 @@ namespace Business.Services
 {
     public class ParagraphProgressService : ServiceBase<ParagraphProgress>, IParagraphProgressService
     {
-        private IParagraphProgressRepository repo;
+        private readonly IParagraphProgressRepository repo;
 
         public ParagraphProgressService(IParagraphProgressRepository repo)
             : base((RepositoryBase<ParagraphProgress>)repo)
