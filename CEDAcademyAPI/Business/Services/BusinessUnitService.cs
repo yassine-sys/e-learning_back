@@ -13,8 +13,8 @@ namespace Business.Services
 {
     public class BusinessUnitService : ServiceBase<BusinessUnit>, IBusinessUnitService
     {
-        private IBusinessUnitRepository repo;
-        private IDepartmentRepository departmentRepository;
+        private readonly IBusinessUnitRepository repo;
+        private readonly IDepartmentRepository departmentRepository;
         public BusinessUnitService(IBusinessUnitRepository repo, IDepartmentRepository departmentRepository) : base((RepositoryBase<BusinessUnit>)repo)
         {
             this.repo = repo;

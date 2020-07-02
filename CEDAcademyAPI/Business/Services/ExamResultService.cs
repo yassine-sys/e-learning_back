@@ -13,8 +13,8 @@ namespace Business.Services
 {
     public class ExamResultService : ServiceBase<ExamResult> , IExamResultService
     {
-        private IExamResultRepository repo;
-        private IExamRepository examRepository;
+        private readonly IExamResultRepository repo;
+        private readonly IExamRepository examRepository;
         //private IQuestionRepository questionRepository;
         public ExamResultService(IExamResultRepository repo, IExamRepository examRepository)
              : base((RepositoryBase<ExamResult>)repo)

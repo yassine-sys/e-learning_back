@@ -13,7 +13,7 @@ namespace Business.Services
 {
    public class SubscriptionService : ServiceBase<Subscription>, ISubscriptionService
     {
-        private ISubscriptionRepository repo;
+        private readonly ISubscriptionRepository repo;
 
         public SubscriptionService(ISubscriptionRepository repo)
              : base((RepositoryBase<Subscription>)repo)
