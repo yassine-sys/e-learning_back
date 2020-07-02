@@ -13,8 +13,8 @@ namespace Business.Services
 {
     public class QuestionService : ServiceBase<Question>, IQuestionService
     {
-        private IQuestionRepository repo;
-        private IOptionRepository optionRepository;
+        private readonly IQuestionRepository repo;
+        private readonly IOptionRepository optionRepository;
         public QuestionService(IQuestionRepository repo, IOptionRepository optionRepository)
             : base((RepositoryBase<Question>)repo)
         {

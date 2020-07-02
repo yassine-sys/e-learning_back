@@ -14,8 +14,7 @@ namespace Business.Services
     public class CourseService : ServiceBase<Course>, ICourseService
     {
 
-        private ICourseRepository CourseRepository;
-
+        private readonly ICourseRepository CourseRepository;
         public CourseService(ICourseRepository CourseRepository)
             : base((RepositoryBase<Course>)CourseRepository)
         {

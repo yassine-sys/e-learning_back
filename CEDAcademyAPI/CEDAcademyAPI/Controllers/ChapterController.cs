@@ -11,7 +11,7 @@ namespace CEDAcademyAPI.Controllers
 {
     public class ChapterController : ApiController
     {
-        private IChapterService service;
+        private readonly IChapterService service;
 
         public ChapterController(IChapterService service)
         {

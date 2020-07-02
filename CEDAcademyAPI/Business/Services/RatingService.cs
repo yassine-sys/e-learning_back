@@ -13,7 +13,7 @@ namespace Business.Services
 {
     public class RatingService : ServiceBase<Rating>, IRatingService
     {
-        private IRatingRepository repo;
+        private readonly IRatingRepository repo;
 
         public RatingService(IRatingRepository repo)
             : base((RepositoryBase<Rating>)repo)

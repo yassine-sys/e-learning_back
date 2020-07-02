@@ -13,7 +13,7 @@ namespace Business.Services
 {
     public class ParagraphService : ServiceBase<Paragraph>, IParagraphService
     {
-        private IParagraphRepository repo;
+        private readonly IParagraphRepository repo;
 
         public ParagraphService(IParagraphRepository repo)
             : base((RepositoryBase<Paragraph>)repo)

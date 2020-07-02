@@ -9,7 +9,7 @@ namespace Business.Services
 {
     public class DepartmentService : ServiceBase<Department>, IDepartmentService
     {
-        private IDepartmentRepository repo;
+        private readonly IDepartmentRepository repo;
 
         public DepartmentService(IDepartmentRepository repo)
              : base((RepositoryBase<Department>)repo)
