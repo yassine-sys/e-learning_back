@@ -10,7 +10,7 @@ namespace Business.IServices
 {
     public interface ICourseService : IServiceBase<Course>
     {
-        int GetCourseNumber();     
+        int GetCoursesCount();     
 
     }
 }

@@ -9,6 +9,7 @@ using System.Web.Http;
 
 namespace CEDAcademyAPI.Controllers
 {
+    [RoutePrefix("api/examResult")]
     public class ExamResultController : ApiController
     {
         private IExamResultService service;
@@ -18,44 +19,33 @@ namespace CEDAcademyAPI.Controllers
             this.service = service;
         }
         [HttpGet]
-        [Route("api/ExamResult")]
         public IEnumerable<ExamResult> GetExamResults()
         {
             return service.GetAll();
         }
         [HttpGet]
-        [Route("api/ExamResult/{id}")]
-
+        [Route("{id}")]
         public ExamResult GetExamResultById(int id)
         {
             return service.GetById(id);
         }
         [HttpGet]
-        [Route("api/ExamResultByExam/{id}")]
-
-
-        public IEnumerable<Exam> GetExamResultsByExamID(int ExamID)
+        [Route("ResultByExam/{ExamId}")]
+        public IEnumerable<Exam> GetExamResultsByExamID(int ExamId)
         {
-            return service.GetExamResultsByExamID(ExamID);
+            return service.GetExamResultsByExamID(ExamId);
         }
         [HttpPost]
-        [Route("api/ExamResult/add")]
-
-
         public void add(ExamResult e)
         {
             service.Add(e);
         }
         [HttpPut]
-        [Route("api/ExamResult/update")]
-
         public void update(ExamResult e)
         {
             service.Update(e);
         }
         [HttpDelete]
-        [Route("api/ExamResult/delete")]
-
         public void delete(ExamResult e)
         {
             service.Delete(e);
