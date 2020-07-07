@@ -22,10 +22,10 @@ namespace Entities.Models
         public string FileDescription { get; set; }
         // public int ParagraphId { get; set; }
         public string CreatedBy { get; set; }
-        public DateTime CreatedDate { get; set; }
+        public DateTime? CreatedDate { get; set; }
         public string LastModifiedBy { get; set; }
-        public DateTime LastModifiedDate { get; set; }
-        public Boolean IsActif { get; set; }
+        public DateTime? LastModifiedDate { get; set; }
+        public bool? IsActif { get; set; }
         public Paragraph Paragraph { get; set; }
         public FileType FileType { get; set; }
         public ICollection<FileProgress> Progress { get; set; }

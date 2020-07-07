@@ -51,10 +51,6 @@ C:\Users\CED-TRAINER900\Desktop\Backend\CedAcadamy\CEDAcademyAPI\Business\obj\De
 C:\Users\CED-TRAINER900\Desktop\Backend\CedAcadamy\CEDAcademyAPI\Business\obj\Debug\Business.csproj.CopyComplete
 C:\Users\CED-TRAINER900\Desktop\Backend\CedAcadamy\CEDAcademyAPI\Business\obj\Debug\Business.dll
 C:\Users\CED-TRAINER900\Desktop\Backend\CedAcadamy\CEDAcademyAPI\Business\obj\Debug\Business.pdb
-C:\Users\CED-TRAINER900\Desktop\Back\CedAcadamy\CEDAcademyAPI\Business\bin\Debug\Microsoft.AspNet.Identity.Core.xml
-C:\Users\CED-TRAINER900\Desktop\Back\CedAcadamy\CEDAcademyAPI\Business\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
-C:\Users\CED-TRAINER900\Desktop\Back\CedAcadamy\CEDAcademyAPI\Business\bin\Debug\System.Web.Http.WebHost.xml
-C:\Users\CED-TRAINER900\Desktop\Back\CedAcadamy\CEDAcademyAPI\Business\obj\Debug\Business.pdb
 C:\Users\CED-TRAINER900\Desktop\Back\CedAcadamy\CEDAcademyAPI\Business\bin\Debug\Business.dll.config
 C:\Users\CED-TRAINER900\Desktop\Back\CedAcadamy\CEDAcademyAPI\Business\bin\Debug\Business.dll
 C:\Users\CED-TRAINER900\Desktop\Back\CedAcadamy\CEDAcademyAPI\Business\bin\Debug\Business.pdb
@@ -73,6 +69,10 @@ C:\Users\CED-TRAINER900\Desktop\Back\CedAcadamy\CEDAcademyAPI\Business\bin\Debug
 C:\Users\CED-TRAINER900\Desktop\Back\CedAcadamy\CEDAcademyAPI\Business\bin\Debug\Entities.dll.config
 C:\Users\CED-TRAINER900\Desktop\Back\CedAcadamy\CEDAcademyAPI\Business\bin\Debug\EntityFramework.xml
 C:\Users\CED-TRAINER900\Desktop\Back\CedAcadamy\CEDAcademyAPI\Business\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\CED-TRAINER900\Desktop\Back\CedAcadamy\CEDAcademyAPI\Business\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\CED-TRAINER900\Desktop\Back\CedAcadamy\CEDAcademyAPI\Business\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\CED-TRAINER900\Desktop\Back\CedAcadamy\CEDAcademyAPI\Business\bin\Debug\System.Web.Http.WebHost.xml
 C:\Users\CED-TRAINER900\Desktop\Back\CedAcadamy\CEDAcademyAPI\Business\obj\Debug\Business.csprojAssemblyReference.cache
 C:\Users\CED-TRAINER900\Desktop\Back\CedAcadamy\CEDAcademyAPI\Business\obj\Debug\Business.csproj.CopyComplete
 C:\Users\CED-TRAINER900\Desktop\Back\CedAcadamy\CEDAcademyAPI\Business\obj\Debug\Business.dll
+C:\Users\CED-TRAINER900\Desktop\Back\CedAcadamy\CEDAcademyAPI\Business\obj\Debug\Business.pdb
