@@ -9,6 +9,7 @@ using System.Web.Http;
 
 namespace CEDAcademyAPI.Controllers
 {
+    [RoutePrefix("api/File")]
     public class FileController : ApiController
     {
         private IFileService service;
@@ -19,7 +20,7 @@ namespace CEDAcademyAPI.Controllers
         }
 
         [HttpPost]
-        [Route("api/UploadFile")]
+        [Route("UploadFile")]
         public HttpResponseMessage UploadFile()
         {
             this.service.UploadFile();
@@ -27,25 +28,24 @@ namespace CEDAcademyAPI.Controllers
         }
 
         [HttpGet]
-        [Route("api/PdfFile/{id}")]
+        [Route("PdfFile/{id}")]
         public byte[] GetPdfFile(int id)
         {
             return this.service.GetPdfFile(id);
         }
         [HttpGet]
-        [Route("api/VideoFile/{id}")]
+        [Route("VideoFile/{id}")]
         public IEnumerable<string> GetVideoFileName(int id)
         {
             return service.GetVideoFileName(id);
         }
         [HttpGet]
-        [Route("api/Files")]
         public IEnumerable<File> GetFiles()
         {
             return this.service.GetAll();
         }
         [HttpGet]
-        [Route("api/Files/{id}")]
+        [Route("{id}")]
         public File GetFileById(int id)
         {
             return this.service.GetById(id);

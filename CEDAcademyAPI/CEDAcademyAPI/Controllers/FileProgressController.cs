@@ -9,6 +9,7 @@ using System.Web.Http;
 
 namespace CEDAcademyAPI.Controllers
 {
+    [RoutePrefix("api/FileProgress")]
     public class FileProgressController : ApiController
     {
         private IFileProgressService service;
@@ -18,56 +19,51 @@ namespace CEDAcademyAPI.Controllers
             this.service = service;
         }
         [HttpPost]
-        [Route("api/Progress/{id}")]
         public HttpResponseMessage AddFileProgress(FileProgress FileProgress)
         {
             service.Add(FileProgress);
             return Request.CreateResponse(HttpStatusCode.Created);
         }
-
         [HttpGet]
-        [Route("api/ProgressByUserId/{id}")]
+        [Route("ProgressByUserId/{UserId}")]
         public IHttpActionResult GetFileProgressByUserId(string UserId)
         {
             var FileProgress = service.GetFileProgressByUserId(UserId);
             return Ok(FileProgress);
         }
-
         [HttpPut]
-        [Route("api/PutProgress")]
         public IHttpActionResult UpdateFileProgress(FileProgress fp)
         {
             service.Update(fp);
             return StatusCode(HttpStatusCode.NoContent);
         }
         [HttpGet]
-        [Route("api/GetProgress/{id}")]
+        [Route("{FileProgressId}")]
         public FileProgress GetFileProgressById(int FileProgressId)
         {
             return service.GetById(FileProgressId);
         }
         [HttpGet]
-        [Route("api/FileTrack")]
+        [Route("FileTrack")]
         public IEnumerable<FileProgress> GetFileProgresses()
         {
             return service.GetFileProgresses();
         }
         [HttpGet]
-        [Route("api/UserPerVideo")]
+        [Route("UserPerVideo")]
         public void GetFilesViewsCount()
         {
             service.GetFilesViewsCount();
             
         }
-
         [HttpGet]
-        [Route("api/GetPourcentage/{idFile}/{idUser}")]
+        [Route("GetPourcentage/{idFile}/{idUser}")]
         public IEnumerable<float> GetPourcentageOfProgress(int idFile, string idUser)
         {
             return service.GetPourcentageOfProgress(idFile, idUser);
         }
         [HttpGet]
-        [Route("api/VueNumber")]
+        [Route("VueNumber")]
         public IHttpActionResult GetProgressNumber()
         {
             var query= service.GetProgressNumber();

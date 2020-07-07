@@ -5,6 +5,7 @@ using System.Web.Http;
 
 namespace CEDAcademyAPI.Controllers
 {
+    [RoutePrefix("api/department")]
     public class DepartmentController : ApiController
     {
         private IDepartmentService service;
@@ -14,35 +15,27 @@ namespace CEDAcademyAPI.Controllers
             this.service = service;
         }
         [HttpGet]
-        [Route("api/department")]
         public IEnumerable<Department> GetDepartments()
         {
             return service.GetAll();
         }
         [HttpGet]
-        [Route("api/department/{id}")]
-
+        [Route("{id}")]
         public Department GetDepartmentById(int id)
         {
             return service.GetById(id);
         }
         [HttpPost]
-        [Route("api/department/add")]
-
         public void add(Department d)
         {
             service.Add(d);
         }
         [HttpPut]
-        [Route("api/department/update")]
-
         public void update(Department d)
         {
             service.Update(d);
         }
         [HttpDelete]
-        [Route("api/department/delete")]
-
         public void delete(Department d)
         {
             service.Delete(d);

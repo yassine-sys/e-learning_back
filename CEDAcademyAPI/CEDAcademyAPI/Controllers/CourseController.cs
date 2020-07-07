@@ -10,6 +10,7 @@ using System.Web.Http;
 
 namespace CEDAcademyAPI.Controllers
 {
+    [RoutePrefix("api/course")]
     public class CourseController : ApiController
     {
         private readonly ICourseService service;
@@ -18,34 +19,32 @@ namespace CEDAcademyAPI.Controllers
             this.service = service;
         }
         [HttpGet]
-        [Route("api/Courses")]
         public IEnumerable<Course> GetCourses()
         {
             return service.GetAll();
         }
+
         [HttpGet()]
-        [Route("api/Course/{id}")]
-        public IHttpActionResult GetCourseById(int CourseId)
+        [Route("{courseId}")]
+        public IHttpActionResult GetCourseById(int courseId)
         {
-            var course = service.GetById(CourseId);
+            var course = service.GetById(courseId);
             return Ok(course);
         }
+
         [HttpPost]
-        [Route("api/Courses")]
         public IHttpActionResult AddCourse(Course c)
         {
             service.Add(c);
             return Ok(c);
         }
         [HttpPut]
-        [Route("api/Courses")]
         public IHttpActionResult UpdateCourse(Course c)
         {
             service.Update(c);
             return Ok(c);
         }
         [HttpDelete]
-        [Route("api/Courses")]
         public IHttpActionResult DeleteCourse(Course c)
         {
             service.Delete(c);
@@ -53,11 +52,11 @@ namespace CEDAcademyAPI.Controllers
         }
 
         [HttpGet]
-        [Route("api/CourseNumber")]
-        public IHttpActionResult GetCourseNumber()
+        [Route("count")]
+        public IHttpActionResult GetCoursesCount()
         {
-            var CourseNumber = service.GetCourseNumber();
-            return Ok(CourseNumber);
+            var count = service.GetCoursesCount();
+            return Ok(count);
         }
     }
 }
