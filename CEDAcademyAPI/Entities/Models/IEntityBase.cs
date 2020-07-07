@@ -10,9 +10,9 @@ namespace Entities.Models
     {
         int Id { get; set; }
         string CreatedBy { get; set; }
-        DateTime CreatedDate { get; set; }
+        DateTime? CreatedDate { get; set; }
         string LastModifiedBy { get; set; }
-        DateTime LastModifiedDate { get; set; }
-        Boolean IsActif { get; set; }
+        DateTime? LastModifiedDate { get; set; }
+        bool? IsActif { get; set; }
     }
 }
