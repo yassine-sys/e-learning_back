@@ -100,6 +100,10 @@
     <Compile Include="Migrations\202006301432528_init1.designer.cs">
       <DependentUpon>202006301432528_init1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202007081447012_var.cs" />
+    <Compile Include="Migrations\202007081447012_var.designer.cs">
+      <DependentUpon>202007081447012_var.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BusinessUnitRepository.cs" />
@@ -135,6 +139,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202006301432528_init1.resx">
       <DependentUpon>202006301432528_init1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007081447012_var.resx">
+      <DependentUpon>202007081447012_var.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

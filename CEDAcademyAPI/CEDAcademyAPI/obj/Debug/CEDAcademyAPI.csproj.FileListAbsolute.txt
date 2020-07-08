@@ -410,3 +410,5 @@ C:\Users\CED-TRAINER900\Desktop\Back\CedAcadamy\CEDAcademyAPI\CEDAcademyAPI\obj\
 C:\Users\CED-TRAINER900\Desktop\Back\CedAcadamy\CEDAcademyAPI\CEDAcademyAPI\obj\Debug\CEDAcademyAPI.csproj.CopyComplete
 C:\Users\CED-TRAINER900\Desktop\Back\CedAcadamy\CEDAcademyAPI\CEDAcademyAPI\obj\Debug\CEDAcademyAPI.dll
 C:\Users\CED-TRAINER900\Desktop\Back\CedAcadamy\CEDAcademyAPI\CEDAcademyAPI\obj\Debug\CEDAcademyAPI.pdb
+C:\Users\CED-TRAINER900\Desktop\Back\CedAcadamy\CEDAcademyAPI\CEDAcademyAPI\bin\AutoMapper.dll
+C:\Users\CED-TRAINER900\Desktop\Back\CedAcadamy\CEDAcademyAPI\CEDAcademyAPI\bin\AutoMapper.xml

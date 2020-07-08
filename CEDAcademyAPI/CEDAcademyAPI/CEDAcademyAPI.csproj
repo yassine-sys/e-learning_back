@@ -46,6 +46,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=10.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.10.0.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <HintPath>..\packages\Castle.Core.4.2.0\lib\net45\Castle.Core.dll</HintPath>
     </Reference>
@@ -261,8 +264,27 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="ModelsDTO\BusinessUnitDTO.cs" />
+    <Compile Include="ModelsDTO\CertificateDTO.cs" />
+    <Compile Include="ModelsDTO\ChapterDTO.cs" />
+    <Compile Include="ModelsDTO\CourseDTO.cs" />
+    <Compile Include="ModelsDTO\DepartmentDTO.cs" />
+    <Compile Include="ModelsDTO\ExamDTO.cs" />
+    <Compile Include="ModelsDTO\ExamResultDTO.cs" />
+    <Compile Include="ModelsDTO\FileDTO.cs" />
+    <Compile Include="ModelsDTO\FileProgressDTO.cs" />
+    <Compile Include="ModelsDTO\OptionDTO.cs" />
+    <Compile Include="ModelsDTO\ParagraphDTO.cs" />
+    <Compile Include="ModelsDTO\ParagraphProgressDTO.cs" />
+    <Compile Include="ModelsDTO\QuestionDTO.cs" />
+    <Compile Include="ModelsDTO\QuizDTO.cs" />
+    <Compile Include="ModelsDTO\QuizResultDTO.cs" />
+    <Compile Include="ModelsDTO\RatingDTO.cs" />
+    <Compile Include="ModelsDTO\SectionDTO.cs" />
+    <Compile Include="ModelsDTO\SubscriptionDTO.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AutoMapperConfigurator.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
