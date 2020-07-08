@@ -412,3 +412,6 @@ C:\Users\CED-TRAINER900\Desktop\Back\CedAcadamy\CEDAcademyAPI\CEDAcademyAPI\obj\
 C:\Users\CED-TRAINER900\Desktop\Back\CedAcadamy\CEDAcademyAPI\CEDAcademyAPI\obj\Debug\CEDAcademyAPI.pdb
 C:\Users\CED-TRAINER900\Desktop\Back\CedAcadamy\CEDAcademyAPI\CEDAcademyAPI\bin\AutoMapper.dll
 C:\Users\CED-TRAINER900\Desktop\Back\CedAcadamy\CEDAcademyAPI\CEDAcademyAPI\bin\AutoMapper.xml
+C:\Users\CED201\Desktop\PFE_versionfinale\CedAcadamy\CEDAcademyAPI\CEDAcademyAPI\obj\Debug\CEDAcademyAPI.csprojAssemblyReference.cache
+C:\Users\CED201\Desktop\PFE_versionfinale\CedAcadamy\CEDAcademyAPI\CEDAcademyAPI\obj\Debug\CEDAcademyAPI.dll
+C:\Users\CED201\Desktop\PFE_versionfinale\CedAcadamy\CEDAcademyAPI\CEDAcademyAPI\obj\Debug\CEDAcademyAPI.pdb
