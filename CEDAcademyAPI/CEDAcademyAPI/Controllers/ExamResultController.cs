@@ -1,5 +1,7 @@
-﻿using Business.IServices;
+﻿using AutoMapper;
+using Business.IServices;
 using Entities.Models;
+using Entities.ModelsDTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,37 +15,48 @@ namespace CEDAcademyAPI.Controllers
     public class ExamResultController : ApiController
     {
         private IExamResultService service;
+        private readonly IMapper mapper;
 
-        public ExamResultController(IExamResultService service)
+
+        public ExamResultController(IExamResultService service,IMapper mapper)
         {
             this.service = service;
+            this.mapper = mapper;
         }
         [HttpGet]
-        public IEnumerable<ExamResult> GetExamResults()
+        public IEnumerable<ExamResultDTO> GetExamResults()
         {
-            return service.GetAll();
+            var entity = service.GetAll();
+            return mapper.Map<IEnumerable<ExamResultDTO>>(entity);
         }
         [HttpGet]
         [Route("{id}")]
-        public ExamResult GetExamResultById(int id)
+        public ExamResultDTO GetExamResultById(int id)
         {
-            return service.GetById(id);
+            var entity = service.GetById(id);
+            return mapper.Map<ExamResultDTO>(entity);
+
         }
         [HttpGet]
         [Route("ResultByExam/{ExamId}")]
-        public IEnumerable<Exam> GetExamResultsByExamID(int ExamId)
+        public IEnumerable<ExamDTO> GetExamResultsByExamID(int ExamId)
         {
-            return service.GetExamResultsByExamID(ExamId);
+            var entity = service.GetExamResultsByExamID(ExamId);
+            return mapper.Map<IEnumerable<ExamDTO>>(entity);
         }
         [HttpPost]
         public void add(ExamResult e)
         {
-            service.Add(e);
+            var entity = this.mapper.Map<ExamResult>(e);
+
+            service.Add(entity);
         }
         [HttpPut]
         public void update(ExamResult e)
         {
-            service.Update(e);
+            var entity = this.mapper.Map<ExamResult>(e);
+
+            service.Update(entity);
         }
         [HttpDelete]
         public void delete(ExamResult e)

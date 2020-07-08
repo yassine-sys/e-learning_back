@@ -1,5 +1,7 @@
-﻿using Business.IServices;
+﻿using AutoMapper;
+using Business.IServices;
 using Entities.Models;
+using Entities.ModelsDTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,38 +15,50 @@ namespace CEDAcademyAPI.Controllers
     public class ExamController : ApiController
     {
         private IExamService service;
+        private readonly IMapper mapper;
 
-        public ExamController(IExamService service)
+        public ExamController(IExamService service, IMapper mapper)
         {
             this.service = service;
+            this.mapper = mapper;
         }
         [HttpGet]
-        public IEnumerable<Exam> GetExams()
+        public IEnumerable<ExamDTO> GetExams()
         {
-            return service.GetAll();
+            var entity= service.GetAll();
+            return mapper.Map<IEnumerable<ExamDTO>>(entity);
         }
         [HttpGet]
         [Route("{id}")]
-        public Exam GetExamById(int id)
+        public ExamDTO GetExamById(int id)
         {
-            return service.GetById(id);
-            
+            var entity = service.GetById(id);
+            return mapper.Map<ExamDTO>(entity);
+
+
         }
         [HttpGet]
         [Route("QuestionByExam/{ExamId}")]
-        public IEnumerable<Question> GetQuestionByExamID(int ExamId)
+        public IEnumerable<QuestionDTO> GetQuestionByExamID(int ExamId)
         {
-            return service.GetQuestionByExamID(ExamId);
+            var entity = service.GetQuestionByExamID(ExamId);
+            return mapper.Map<IEnumerable<QuestionDTO>>(entity);
+
+
         }
         [HttpPost]
         public void add(Exam e)
         {
-            service.Add(e);
+            var entity = this.mapper.Map<Exam>(e);
+
+            service.Add(entity);
         }
         [HttpPut]
         public void update(Exam e)
         {
-            service.Update(e);
+            var entity = this.mapper.Map<Exam>(e);
+
+            service.Update(entity);
         }
         [HttpDelete]
         public void delete(Exam e)
