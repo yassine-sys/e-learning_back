@@ -15,5 +15,6 @@ namespace Entities.ModelsDTO
         public string OverViewVideo { get; set; }
         public ICollection<Chapter> chapters { get; set; }
         public ICollection<Rating> Ratings { get; set; }
+        public Department Department { get; set; }
     }
 }

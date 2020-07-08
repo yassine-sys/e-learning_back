@@ -1,5 +1,7 @@
-﻿using Business.IServices;
+﻿using AutoMapper;
+using Business.IServices;
 using Entities.Models;
+using Entities.ModelsDTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,11 +14,13 @@ namespace CEDAcademyAPI.Controllers
     [RoutePrefix("api/File")]
     public class FileController : ApiController
     {
-        private IFileService service;
+        private readonly IFileService service;
+        private readonly IMapper mapper;
 
-        public FileController(IFileService service)
+        public FileController(IFileService service, IMapper mapper)
         {
             this.service = service;
+            this.mapper = mapper;
         }
 
         [HttpPost]
@@ -40,15 +44,17 @@ namespace CEDAcademyAPI.Controllers
             return service.GetVideoFileName(id);
         }
         [HttpGet]
-        public IEnumerable<File> GetFiles()
+        public IEnumerable<FileDTO> GetFiles()
         {
-            return this.service.GetAll();
+            var f = service.GetAll();
+            return mapper.Map<IEnumerable<FileDTO>>(f);
         }
         [HttpGet]
         [Route("{id}")]
-        public File GetFileById(int id)
+        public FileDTO GetFileById(int id)
         {
-            return this.service.GetById(id);
+            var file = service.GetById(id);
+            return mapper.Map<FileDTO>(file);
         }
     }
 }

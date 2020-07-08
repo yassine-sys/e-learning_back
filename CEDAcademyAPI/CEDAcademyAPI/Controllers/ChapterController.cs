@@ -1,5 +1,7 @@
-﻿using Business.IServices;
+﻿using AutoMapper;
+using Business.IServices;
 using Entities.Models;
+using Entities.ModelsDTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,34 +15,36 @@ namespace CEDAcademyAPI.Controllers
     public class ChapterController : ApiController
     {
         private readonly IChapterService service;
-
-        public ChapterController(IChapterService service)
+        private readonly IMapper mapper;
+        public ChapterController(IChapterService service, IMapper mapper)
         {
             this.service = service;
+            this.mapper = mapper;
         }
         [HttpGet]
-        public IEnumerable<Chapter> GetChapters()
+        public IEnumerable<ChapterDTO> GetChapters()
         {
-            return this.service.GetAll();
+            var ch = service.GetAll();
+            return mapper.Map<IEnumerable<ChapterDTO>>(ch);
         }
         [HttpGet]
         [Route("{ChapterId}")]
-        public Chapter GetChapterById(int ChapterId)
+        public ChapterDTO GetChapterById(int ChapterId)
         {
-            return service.GetById(ChapterId);
+            var ch = service.GetById(ChapterId);
+            return mapper.Map<ChapterDTO>(ch);
         }
         [HttpPost]
-        public HttpResponseMessage AddChapter(Chapter c)
+        public void AddChapter(ChapterDTO c)
         {
-            service.Add(c);
-            return Request.CreateResponse(HttpStatusCode.Created);
-
+            var ch = this.mapper.Map<Chapter>(c);
+            service.Add(ch);
         }
         [HttpPut]
-        public IHttpActionResult UpdateChapter(Chapter c)
+        public void UpdateChapter(Chapter c)
         {
-            service.Update(c);
-            return StatusCode(HttpStatusCode.NoContent);
+            var ch = this.mapper.Map<Chapter>(c);
+            service.Update(ch);
         }
         [HttpDelete]
         public IHttpActionResult DeleteChapter(Chapter c)
@@ -50,17 +54,17 @@ namespace CEDAcademyAPI.Controllers
         }
         [HttpGet]
         [Route("course/{CourseId}")]
-        public IHttpActionResult GetChapterbyCourseID(int CourseId)
+        public IEnumerable<ChapterDTO> GetChapterbyCourseID(int CourseId)
         {
             var Chapters = service.GetChapterbyCourseId(CourseId);
-            return Ok(Chapters);
+            return mapper.Map<IEnumerable<ChapterDTO>>(Chapters);
         }
         [HttpGet]
         [Route("Details/{CourseId}")]
-        public IHttpActionResult GetChapterDetailsByCourseID(int CourseId)
+        public IEnumerable<ChapterDTO> GetChapterDetailsByCourseID(int CourseId)
         {
             var ChaptersDetails = service.GetChapterDetailsByCourseID(CourseId);
-            return Ok(ChaptersDetails);
+            return mapper.Map<IEnumerable<ChapterDTO>>(ChaptersDetails);
         }
     }
 }
