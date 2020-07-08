@@ -1,5 +1,7 @@
-﻿using Business.IServices;
+﻿using AutoMapper;
+using Business.IServices;
 using Entities.Models;
+using Entities.ModelsDTO;
 using System.Collections.Generic;
 using System.Web.Http;
 
@@ -9,31 +11,40 @@ namespace CEDAcademyAPI.Controllers
     public class DepartmentController : ApiController
     {
         private IDepartmentService service;
+        private readonly IMapper mapper;
 
-        public DepartmentController(IDepartmentService service)
+
+        public DepartmentController(IDepartmentService service, IMapper mapper)
         {
             this.service = service;
+            this.mapper = mapper;
         }
         [HttpGet]
-        public IEnumerable<Department> GetDepartments()
+        public IEnumerable<DepartmentDTO> GetDepartments()
         {
-            return service.GetAll();
+            var entity = service.GetAll();
+            return mapper.Map<IEnumerable<DepartmentDTO>>(entity);
+
         }
         [HttpGet]
         [Route("{id}")]
-        public Department GetDepartmentById(int id)
+        public DepartmentDTO GetDepartmentById(int id)
         {
-            return service.GetById(id);
+            var entity = service.GetById(id);
+            return mapper.Map<DepartmentDTO>(entity);
         }
         [HttpPost]
-        public void add(Department d)
+        public void add(DepartmentDTO d)
         {
-            service.Add(d);
+            var entity = this.mapper.Map<Department>(d);
+            service.Add(entity);
         }
         [HttpPut]
-        public void update(Department d)
+        public void update(DepartmentDTO d)
         {
-            service.Update(d);
+            var entity = this.mapper.Map<Department>(d);
+
+            service.Update(entity);
         }
         [HttpDelete]
         public void delete(Department d)

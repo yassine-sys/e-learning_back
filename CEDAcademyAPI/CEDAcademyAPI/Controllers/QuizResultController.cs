@@ -1,5 +1,7 @@
-﻿using Business.IServices;
+﻿using AutoMapper;
+using Business.IServices;
 using Entities.Models;
+using Entities.ModelsDTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,38 +15,52 @@ namespace CEDAcademyAPI.Controllers
     public class QuizResultController : ApiController
     {
         private IQuizResultService service;
+        private readonly IMapper mapper;
 
-        public QuizResultController(IQuizResultService service)
+
+        public QuizResultController(IQuizResultService service, IMapper mapper)
         {
             this.service = service;
+            this.mapper = mapper;
         }
         [HttpGet]
-        public IEnumerable<QuizResult> GetQuizResults()
+        public IEnumerable<QuizResultDTO> GetQuizResults()
         {
-            return service.GetAll();
+            var entity = service.GetAll();
+            return mapper.Map<IEnumerable<QuizResultDTO>>(entity);
+
         }
         [HttpGet]
         [Route("{id}")]
 
-        public QuizResult GetQuizResultById(int id)
+        public QuizResultDTO GetQuizResultById(int id)
         {
-            return service.GetById(id);
+            var entity = service.GetById(id);
+            return mapper.Map<QuizResultDTO>(entity);
+
+
         }
         [HttpGet]
         [Route("quizresultbyquiz/{QuizId}")]
-        public IEnumerable<QuizResult> GetQuizResultsByQuizID(int QuizId)
+        public IEnumerable<QuizResultDTO> GetQuizResultsByQuizID(int QuizId)
         {
-            return service.GetQuizResultsByQuizID(QuizId);
+            var entity = service.GetQuizResultsByQuizID(QuizId);
+            return mapper.Map<IEnumerable<QuizResultDTO>>(entity);
+
         }
         [HttpPost]
-        public void add(QuizResult q)
+        public void add(QuizResultDTO q)
         {
-            service.Add(q);
+            var entity = this.mapper.Map<QuizResult>(q);
+
+            service.Add(entity);
         }
         [HttpPut]
-        public void update(QuizResult q)
+        public void update(QuizResultDTO q)
         {
-            service.Update(q);
+            var entity = this.mapper.Map<QuizResult>(q);
+
+            service.Update(entity);
         }
         [HttpDelete]
         public void delete(QuizResult q)
