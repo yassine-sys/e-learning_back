@@ -6,8 +6,10 @@ namespace CEDAcademyAPI.App_Start
     using System;
     using System.Web;
     using System.Web.Http;
+    using AutoMapper;
     using Business.IServices;
     using Business.Services;
+    using CEDAcademyAPI.Models;
     using DataAccess.Infrastructure;
     using DataAccess.IRepositories;
     using DataAccess.Repositories;
@@ -17,14 +19,14 @@ namespace CEDAcademyAPI.App_Start
     using Ninject.Web.Common;
     using Ninject.Web.Common.WebHost;
 
-    public static class NinjectWebCommon 
+    public static class NinjectWebCommon
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
 
         /// <summary>
         /// Starts the application.
         /// </summary>
-        public static void Start() 
+        public static void Start()
         {
             DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
             DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
@@ -107,6 +109,12 @@ namespace CEDAcademyAPI.App_Start
             kernel.Bind<ISubscriptionService>().To<SubscriptionService>().InRequestScope();
 
             kernel.Bind<CEDAcademyDbContext>().To<CEDAcademyDbContext>().InRequestScope();
+
+            kernel.Bind<IMapper>().ToMethod(context =>
+            {
+                var mapperConfig = new MapperConfiguration(config => { AutoMapperConfigurator.CreateMaps(config); });
+                return mapperConfig.CreateMapper();
+            });
         }
     }
 }

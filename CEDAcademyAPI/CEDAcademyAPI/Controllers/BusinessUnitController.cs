@@ -1,10 +1,8 @@
-﻿using Business.IServices;
+﻿using AutoMapper;
+using Business.IServices;
 using Entities.Models;
-using System;
+using Entities.ModelsDTO;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace CEDAcademyAPI.Controllers
@@ -13,27 +11,37 @@ namespace CEDAcademyAPI.Controllers
     public class BusinessUnitController : ApiController
     {
         private IBusinessUnitService service;
+        private readonly IMapper mapper;
 
-        public BusinessUnitController(IBusinessUnitService service)
+        public BusinessUnitController(IBusinessUnitService service, IMapper mapper)
         {
             this.service = service;
+            this.mapper = mapper;
         }
+
         [HttpGet]
-        public IEnumerable<BusinessUnit> GetBusinessUnits()
+        public IEnumerable<BusinessUnitDTO> GetBusinessUnits()
         {
-            return service.GetAll();
+            var x = service.GetAll();
+            return mapper.Map<IEnumerable<BusinessUnitDTO>>(x);
+            // return service.GetAll();
         }
+
         [HttpGet]
         [Route("{id}")]
         public BusinessUnit GetBusinessUnitById(int id)
         {
+
             return service.GetById(id);
+
         }
         [HttpPost]
-        public void add(BusinessUnit b)
+        public void add(BusinessUnitDTO b)
         {
-            service.Add(b);
+            var entity = this.mapper.Map<BusinessUnit>(b);
+            service.Add(entity);
         }
+
         [HttpPut]
 
         public void update(BusinessUnit b)
