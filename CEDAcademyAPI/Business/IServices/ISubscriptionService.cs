@@ -11,9 +11,9 @@ namespace Business.IServices
 {
     public interface ISubscriptionService : IServiceBase<Subscription>
     {
-        IQueryable<Subscription> GetSubscriptionbyUserId(string UserId);
-        IQueryable<Subscription> GetSubscriptionbyCourseId(string CourseId);
-        IQueryable<Subscription> GetSubscriptionbyCourseIdUserId(string CourseId, string UserId);
+        IEnumerable<Subscription> GetSubscriptionbyUserId(string UserId);
+        IEnumerable<Subscription> GetSubscriptionbyCourseId(string CourseId);
+        IEnumerable<Subscription> GetSubscriptionbyCourseIdUserId(string CourseId, string UserId);
         int CountUsersbyCourseID(string CourseID);
     }
 }

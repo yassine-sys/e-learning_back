@@ -1,6 +1,8 @@
-﻿using Business.IServices;
+﻿using AutoMapper;
+using Business.IServices;
 using Business.Services;
 using Entities.Models;
+using Entities.ModelsDTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,35 +16,38 @@ namespace CEDAcademyAPI.Controllers
     public class CourseController : ApiController
     {
         private readonly ICourseService service;
-        public CourseController(ICourseService service)
+        private readonly IMapper mapper;
+        public CourseController(ICourseService service, IMapper mapper)
         {
             this.service = service;
+            this.mapper = mapper;
         }
         [HttpGet]
-        public IEnumerable<Course> GetCourses()
+        public IEnumerable<CourseDTO> GetCourses()
         {
-            return service.GetAll();
+            var x = service.GetAll();
+            return mapper.Map<IEnumerable<CourseDTO>>(x);
         }
 
         [HttpGet()]
         [Route("{courseId}")]
-        public IHttpActionResult GetCourseById(int courseId)
+        public CourseDTO GetCourseById(int courseId)
         {
             var course = service.GetById(courseId);
-            return Ok(course);
+            return mapper.Map<CourseDTO>(course);
         }
 
         [HttpPost]
-        public IHttpActionResult AddCourse(Course c)
+        public void AddCourse(CourseDTO c)
         {
-            service.Add(c);
-            return Ok(c);
+            var course = this.mapper.Map<Course>(c);
+            service.Add(course);
         }
         [HttpPut]
-        public IHttpActionResult UpdateCourse(Course c)
+        public void UpdateCourse(CourseDTO c)
         {
-            service.Update(c);
-            return Ok(c);
+            var course = this.mapper.Map<Course>(c);
+            service.Update(course);
         }
         [HttpDelete]
         public IHttpActionResult DeleteCourse(Course c)
