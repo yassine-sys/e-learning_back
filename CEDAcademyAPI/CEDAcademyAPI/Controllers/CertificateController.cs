@@ -1,5 +1,7 @@
-﻿using Business.IServices;
+﻿using AutoMapper;
+using Business.IServices;
 using Entities.Models;
+using Entities.ModelsDTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,31 +16,43 @@ namespace CEDAcademyAPI.Controllers
     {
 
         private ICertificateService service;
+        private readonly IMapper mapper;
 
-        public CertificateController(ICertificateService service)
+
+        public CertificateController(ICertificateService service, IMapper mapper)
         {
             this.service = service;
+            this.mapper = mapper;
         }
         [HttpGet]
-        public IEnumerable<Certificate> GetCertificates()
+        public IEnumerable<CertificateDTO> GetCertificates()
         {
-            return service.GetAll();
+            var entity= service.GetAll();
+            return mapper.Map<IEnumerable<CertificateDTO>>(entity);
         }
         [HttpGet]
         [Route("{id}")]
-        public Certificate GetCertificatesById(int id)
+        public CertificateDTO GetCertificatesById(int id)
         {
-            return service.GetById(id);
+            var entity = service.GetById(id);
+            return mapper.Map<CertificateDTO>(entity);
+
+
+
         }
         [HttpPost]
-        public void add(Certificate c)
+        public void add(CertificateDTO c)
         {
-            service.Add(c);
+            var entity = this.mapper.Map<Certificate>(c);
+
+            service.Add(entity);
         }
         [HttpPut]
-        public void update(Certificate c)
+        public void update(CertificateDTO c)
         {
-            service.Update(c);
+            var entity = this.mapper.Map<Certificate>(c);
+
+            service.Update(entity);
         }
         [HttpDelete]
         public void delete(Certificate c)

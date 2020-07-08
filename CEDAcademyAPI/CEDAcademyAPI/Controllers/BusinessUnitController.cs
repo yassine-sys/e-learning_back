@@ -29,10 +29,11 @@ namespace CEDAcademyAPI.Controllers
 
         [HttpGet]
         [Route("{id}")]
-        public BusinessUnit GetBusinessUnitById(int id)
+        public BusinessUnitDTO GetBusinessUnitById(int id)
         {
 
-            return service.GetById(id);
+            var x= service.GetById(id);
+            return mapper.Map <BusinessUnitDTO> (x);
 
         }
         [HttpPost]
@@ -44,9 +45,10 @@ namespace CEDAcademyAPI.Controllers
 
         [HttpPut]
 
-        public void update(BusinessUnit b)
+        public void update(BusinessUnitDTO b)
         {
-            service.Update(b);
+            var entity = this.mapper.Map<BusinessUnit>(b);
+            service.Update(entity);
         }
         [HttpDelete]
         public void delete(BusinessUnit b)

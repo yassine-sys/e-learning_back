@@ -1,5 +1,7 @@
-﻿using Business.IServices;
+﻿using AutoMapper;
+using Business.IServices;
 using Entities.Models;
+using Entities.ModelsDTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,38 +15,50 @@ namespace CEDAcademyAPI.Controllers
     public class QuizController : ApiController
     {
         private IQuizService service;
+        private readonly IMapper mapper;
 
-        public QuizController(IQuizService service)
+
+        public QuizController(IQuizService service, IMapper mapper)
         {
             this.service = service;
+            this.mapper = mapper;
         }
         [HttpGet]
-        public IEnumerable<Quiz> GetQuizzes()
+        public IEnumerable<QuizDTO> GetQuizzes()
         {
-            return service.GetAll();
+            var entity = service.GetAll();
+            return mapper.Map<IEnumerable<QuizDTO>>(entity);
         }
         [HttpGet]
         [Route("{id}")]
-        public Quiz GetQuizById(int id)
+        public QuizDTO GetQuizById(int id)
         {
-            return service.GetById(id);
+            var entity = service.GetById(id);
+            return mapper.Map<QuizDTO>(entity);
+
         }
         [HttpGet]
         [Route("questionbyquiz/{QuizId}")]
 
-        public IEnumerable<Question> GetQuestionByQuizID(int QuizId)
+        public IEnumerable<QuestionDTO> GetQuestionByQuizID(int QuizId)
         {
-            return service.GetQuestionByQuizID(QuizId);
+            var entity = service.GetQuestionByQuizID(QuizId);
+            return mapper.Map<IEnumerable<QuestionDTO>>(entity);
+
         }
         [HttpPost]
-        public void add(Quiz q)
+        public void add(QuizDTO q)
         {
-            service.Add(q);
+            var entity = this.mapper.Map<Quiz>(q);
+
+            service.Add(entity);
         }
         [HttpPut]
-        public void update(Quiz q)
+        public void update(QuizDTO q)
         {
-            service.Update(q);
+            var entity = this.mapper.Map<Quiz>(q);
+
+            service.Update(entity);
         }
         [HttpDelete]
         public void delete(Quiz q)

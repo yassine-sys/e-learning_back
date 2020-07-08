@@ -1,5 +1,7 @@
-﻿using Business.IServices;
+﻿using AutoMapper;
+using Business.IServices;
 using Entities.Models;
+using Entities.ModelsDTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,37 +15,50 @@ namespace CEDAcademyAPI.Controllers
     public class OptionController : ApiController
     {
         private IOptionService service;
+        private readonly IMapper mapper;
 
-        public OptionController(IOptionService service)
+        public OptionController(IOptionService service, IMapper mapper)
         {
             this.service = service;
+            this.mapper = mapper;
         }
         [HttpGet]
-        public IEnumerable<Option> GetOptions()
+        public IEnumerable<OptionDTO> GetOptions()
         {
-            return service.GetAll();
+            var entity = service.GetAll();
+            return mapper.Map<IEnumerable<OptionDTO>>(entity);
         }
         [HttpGet]
         [Route("{id}")]
-        public Option GetOptionById(int id)
+        public OptionDTO GetOptionById(int id)
         {
-            return service.GetById(id);
+            var entity = service.GetById(id);
+            return mapper.Map<OptionDTO>(entity);
+
+
         }
         [HttpGet]
         [Route("OptionByQuestion/{QuesId}")]
-        public IEnumerable<Option> GetOptionsByQuestionId(int QuesId)
+        public IEnumerable<OptionDTO> GetOptionsByQuestionId(int QuesId)
         {
-            return service.GetOptionsByQuestionId(QuesId);
+            var entity = service.GetOptionsByQuestionId(QuesId);
+            return mapper.Map<IEnumerable<OptionDTO>>(entity);
+
+
         }
         [HttpPost]
-        public void add(Option o)
+        public void add(OptionDTO o)
         {
-            service.Add(o);
+            var entity = this.mapper.Map<Option>(o);
+
+            service.Add(entity);
         }
         [HttpPut]
-        public void update(Option o)
+        public void update(OptionDTO o)
         {
-            service.Update(o);
+            var entity = this.mapper.Map<Option>(o);
+
+            service.Update(entity);
         }
         [HttpDelete]
         public void delete(Option o)
