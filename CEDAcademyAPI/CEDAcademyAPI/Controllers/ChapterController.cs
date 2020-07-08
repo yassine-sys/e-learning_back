@@ -9,6 +9,7 @@ using System.Web.Http;
 
 namespace CEDAcademyAPI.Controllers
 {
+    [RoutePrefix("api/chapter")]
     public class ChapterController : ApiController
     {
         private readonly IChapterService service;
@@ -18,19 +19,17 @@ namespace CEDAcademyAPI.Controllers
             this.service = service;
         }
         [HttpGet]
-        [Route("api/Chapters")]
         public IEnumerable<Chapter> GetChapters()
         {
             return this.service.GetAll();
         }
         [HttpGet]
-        [Route("api/Chapters/{id}")]
+        [Route("{ChapterId}")]
         public Chapter GetChapterById(int ChapterId)
         {
             return service.GetById(ChapterId);
         }
         [HttpPost]
-        [Route("api/Chapters")]
         public HttpResponseMessage AddChapter(Chapter c)
         {
             service.Add(c);
@@ -38,28 +37,26 @@ namespace CEDAcademyAPI.Controllers
 
         }
         [HttpPut]
-        [Route("api/Chapters")]
         public IHttpActionResult UpdateChapter(Chapter c)
         {
             service.Update(c);
             return StatusCode(HttpStatusCode.NoContent);
         }
         [HttpDelete]
-        [Route("api/Chapters")]
         public IHttpActionResult DeleteChapter(Chapter c)
         {
             service.Delete(c);
             return Ok(c);
         }
         [HttpGet]
-        [Route("api/Chapter/Course/{id}")]
+        [Route("course/{CourseId}")]
         public IHttpActionResult GetChapterbyCourseID(int CourseId)
         {
             var Chapters = service.GetChapterbyCourseId(CourseId);
             return Ok(Chapters);
         }
         [HttpGet]
-        [Route("api/Chapters/Course/{id}")]
+        [Route("Details/{CourseId}")]
         public IHttpActionResult GetChapterDetailsByCourseID(int CourseId)
         {
             var ChaptersDetails = service.GetChapterDetailsByCourseID(CourseId);

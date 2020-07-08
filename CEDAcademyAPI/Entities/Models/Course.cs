@@ -30,10 +30,10 @@ namespace Entities.Models
         public ICollection<Chapter> chapters { get; set; }
         public ICollection<Rating> Ratings { get; set; }
         public string CreatedBy { get; set; }
-        public DateTime CreatedDate { get; set; }
+        public DateTime? CreatedDate { get; set; }
         public string LastModifiedBy { get; set; }
-        public DateTime LastModifiedDate { get; set; }
-        public Boolean IsActif { get; set; }
+        public DateTime? LastModifiedDate { get; set; }
+        public bool? IsActif { get; set; }
 
     }
 }

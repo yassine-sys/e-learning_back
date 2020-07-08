@@ -9,6 +9,7 @@ using System.Web.Http;
 
 namespace CEDAcademyAPI.Controllers
 {
+    [RoutePrefix("api/rating")]
     public class RatingController : ApiController
     {
         private IRatingService service;
@@ -19,7 +20,7 @@ namespace CEDAcademyAPI.Controllers
         }
 
         [HttpGet]
-        [Route("api/GetCurrentRating/{idCourse}/{idUser}")]
+        [Route("GetCurrentRating/{CourseId}/{IdUser}")]
         public IHttpActionResult GetCourseScoreByUserId(int CourseId, string IdUser)
         {
             var query = service.GetCourseScoreByUserId(CourseId, IdUser);
@@ -33,7 +34,7 @@ namespace CEDAcademyAPI.Controllers
             }
         }
         [HttpGet]
-        [Route("api/RatingByUserId/{idCourse}/{idUser}")]
+        [Route("RatingByUserId/{CourseId}/{IdUser}")]
         public IHttpActionResult GetCourseRatingByUserId(int CourseId, string IdUser)
         {
             var query = service.GetCourseRatingByUserId(CourseId, IdUser);
@@ -47,7 +48,7 @@ namespace CEDAcademyAPI.Controllers
             }
         }
         [HttpGet]
-        [Route("api/RatingAvg/{idCourse}")]
+        [Route("Avg/{CourseId}")]
         public IHttpActionResult GetCourseRatingAvg(int CourseId)
         {
             var query = service.GetCourseRatingAvg(CourseId);
@@ -61,7 +62,7 @@ namespace CEDAcademyAPI.Controllers
             }
         }
         [HttpGet]
-        [Route("api/RatingCourseOrder")]
+        [Route("RatingCourseOrder")]
         public IHttpActionResult GetCourseTitleByRatingOrder()
         {
             var query = service.GetCourseTitleByRatingOrder();
@@ -75,7 +76,7 @@ namespace CEDAcademyAPI.Controllers
             }
         }
         [HttpGet]
-        [Route("api/RatingSommeOrder")]
+        [Route("RatingSommeOrder")]
         public IHttpActionResult GetRatingSommeOrder()
         {
             var query = service.RatingSommeOrder();
@@ -89,7 +90,6 @@ namespace CEDAcademyAPI.Controllers
             }
         }
         [HttpPost]
-        [Route("api/AddRating/{id}")]
         public HttpResponseMessage AddRating(Rating rating)
         {
             service.Add(rating);
@@ -97,7 +97,6 @@ namespace CEDAcademyAPI.Controllers
         }
 
         [HttpPut]
-        [Route("api/PutRating")]
         public IHttpActionResult UpdateRating(Rating rating)
         {
             service.Update(rating);
