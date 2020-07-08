@@ -1,5 +1,7 @@
-﻿using Business.IServices;
+﻿using AutoMapper;
+using Business.IServices;
 using Entities.Models;
+using Entities.ModelsDTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,30 +14,31 @@ namespace CEDAcademyAPI.Controllers
     [RoutePrefix("api/section")]
     public class SectionController : ApiController
     {
-        private ISectionService service;
-
-        public SectionController(ISectionService service)
+        private readonly ISectionService service;
+        private readonly IMapper mapper;
+        public SectionController(ISectionService service, IMapper mapper)
         {
             this.service = service;
+            this.mapper = mapper;
         }
         [HttpGet]
         [Route("chapter/{ChapterId}")]
-        public IHttpActionResult SectionbyChapterID(int ChapterId)
+        public IEnumerable<SectionDTO> SectionbyChapterID(int ChapterId)
         {
             var section = service.GetSectionbyChapterId(ChapterId);
-            return Ok(section);
+            return mapper.Map<IEnumerable<SectionDTO>>(section);
         }
         [HttpPost]
-        public HttpResponseMessage AddSection(Section section)
+        public void AddSection(SectionDTO section)
         {
-            service.Add(section);
-            return Request.CreateResponse(HttpStatusCode.Created);
+            var s = this.mapper.Map<Section>(section);
+            service.Add(s);
         }
         [HttpPut]
-        public IHttpActionResult UpdateSection(Section section)
+        public void UpdateSection(Section section)
         {
-            service.Update(section);
-            return StatusCode(HttpStatusCode.NoContent);
+            var s = this.mapper.Map<Section>(section);
+            service.Update(s);
         }
         [HttpDelete]
         public IHttpActionResult DeleteSection(Section section)

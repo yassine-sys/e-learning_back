@@ -1,5 +1,7 @@
-﻿using Business.IServices;
+﻿using AutoMapper;
+using Business.IServices;
 using Entities.Models;
+using Entities.ModelsDTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,50 +14,53 @@ namespace CEDAcademyAPI.Controllers
     [RoutePrefix("api/subscription")]
     public class SubscriptionController : ApiController
     {
-        private ISubscriptionService service;
+        private readonly ISubscriptionService service;
+        private readonly IMapper mapper;
 
-        public SubscriptionController(ISubscriptionService service)
+        public SubscriptionController(ISubscriptionService service, IMapper mapper)
         {
             this.service = service;
+            this.mapper = mapper;
         }
         [HttpGet]
-        public IEnumerable<Subscription> GetSubscriptions()
+        public IEnumerable<SubscriptionDTO> GetSubscriptions()
         {
-            return service.GetAll();
+            var x = service.GetAll();
+            return mapper.Map<IEnumerable<SubscriptionDTO>>(x);
         }
         [HttpGet]
         [Route("{IdSubscription}")]
-        public IHttpActionResult GetSubscription(int IdSubscription)
+        public SubscriptionDTO GetSubscription(int IdSubscription)
         {
             var subscription = service.GetById(IdSubscription);
-            return Ok(subscription);
+            return mapper.Map<SubscriptionDTO>(subscription);
         }
         [HttpPut]
-        public IHttpActionResult UpdateSubscription(Subscription subscription)
+        public void UpdateSubscription(SubscriptionDTO subscription)
         {
-            service.Update(subscription);
-            return StatusCode(HttpStatusCode.NoContent);
+            var s = this.mapper.Map<Subscription>(subscription);
+            service.Update(s);
         }
         [HttpGet]
         [Route("{CourseId}/{UserId}")]
-        public IHttpActionResult SubscriptionByCourseIdUserId(string CourseId, string UserId)
+        public IEnumerable<SubscriptionDTO> SubscriptionByCourseIdUserId(string CourseId, string UserId)
         {
             var subscription = service.GetSubscriptionbyCourseIdUserId(CourseId,UserId);
-            return Ok(subscription);
+            return mapper.Map<IEnumerable<SubscriptionDTO>>(subscription);
         }
         [HttpGet]
         [Route("{UserId}")]
-        public IHttpActionResult SubscriptionbyUserId(string UserId)
+        public IEnumerable<SubscriptionDTO> SubscriptionbyUserId(string UserId)
         {
             var subscription = service.GetSubscriptionbyUserId(UserId);
-            return Ok(subscription);
+            return mapper.Map<IEnumerable<SubscriptionDTO>>(subscription);
         }
         [HttpGet]
         [Route("course/{CourseId}")]
-        public IHttpActionResult SubscriptionbyCourseID(string CourseId)
+        public IEnumerable<SubscriptionDTO> SubscriptionbyCourseID(string CourseId)
         {
             var subscription = service.GetSubscriptionbyCourseId(CourseId);
-            return Ok(subscription);
+            return mapper.Map<IEnumerable<SubscriptionDTO>>(subscription);
         }
         [HttpGet]
         [Route("Count/{UserId}")]
@@ -65,10 +70,10 @@ namespace CEDAcademyAPI.Controllers
             return Ok(NbreUser);
         }
         [HttpPost]
-        public HttpResponseMessage AddSubscription(Subscription subscription)
+        public void AddSubscription(Subscription subscription)
         {
-            service.Add(subscription);
-            return Request.CreateResponse(HttpStatusCode.Created);
+            var s = this.mapper.Map<Subscription>(subscription);
+            service.Add(s);
         }
         [HttpDelete]
         public IHttpActionResult DeleteSubscription(Subscription subscription)
