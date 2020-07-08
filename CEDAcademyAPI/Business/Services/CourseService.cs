@@ -20,7 +20,7 @@ namespace Business.Services
         {
             this.CourseRepository = CourseRepository;
         }
-       public int GetCourseNumber()
+       public int GetCoursesCount()
         {
             return CourseRepository.GetAll().Count();
         }                

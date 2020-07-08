@@ -18,10 +18,10 @@ namespace Entities.Models
         public Question Question { get; set; }
         //public string userId { get; set; }
         //public ApplicationUser User { get; set; }
-        public DateTime CreatedDate { get; set; }
+        public DateTime? CreatedDate { get; set; }
         public string LastModifiedBy { get; set; }
-        public DateTime LastModifiedDate { get; set; }
-        public Boolean IsActif { get; set; }
+        public DateTime? LastModifiedDate { get; set; }
+        public bool? IsActif { get; set; }
         
     }
 }

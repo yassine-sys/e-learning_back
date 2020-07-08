@@ -1,55 +1,60 @@
-﻿using Business.IServices;
+﻿using AutoMapper;
+using Business.IServices;
 using Entities.Models;
-using System;
+using Entities.ModelsDTO;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace CEDAcademyAPI.Controllers
 {
+    [RoutePrefix("api/businessUnit")]
     public class BusinessUnitController : ApiController
     {
         private IBusinessUnitService service;
+        private readonly IMapper mapper;
 
-        public BusinessUnitController(IBusinessUnitService service)
+        public BusinessUnitController(IBusinessUnitService service, IMapper mapper)
         {
             this.service = service;
+            this.mapper = mapper;
         }
+
         [HttpGet]
-        [Route("api/get_business_unit")]
-        public IEnumerable<BusinessUnit> GetBusinessUnits()
+        public IEnumerable<BusinessUnitDTO> GetBusinessUnits()
         {
-            return service.GetAll();
+            var x = service.GetAll();
+            return mapper.Map<IEnumerable<BusinessUnitDTO>>(x);
+            // return service.GetAll();
         }
+
         [HttpGet]
-        [Route("api/get_business_unit/{id}")]
+        [Route("{id}")]
         public BusinessUnit GetBusinessUnitById(int id)
         {
+
             return service.GetById(id);
+
         }
         [HttpPost]
-        [Route("api/add_business_unit")]
-        public void add(BusinessUnit b)
+        public void add(BusinessUnitDTO b)
         {
-            service.Add(b);
+            var entity = this.mapper.Map<BusinessUnit>(b);
+            service.Add(entity);
         }
+
         [HttpPut]
-        [Route("api/update_business_unit")]
 
         public void update(BusinessUnit b)
         {
             service.Update(b);
         }
         [HttpDelete]
-        [Route("api/delete_business_unit")]
         public void delete(BusinessUnit b)
         {
             service.Delete(b);
         }
         [HttpGet]
-        [Route("api/get_department_by_business_unit/{id}")]
+        [Route("getDepartmentByBusinessUnit/{BusinessUnitId}")]
         public IEnumerable<Department> GetDepartmentByBusinessUnitId(int BusinessUnitId)
         {
             return service.GetDepartmentByBusinessUnitId(BusinessUnitId);
