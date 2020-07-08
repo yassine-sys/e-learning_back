@@ -1,5 +1,7 @@
-﻿using Business.IServices;
+﻿using AutoMapper;
+using Business.IServices;
 using Entities.Models;
+using Entities.ModelsDTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,11 +14,13 @@ namespace CEDAcademyAPI.Controllers
     [RoutePrefix("api/rating")]
     public class RatingController : ApiController
     {
-        private IRatingService service;
+        private readonly IRatingService service;
+        private readonly IMapper mapper;
 
-        public RatingController(IRatingService service)
+        public RatingController(IRatingService service, IMapper mapper)
         {
             this.service = service;
+            this.mapper = mapper;
         }
 
         [HttpGet]
@@ -35,7 +39,7 @@ namespace CEDAcademyAPI.Controllers
         }
         [HttpGet]
         [Route("RatingByUserId/{CourseId}/{IdUser}")]
-        public IHttpActionResult GetCourseRatingByUserId(int CourseId, string IdUser)
+        public IEnumerable<RatingDTO> GetCourseRatingByUserId(int CourseId, string IdUser)
         {
             var query = service.GetCourseRatingByUserId(CourseId, IdUser);
             if (query == null)
@@ -44,7 +48,7 @@ namespace CEDAcademyAPI.Controllers
             }
             else
             {
-                return Ok(query);
+                return mapper.Map<IEnumerable<RatingDTO>>(query);
             }
         }
         [HttpGet]
@@ -90,17 +94,17 @@ namespace CEDAcademyAPI.Controllers
             }
         }
         [HttpPost]
-        public HttpResponseMessage AddRating(Rating rating)
+        public void AddRating(RatingDTO rating)
         {
-            service.Add(rating);
-            return Request.CreateResponse(HttpStatusCode.Created);
+            var r = this.mapper.Map<Rating>(rating);
+            service.Add(r);
         }
 
         [HttpPut]
-        public IHttpActionResult UpdateRating(Rating rating)
+        public void UpdateRating(RatingDTO rating)
         {
-            service.Update(rating);
-            return StatusCode(HttpStatusCode.NoContent);
+            var r = this.mapper.Map<Rating>(rating);
+            service.Update(r);
         }
     }
 }

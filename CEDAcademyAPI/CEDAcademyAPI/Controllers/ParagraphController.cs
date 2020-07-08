@@ -1,5 +1,7 @@
-﻿using Business.IServices;
+﻿using AutoMapper;
+using Business.IServices;
 using Entities.Models;
+using Entities.ModelsDTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,41 +14,45 @@ namespace CEDAcademyAPI.Controllers
     [RoutePrefix("api/paragraph")]
     public class ParagraphController : ApiController
     {
-        private IParagraphService service;
+        private readonly IParagraphService service;
+        private readonly IMapper mapper;
 
-        public ParagraphController(IParagraphService service)
+        public ParagraphController(IParagraphService service, IMapper mapper)
         {
             this.service = service;
+            this.mapper = mapper;
         }
         [HttpGet]
         [Route("Section/{SectionId}")]
-        public IHttpActionResult ParagraphbySectionID(int SectionId)
-        {
+        public IEnumerable<ParagraphDTO> ParagraphbySectionID(int SectionId)
+        { 
             var paragraphs = service.GetParagraphbySectionID(SectionId);
-            return Ok(paragraphs);
+            return mapper.Map< IEnumerable<ParagraphDTO>>(paragraphs);
         }
         [HttpGet]
-        public IEnumerable<Paragraph> GetChapteParagraphs()
+        public IEnumerable<ParagraphDTO> GetChapteParagraphs()
         {
-            return service.GetAll();
+            var paragraphs = service.GetAll();
+            return mapper.Map<IEnumerable<ParagraphDTO>>(paragraphs);
         }
         [HttpGet]
         [Route("{ParagraphId}")]
-        public Paragraph GetParagraphById(int ParagraphId)
+        public ParagraphDTO GetParagraphById(int ParagraphId)
         {
-            return service.GetById(ParagraphId);
+            var p =service.GetById(ParagraphId);
+            return mapper.Map<ParagraphDTO>(p);
         }
         [HttpPost]
-        public HttpResponseMessage AddChapter(Paragraph p)
+        public void AddParagraph(ParagraphDTO p)
         {
-            service.Add(p);
-            return Request.CreateResponse(HttpStatusCode.Created);
+            var parag = this.mapper.Map<Paragraph>(p);
+            service.Add(parag);
         }
         [HttpPut]
-        public IHttpActionResult UpdateChapter(Paragraph p)
+        public void UpdateChapter(ParagraphDTO p)
         {
-            service.Update(p);
-            return StatusCode(HttpStatusCode.NoContent);
+            var parag = this.mapper.Map<Paragraph>(p);
+            service.Update(parag);
         }
         [HttpDelete]
         public IHttpActionResult DeleteParagraph(Paragraph p)
