@@ -63,5 +63,18 @@ namespace CEDAcademyAPI.Controllers
             var count = service.GetCoursesCount();
             return Ok(count);
         }
+
+        [HttpPost]
+        [Route("uploadimage")]
+        public void UploadFile()
+        {
+            service.UploadFile();
+        }
+        [HttpGet]
+        [Route("GetImage/{id}")]
+        public byte[] GetImage(int id)
+        {
+            return service.GetImage(id);
+        }
     }
 }

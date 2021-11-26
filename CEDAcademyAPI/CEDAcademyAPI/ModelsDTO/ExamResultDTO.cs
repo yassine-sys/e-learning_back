@@ -8,7 +8,10 @@ namespace Entities.ModelsDTO
 {
   public  class ExamResultDTO
     {
+        public int Id { get; set; }
         public int Score { get; set; }
         public string TimeSpent { get; set; }
+        public int ExamID { get; set; }
+
     }
 }

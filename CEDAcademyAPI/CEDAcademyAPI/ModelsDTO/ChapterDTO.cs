@@ -9,6 +9,8 @@ namespace Entities.ModelsDTO
 {
   public  class ChapterDTO
     {
+        public int Id { get; set; }
+
         public string title { get; set; }
         public string Description { get; set; }
         public Course Course { get; set; }

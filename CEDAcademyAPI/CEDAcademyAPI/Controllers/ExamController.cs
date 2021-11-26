@@ -15,11 +15,13 @@ namespace CEDAcademyAPI.Controllers
     public class ExamController : ApiController
     {
         private IExamService service;
+        private ICourseService CourseService;
         private readonly IMapper mapper;
 
-        public ExamController(IExamService service, IMapper mapper)
+        public ExamController(IExamService service, ICourseService CourseService, IMapper mapper)
         {
             this.service = service;
+            this.CourseService = CourseService;
             this.mapper = mapper;
         }
         [HttpGet]
@@ -36,6 +38,15 @@ namespace CEDAcademyAPI.Controllers
             return mapper.Map<ExamDTO>(entity);
 
 
+        } 
+        [HttpGet]
+        [Route("GetExamsByCourse/{CourseID}")]
+        public IEnumerable<ExamDTO> GetExamsByCourse(int CourseID)
+        {
+            var entity = service.GetExamsByCourse(CourseID);
+            return mapper.Map<IEnumerable<ExamDTO>>(entity);
+
+
         }
         [HttpGet]
         [Route("QuestionByExam/{ExamId}")]
@@ -43,6 +54,18 @@ namespace CEDAcademyAPI.Controllers
         {
             var entity = service.GetQuestionByExamID(ExamId);
             return mapper.Map<IEnumerable<QuestionDTO>>(entity);
+
+
+        }
+        [HttpPost]
+        [Route("{id}")]
+
+        public void affect(Exam exam, int id)
+        {
+            exam.Course = CourseService.GetById(id);
+            service.Add(exam);
+            CourseService.GetById(id).Exams.Add(exam);
+
 
 
         }
@@ -64,6 +87,13 @@ namespace CEDAcademyAPI.Controllers
         public void delete(Exam e)
         {
             service.Delete(e);
+        }
+        [HttpDelete]
+        [Route("{id}")]
+
+        public void remove(int id)
+        {
+            service.Remove(id);
         }
     }
 }

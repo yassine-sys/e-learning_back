@@ -16,11 +16,26 @@ namespace CEDAcademyAPI.Controllers
     {
         private IOptionService service;
         private readonly IMapper mapper;
+        private IQuestionService questionService;
 
-        public OptionController(IOptionService service, IMapper mapper)
+        public OptionController(IOptionService service, IMapper mapper, IQuestionService questionService)
         {
             this.service = service;
             this.mapper = mapper;
+            this.questionService = questionService;
+        }
+
+        [HttpPost]
+        [Route("{id}")]
+
+        public void affect(Option option, int id)
+        {
+            option.Questions = questionService.GetById(id);
+            service.Add(option);
+            questionService.GetById(id).Options.Add(option);
+
+
+
         }
         [HttpGet]
         public IEnumerable<OptionDTO> GetOptions()
@@ -64,6 +79,13 @@ namespace CEDAcademyAPI.Controllers
         public void delete(Option o)
         {
             service.Delete(o);
+        }
+        [HttpDelete]
+        [Route("{id}")]
+
+        public void remove(int id)
+        {
+            service.Remove(id);
         }
     }
 }

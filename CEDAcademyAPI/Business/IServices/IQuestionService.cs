@@ -11,5 +11,7 @@ namespace Business.IServices
     public interface IQuestionService : IServiceBase<Question>
     {
         IEnumerable<Option> GetOptionByQuestionID(int QuesID);
+        IEnumerable<Question> GetQuestionsByQuizID(int QuizID);
+        IEnumerable<Question> GetQuestionsByExamID(int ExamID);
     }
 }

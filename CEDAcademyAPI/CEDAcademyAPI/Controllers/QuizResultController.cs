@@ -16,12 +16,13 @@ namespace CEDAcademyAPI.Controllers
     {
         private IQuizResultService service;
         private readonly IMapper mapper;
+        private IQuizService quizService;
 
-
-        public QuizResultController(IQuizResultService service, IMapper mapper)
+        public QuizResultController(IQuizResultService service, IQuizService quizService, IMapper mapper)
         {
             this.service = service;
             this.mapper = mapper;
+            this.quizService = quizService;
         }
         [HttpGet]
         public IEnumerable<QuizResultDTO> GetQuizResults()
@@ -46,6 +47,18 @@ namespace CEDAcademyAPI.Controllers
         {
             var entity = service.GetQuizResultsByQuizID(QuizId);
             return mapper.Map<IEnumerable<QuizResultDTO>>(entity);
+
+        }
+        [HttpPost]
+        [Route("{id}")]
+
+        public void affect(QuizResult quizResult, int id)
+        {
+            quizResult.Quiz = quizService.GetById(id);
+            service.Add(quizResult);
+            quizService.GetById(id).QuizResults.Add(quizResult);
+
+
 
         }
         [HttpPost]

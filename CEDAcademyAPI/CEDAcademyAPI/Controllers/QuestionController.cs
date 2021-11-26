@@ -16,13 +16,42 @@ namespace CEDAcademyAPI.Controllers
     {
         private IQuestionService service;
         private readonly IMapper mapper;
+        private IQuizService quizService;
+        private IExamService ExamService;
 
 
-
-        public QuestionController(IQuestionService service, IMapper mapper)
+        public QuestionController(IQuestionService service, IExamService ExamService, IMapper mapper, IQuizService quizService)
         {
             this.service = service;
             this.mapper = mapper;
+            this.quizService = quizService;
+            this.ExamService = ExamService;
+        }
+
+        [HttpPost]
+        [Route("{id}")]
+
+        public void affect(Question question, int id)
+        {
+            question.Quizzes = quizService.GetById(id);
+            service.Add(question);
+            quizService.GetById(id).Questions.Add(question);
+
+
+
+        }
+
+        [HttpPost]
+        [Route("exam/{id}")]
+
+        public void affecter(Question question, int id)
+        {
+            question.Exams = ExamService.GetById(id);
+            service.Add(question);
+            ExamService.GetById(id).Questions.Add(question);
+
+
+
         }
         [HttpGet]
         public IEnumerable<QuestionDTO> GetQuestions()
@@ -46,6 +75,18 @@ namespace CEDAcademyAPI.Controllers
             var entity = service.GetOptionByQuestionID(QuesId);
             return mapper.Map<IEnumerable<OptionDTO>>(entity);
         }
+        [HttpGet]
+        [Route("GetQuestionsByQuiz/{QuizID}")]
+        public IEnumerable<Question> GetQuestionsByQuizID(int QuizID)
+        {
+            return service.GetQuestionsByQuizID(QuizID);
+        }
+        [HttpGet]
+        [Route("GetQuestionsByExam/{ExamID}")]
+        public IEnumerable<Question> GetQuestionsByExamID(int ExamID)
+        {
+            return service.GetQuestionsByExamID(ExamID);
+        }
         [HttpPost]
         public void add(QuestionDTO q)
         {
@@ -64,6 +105,13 @@ namespace CEDAcademyAPI.Controllers
         public void delete(Question q)
         {
             service.Delete(q);
+        }
+        [HttpDelete]
+        [Route("{id}")]
+
+        public void remove(int id)
+        {
+            service.Remove(id);
         }
 
     }

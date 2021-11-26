@@ -10,7 +10,9 @@ namespace Business.IServices
 {
     public interface ICourseService : IServiceBase<Course>
     {
-        int GetCoursesCount();     
+        int GetCoursesCount();
+        void UploadFile();
+        byte[] GetImage(int id);
 
     }
 }

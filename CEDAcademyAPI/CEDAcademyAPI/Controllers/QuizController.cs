@@ -16,11 +16,13 @@ namespace CEDAcademyAPI.Controllers
     {
         private IQuizService service;
         private readonly IMapper mapper;
+        private ICourseService courseService;
 
 
-        public QuizController(IQuizService service, IMapper mapper)
+        public QuizController(IQuizService service, ICourseService courseService, IMapper mapper)
         {
             this.service = service;
+            this.courseService = courseService;
             this.mapper = mapper;
         }
         [HttpGet]
@@ -45,6 +47,15 @@ namespace CEDAcademyAPI.Controllers
             var entity = service.GetQuestionByQuizID(QuizId);
             return mapper.Map<IEnumerable<QuestionDTO>>(entity);
 
+        } 
+        [HttpGet]
+        [Route("quizbycourse/{CourseID}")]
+
+        public IEnumerable<QuizDTO> GetQuizByCourseID(int CourseID)
+        {
+            var entity = service.GetQuizByCourseID(CourseID);
+            return mapper.Map<IEnumerable<QuizDTO>>(entity);
+
         }
         [HttpPost]
         public void add(QuizDTO q)
@@ -52,6 +63,19 @@ namespace CEDAcademyAPI.Controllers
             var entity = this.mapper.Map<Quiz>(q);
 
             service.Add(entity);
+        }
+
+        [HttpPost]
+        [Route("{id}")]
+
+        public void affect(Quiz quiz, int id)
+        {
+            quiz.Course = courseService.GetById(id);
+            service.Add(quiz);
+            courseService.GetById(id).Quizzes.Add(quiz);
+
+
+
         }
         [HttpPut]
         public void update(QuizDTO q)
@@ -61,9 +85,11 @@ namespace CEDAcademyAPI.Controllers
             service.Update(entity);
         }
         [HttpDelete]
-        public void delete(Quiz q)
+        [Route("{id}")]
+
+        public void remove(int id)
         {
-            service.Delete(q);
+            service.Remove(id);
         }
     }
 }

@@ -70,15 +70,14 @@ namespace Business.Services
 
             postedFile.SaveAs(filePath);
 
-
             //int idFile = 0;
             Entities.Models.File file = new Entities.Models.File()
             {
 
-             FileName = fileName,
-             FileTitle = httpRequest["FileTitle"],
-             FileDescription = httpRequest["FileDescription"],
-             FileDuration = httpRequest["FileDuration"]
+                FileName = fileName,
+                FileTitle = httpRequest["FileTitle"],
+                FileDescription = httpRequest["FileDescription"],
+                FileDuration = httpRequest["FileDuration"]
 
             };
             repo.Add(file);           

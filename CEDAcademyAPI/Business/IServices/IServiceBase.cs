@@ -16,6 +16,7 @@ namespace Business.IServices
             void Add(TEntity t);
             void Update(TEntity t);
             void Delete(TEntity t);
+            void Remove(int id);
         }
     
 }

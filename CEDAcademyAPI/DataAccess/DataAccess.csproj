@@ -108,6 +108,86 @@
     <Compile Include="Migrations\202007081529476_changes.designer.cs">
       <DependentUpon>202007081529476_changes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202007091435400_data.cs" />
+    <Compile Include="Migrations\202007091435400_data.designer.cs">
+      <DependentUpon>202007091435400_data.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007130840505_data1.cs" />
+    <Compile Include="Migrations\202007130840505_data1.designer.cs">
+      <DependentUpon>202007130840505_data1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007130856152_data2.cs" />
+    <Compile Include="Migrations\202007130856152_data2.designer.cs">
+      <DependentUpon>202007130856152_data2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007130909205_data3.cs" />
+    <Compile Include="Migrations\202007130909205_data3.designer.cs">
+      <DependentUpon>202007130909205_data3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007130918472_data4.cs" />
+    <Compile Include="Migrations\202007130918472_data4.designer.cs">
+      <DependentUpon>202007130918472_data4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007131302290_data5.cs" />
+    <Compile Include="Migrations\202007131302290_data5.designer.cs">
+      <DependentUpon>202007131302290_data5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007131352092_data6.cs" />
+    <Compile Include="Migrations\202007131352092_data6.designer.cs">
+      <DependentUpon>202007131352092_data6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007131514125_data7.cs" />
+    <Compile Include="Migrations\202007131514125_data7.designer.cs">
+      <DependentUpon>202007131514125_data7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007131519535_data8.cs" />
+    <Compile Include="Migrations\202007131519535_data8.designer.cs">
+      <DependentUpon>202007131519535_data8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007160853192_data9.cs" />
+    <Compile Include="Migrations\202007160853192_data9.designer.cs">
+      <DependentUpon>202007160853192_data9.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007160959450_data10.cs" />
+    <Compile Include="Migrations\202007160959450_data10.designer.cs">
+      <DependentUpon>202007160959450_data10.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007171127145_data11.cs" />
+    <Compile Include="Migrations\202007171127145_data11.designer.cs">
+      <DependentUpon>202007171127145_data11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007201300262_data12.cs" />
+    <Compile Include="Migrations\202007201300262_data12.designer.cs">
+      <DependentUpon>202007201300262_data12.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007201303497_data13.cs" />
+    <Compile Include="Migrations\202007201303497_data13.designer.cs">
+      <DependentUpon>202007201303497_data13.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007211537242_data14.cs" />
+    <Compile Include="Migrations\202007211537242_data14.designer.cs">
+      <DependentUpon>202007211537242_data14.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007221446180_data15.cs" />
+    <Compile Include="Migrations\202007221446180_data15.designer.cs">
+      <DependentUpon>202007221446180_data15.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007221448115_data16.cs" />
+    <Compile Include="Migrations\202007221448115_data16.designer.cs">
+      <DependentUpon>202007221448115_data16.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007221458485_data17.cs" />
+    <Compile Include="Migrations\202007221458485_data17.designer.cs">
+      <DependentUpon>202007221458485_data17.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007221655352_data18.cs" />
+    <Compile Include="Migrations\202007221655352_data18.designer.cs">
+      <DependentUpon>202007221655352_data18.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007230735570_data19.cs" />
+    <Compile Include="Migrations\202007230735570_data19.designer.cs">
+      <DependentUpon>202007230735570_data19.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BusinessUnitRepository.cs" />
@@ -149,6 +229,66 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007081529476_changes.resx">
       <DependentUpon>202007081529476_changes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007091435400_data.resx">
+      <DependentUpon>202007091435400_data.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007130840505_data1.resx">
+      <DependentUpon>202007130840505_data1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007130856152_data2.resx">
+      <DependentUpon>202007130856152_data2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007130909205_data3.resx">
+      <DependentUpon>202007130909205_data3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007130918472_data4.resx">
+      <DependentUpon>202007130918472_data4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007131302290_data5.resx">
+      <DependentUpon>202007131302290_data5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007131352092_data6.resx">
+      <DependentUpon>202007131352092_data6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007131514125_data7.resx">
+      <DependentUpon>202007131514125_data7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007131519535_data8.resx">
+      <DependentUpon>202007131519535_data8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007160853192_data9.resx">
+      <DependentUpon>202007160853192_data9.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007160959450_data10.resx">
+      <DependentUpon>202007160959450_data10.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007171127145_data11.resx">
+      <DependentUpon>202007171127145_data11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007201300262_data12.resx">
+      <DependentUpon>202007201300262_data12.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007201303497_data13.resx">
+      <DependentUpon>202007201303497_data13.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007211537242_data14.resx">
+      <DependentUpon>202007211537242_data14.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007221446180_data15.resx">
+      <DependentUpon>202007221446180_data15.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007221448115_data16.resx">
+      <DependentUpon>202007221448115_data16.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007221458485_data17.resx">
+      <DependentUpon>202007221458485_data17.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007221655352_data18.resx">
+      <DependentUpon>202007221655352_data18.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007230735570_data19.resx">
+      <DependentUpon>202007230735570_data19.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

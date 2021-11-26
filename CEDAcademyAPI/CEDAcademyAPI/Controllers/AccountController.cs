@@ -16,18 +16,25 @@ using Microsoft.Owin.Security.OAuth;
 using CEDAcademyAPI.Models;
 using CEDAcademyAPI.Providers;
 using CEDAcademyAPI.Results;
+using System.Linq;
+using Business.IServices;
 
 namespace CEDAcademyAPI.Controllers
 {
-    [Authorize]
+   // [Authorize]
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
     {
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager _userManager;
+        private ModelFactory _modelFactory;
+        //private IDepartmentService departmentService;
+
 
         public AccountController()
         {
+           // this.departmentService = departmentService;
+
         }
 
         public AccountController(ApplicationUserManager userManager,
@@ -49,6 +56,18 @@ namespace CEDAcademyAPI.Controllers
             }
         }
 
+        protected ModelFactory TheModelFactory
+        {
+            get
+            {
+                if (_modelFactory == null)
+                {
+                    _modelFactory = new ModelFactory(this.Request, this.UserManager);
+                }
+                return _modelFactory;
+            }
+        }
+
         public ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; private set; }
 
         // GET api/Account/UserInfo
@@ -64,6 +83,50 @@ namespace CEDAcademyAPI.Controllers
                 HasRegistered = externalLogin == null,
                 LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null
             };
+        }
+
+        [HttpGet]
+        [Route("GetUserClaims")]
+        public ApplicationUser GetUserClaims()
+        {
+            var identityClaims = (ClaimsIdentity)User.Identity;
+            IEnumerable<Claim> claims = identityClaims.Claims;
+            ApplicationUser model = new ApplicationUser()
+            {
+                UserName = identityClaims.FindFirstValue("Username"),
+                Email = identityClaims.FindFirstValue("Email"),
+            };
+            return model;
+        }
+        //[HttpPost]
+        //[Route("{id}")]
+
+        //public void affect(ApplicationUser user, int id)
+        //{
+        //    user.department = departmentService.GetById(id);
+        //    service.Add(department);
+        //    departmentService.GetById(id).ApplicationUsers.Add(department);
+
+
+
+        //}
+        [Route("user/{id:guid}", Name = "GetUserById")]
+        public async Task<IHttpActionResult> GetUser(string Id)
+        {
+            var user = await this.UserManager.FindByIdAsync(Id);
+
+            if (user != null)
+            {
+                return Ok(this.TheModelFactory.Create(user));
+            }
+
+            return NotFound();
+
+        }
+        [Route("users")]
+        public IHttpActionResult GetUsers()
+        {
+            return Ok(this.UserManager.Users.ToList().Select(u => this.TheModelFactory.Create(u)));
         }
 
         // POST api/Account/Logout
@@ -337,7 +400,46 @@ namespace CEDAcademyAPI.Controllers
                 return GetErrorResult(result);
             }
 
-            return Ok();
+            string code = await this.UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+
+
+
+
+            var callbackUrl = new Uri(Url.Link("ConfirmEmailRoute", new { userId = user.Id, code }));
+
+            await this.UserManager.SendEmailAsync(user.Id,
+                                                    "Confirm your account",
+                                                        "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>"
+                                                        );
+
+            Uri locationHeader = new Uri(Url.Link("GetUserById", new
+            {
+                id = user.Id
+            }));
+
+
+            return Created(locationHeader, TheModelFactory.Create(user));
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("ConfirmEmail", Name = "ConfirmEmailRoute")]
+        public async Task<IHttpActionResult> ConfirmEmail(string userId = "", string code = "")
+        {
+            if (string.IsNullOrWhiteSpace(userId) || string.IsNullOrWhiteSpace(code))
+            {
+                ModelState.AddModelError("", "User Id and Code are required");
+                return BadRequest(ModelState);
+            }
+
+            IdentityResult result = await UserManager.ConfirmEmailAsync(userId, code);
+
+            if (result.Succeeded)
+            {
+                return Ok();
+            }
+
+            return GetErrorResult(result);
         }
 
         // POST api/Account/RegisterExternal
@@ -372,6 +474,8 @@ namespace CEDAcademyAPI.Controllers
             }
             return Ok();
         }
+
+      
 
         protected override void Dispose(bool disposing)
         {

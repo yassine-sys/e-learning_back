@@ -23,9 +23,9 @@ namespace Business.Services
 
         public IEnumerable<Department> GetDepartmentByBusinessUnitId(int BusinessUnitId)
         {
-            return departmentRepository.GetAll().Where(x => x.BusinessUnitId == BusinessUnitId);
+            return departmentRepository.GetAll().Where(x => x.BusinessUnitId== BusinessUnitId);
         }
-       
+      
 
     }
 }

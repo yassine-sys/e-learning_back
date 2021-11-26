@@ -9,6 +9,7 @@ namespace Entities.ModelsDTO
 {
   public  class ExamDTO
     {
+        public int Id { get; set; }
         public string Title { get; set; }
         public Course Course { get; set; }
         public ICollection<Certificate> Certificates { get; set; }

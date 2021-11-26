@@ -11,11 +11,12 @@ namespace DataAccess.IRepositories
         TEntity GetById(int id);
 
         IEnumerable<TEntity> GetAll();
-        
+
         void Add(TEntity t);
-        
+
         void update(TEntity t);
-        
+
         void Delete(TEntity t);
+        void Remove(int id);
     }
 }

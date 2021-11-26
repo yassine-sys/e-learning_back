@@ -23,8 +23,7 @@ namespace Business.Services
         }
         public IEnumerable<QuizResult> GetQuizResultsByQuizID(int QuizID)
         {
-            // return context.Quizzes.Where(x => x.QuizResults.Any(c => c.Id == QuizID));
-            // return quizRepository.GetAll().Where(x => x.QuizResults.Any(c => c.QuizID == QuizID));
+           
             return repo.GetAll().Where(x => x.QuizID == QuizID);
         }
 

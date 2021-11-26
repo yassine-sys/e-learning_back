@@ -11,5 +11,6 @@ namespace Business.IServices
     public interface IExamService : IServiceBase<Exam>
     {
         IEnumerable<Question> GetQuestionByExamID(int ExamID);
+        IEnumerable<Exam> GetExamsByCourse(int CourseID);
     }
 }

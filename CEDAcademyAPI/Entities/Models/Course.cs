@@ -23,12 +23,14 @@ namespace Entities.Models
 
         public string Description { get; set; }
         public string OverViewVideo { get; set; }
-       // public int DepartmentID { get; set; }
+        public int DepartmentID { get; set; }
         public string UserId { get; set; }
         public Department Department { get; set; }
         //public ICollection<ApplicationUser> ApplicationUsers { get; set; }
         public ICollection<Chapter> chapters { get; set; }
         public ICollection<Rating> Ratings { get; set; }
+        public ICollection<Quiz> Quizzes { get; set; }
+        public ICollection<Exam> Exams { get; set; }
         public string CreatedBy { get; set; }
         public DateTime? CreatedDate { get; set; }
         public string LastModifiedBy { get; set; }

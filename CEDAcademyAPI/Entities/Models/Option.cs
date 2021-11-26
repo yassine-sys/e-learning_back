@@ -11,19 +11,20 @@ namespace Entities.Models
     {
         public Option()
         {
-            Questions = new HashSet<Question>();
+            //Questions = new HashSet<Question>();
         }
 
         [Key]
         public int Id { get; set; }
         public string OptionText { get; set; }
-        public ICollection<Question> Questions { get; set; }
+        public Question Questions { get; set; }
+        public int QuestionID { get; set; }
         public bool values { get; set; }
+
         public string CreatedBy { get; set; }
         public DateTime? CreatedDate { get; set; }
         public string LastModifiedBy { get; set; }
         public DateTime? LastModifiedDate { get; set; }
         public bool? IsActif { get; set; }
-        public int QuesId { get; set; }
     }
 }

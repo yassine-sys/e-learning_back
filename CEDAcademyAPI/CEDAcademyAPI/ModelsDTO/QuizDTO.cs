@@ -9,6 +9,7 @@ namespace Entities.ModelsDTO
 {
    public class QuizDTO
     {
+        public int Id { get; set; }
         public string Title { get; set; }
         public Course Course { get; set; }
 

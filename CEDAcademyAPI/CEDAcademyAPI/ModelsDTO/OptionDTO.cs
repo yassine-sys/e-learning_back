@@ -9,6 +9,7 @@ namespace Entities.ModelsDTO
 {
   public  class OptionDTO
     {
+        public int Id { get; set; }
         public string OptionText { get; set; }
         public ICollection<Question> Questions { get; set; }
         public bool values { get; set; }

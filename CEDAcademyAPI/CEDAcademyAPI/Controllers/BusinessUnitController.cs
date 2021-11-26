@@ -18,6 +18,8 @@ namespace CEDAcademyAPI.Controllers
             this.service = service;
             this.mapper = mapper;
         }
+       
+
 
         [HttpGet]
         public IEnumerable<BusinessUnitDTO> GetBusinessUnits()
@@ -35,7 +37,9 @@ namespace CEDAcademyAPI.Controllers
             var x= service.GetById(id);
             return mapper.Map <BusinessUnitDTO> (x);
 
-        }
+        } 
+       
+        
         [HttpPost]
         public void add(BusinessUnitDTO b)
         {
@@ -54,6 +58,13 @@ namespace CEDAcademyAPI.Controllers
         public void delete(BusinessUnit b)
         {
             service.Delete(b);
+        }
+        [HttpDelete]
+        [Route("{id}")]
+
+        public void remove(int id)
+        {
+            service.Remove(id);
         }
         [HttpGet]
         [Route("getDepartmentByBusinessUnit/{BusinessUnitId}")]

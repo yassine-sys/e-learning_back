@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Formatting;
 using System.Web.Http;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
@@ -14,6 +15,8 @@ namespace CEDAcademyAPI
         {
             // Web API configuration and services
             // Configure Web API to use only bearer token authentication.
+            config.Formatters.Clear();
+            config.Formatters.Add(new JsonMediaTypeFormatter());
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 

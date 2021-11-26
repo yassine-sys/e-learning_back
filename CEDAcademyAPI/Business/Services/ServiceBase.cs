@@ -39,6 +39,9 @@ namespace Business.Services
         {
             this.repository.Delete(t);
         }
-
+        public void Remove(int id)
+        {
+            this.repository.Remove(id);
+        }
     }
 }

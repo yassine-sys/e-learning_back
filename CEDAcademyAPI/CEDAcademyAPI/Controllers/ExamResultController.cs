@@ -16,12 +16,14 @@ namespace CEDAcademyAPI.Controllers
     {
         private IExamResultService service;
         private readonly IMapper mapper;
+        private IExamService examService;
 
 
-        public ExamResultController(IExamResultService service,IMapper mapper)
+        public ExamResultController(IExamResultService service, IExamService examService, IMapper mapper)
         {
             this.service = service;
             this.mapper = mapper;
+            this.examService = examService;
         }
         [HttpGet]
         public IEnumerable<ExamResultDTO> GetExamResults()
@@ -50,6 +52,18 @@ namespace CEDAcademyAPI.Controllers
             var entity = this.mapper.Map<ExamResult>(e);
 
             service.Add(entity);
+        }
+        [HttpPost]
+        [Route("{id}")]
+
+        public void affect(ExamResult examResult, int id)
+        {
+            examResult.Exam = examService.GetById(id);
+            service.Add(examResult);
+            examService.GetById(id).ExamResults.Add(examResult);
+
+
+
         }
         [HttpPut]
         public void update(ExamResult e)

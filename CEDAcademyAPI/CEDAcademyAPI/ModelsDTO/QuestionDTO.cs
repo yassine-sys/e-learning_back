@@ -9,6 +9,8 @@ namespace Entities.ModelsDTO
 {
   public  class QuestionDTO
     {
+        public int Id { get; set; }
+
         public string QuesText { get; set; }
         public string types { get; set; }
 

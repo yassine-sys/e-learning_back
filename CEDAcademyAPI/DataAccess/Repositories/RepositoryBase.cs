@@ -30,6 +30,7 @@ namespace DataAccess.Repositories
         {
             dbSet.Add(t);
             db.SaveChanges();
+            
         }
         public void update(TEntity t) 
         {
@@ -45,6 +46,13 @@ namespace DataAccess.Repositories
                 dbSet.Remove(t);
                 db.SaveChanges();
             }
+        }
+        public void Remove(int id)
+        {
+            TEntity t = dbSet.Find(id);
+            dbSet.Remove(t);
+            db.SaveChanges();
+
         }
     }
 }

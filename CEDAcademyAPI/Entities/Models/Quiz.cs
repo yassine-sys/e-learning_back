@@ -26,7 +26,6 @@ namespace Entities.Models
         public DateTime? LastModifiedDate { get; set; }
         public bool? IsActif { get; set; }
 
-
         // quiz creator
         //public string userId { get; set; }
         //public ApplicationUser User { get; set; }

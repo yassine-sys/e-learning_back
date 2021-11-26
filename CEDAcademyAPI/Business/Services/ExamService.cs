@@ -24,7 +24,11 @@ namespace Business.Services
         public IEnumerable<Question> GetQuestionByExamID(int ExamID)
         {
             //return context.Questions.Where(x => x.Exams.Any(c => c.Id == ExamID));
-            return questionRepository.GetAll().Where(x => x.Exams.Any(c => c.Id == ExamID));
+            return questionRepository.GetAll().Where(x => x.ExamID== ExamID);
+        }
+        public IEnumerable<Exam> GetExamsByCourse(int CourseID)
+        {
+            return repo.GetAll().Where(x => x.CourseID == CourseID);
         }
     }
 }

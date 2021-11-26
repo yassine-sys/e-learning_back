@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,9 +21,8 @@ namespace Entities.Models
 
         public string Name { get; set; }
         public string Description { get; set; }
-
-        public int BusinessUnitId { get; set; }
-
+       // [ForeignKey("BusinessUnit")]
+        public int BusinessUnitId{ get; set; }
         public BusinessUnit BusinessUnit { get; set; }
         public ICollection<Course> Courses { get; set; }
         public string CreatedBy { get; set; }
@@ -31,6 +32,6 @@ namespace Entities.Models
         public bool? IsActif { get; set; }
 
 
-        // public ICollection<ApplicationUser> ApplicationUsers { get; set; }
+         public ICollection<IdentityUser> ApplicationUsers { get; set; }
     }
 }

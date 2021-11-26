@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Business.IServices;
+using Business.Services;
 using Entities.Models;
 using Entities.ModelsDTO;
 using System;
@@ -16,10 +17,26 @@ namespace CEDAcademyAPI.Controllers
     {
         private readonly IChapterService service;
         private readonly IMapper mapper;
-        public ChapterController(IChapterService service, IMapper mapper)
+        private ICourseService CourseService;
+       
+        public ChapterController(IChapterService service, IMapper mapper,ICourseService CourseService)
         {
             this.service = service;
             this.mapper = mapper;
+            this.CourseService = CourseService;
+        }
+
+        [HttpPost]
+        [Route("{id}")]
+
+        public void affect(Chapter chapter, int id)
+        {
+            chapter.Course = CourseService.GetById(id);
+            service.Add(chapter);
+            CourseService.GetById(id).chapters.Add(chapter);
+
+
+
         }
         [HttpGet]
         public IEnumerable<ChapterDTO> GetChapters()
@@ -51,6 +68,14 @@ namespace CEDAcademyAPI.Controllers
         {
             service.Delete(c);
             return Ok(c);
+        }
+
+        [HttpDelete]
+        [Route("{id}")]
+
+        public void remove(int id)
+        {
+            service.Remove(id);
         }
         [HttpGet]
         [Route("course/{CourseId}")]
